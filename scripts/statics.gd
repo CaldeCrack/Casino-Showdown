@@ -8,8 +8,10 @@ const PORT = 5409 # Number between 1024 and 65535.
 
 enum Role {
 	NONE,
-	ROLE_A,
-	ROLE_B,
+	BLACKJACK,
+	ROULETTE,
+	SLOT_MACHINE,
+	DUDO
 }
 
 
