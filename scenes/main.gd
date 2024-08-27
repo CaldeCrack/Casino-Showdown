@@ -4,6 +4,7 @@ extends Node3D
 @onready var markers: Node3D = $Markers
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	for i in Game.players.size():
 		var player_data: Statics.PlayerData = Game.players[i]
 		var player_inst: Node = player_scene.instantiate()
