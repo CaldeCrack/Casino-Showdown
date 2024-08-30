@@ -1,15 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0580shuwsxi8"]
+[gd_scene load_steps=4 format=3 uid="uid://c0580shuwsxi8"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_1yrpo"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="1_b7154"]
+[ext_resource type="PackedScene" uid="uid://dkur6pkkt6wt5" path="res://resources/gawr_gura/scene.gltf" id="3_tq2cg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ia8vc"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ah14l"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyt4k"]
-albedo_texture = ExtResource("1_b7154")
-uv1_offset = Vector3(0.5, 0.15, 0)
+radius = 0.2
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_1yrpo")
@@ -17,10 +12,94 @@ script = ExtResource("1_1yrpo")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_ia8vc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
-mesh = SubResource("CapsuleMesh_ah14l")
-surface_material_override/0 = SubResource("StandardMaterial3D_gyt4k")
+[node name="GawrGura" parent="CollisionShape3D" instance=ExtResource("3_tq2cg")]
+transform = Transform3D(-0.11, 0, -9.61651e-09, 0, 0.11, 0, 9.61651e-09, 0, -0.11, 0, -1, 0)
+
+[node name="Object_302" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="0"]
+layers = 1025
+
+[node name="Object_303" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="1"]
+layers = 1025
+
+[node name="Object_304" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="2"]
+layers = 1025
+
+[node name="Object_305" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="3"]
+layers = 1025
+
+[node name="Object_306" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="4"]
+layers = 1025
+
+[node name="Object_307" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="5"]
+layers = 1025
+
+[node name="Object_308" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="6"]
+layers = 1025
+
+[node name="Object_309" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="7"]
+layers = 1025
+
+[node name="Object_310" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="8"]
+layers = 1025
+
+[node name="Object_311" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="9"]
+layers = 1025
+
+[node name="Object_312" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="10"]
+layers = 1025
+
+[node name="Object_313" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="11"]
+layers = 1025
+
+[node name="Object_314" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="12"]
+layers = 1025
+
+[node name="Object_315" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="13"]
+layers = 1025
+
+[node name="Object_316" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="14"]
+layers = 1025
+
+[node name="Object_317" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="15"]
+layers = 1025
+
+[node name="Object_318" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="16"]
+layers = 1025
+
+[node name="Object_319" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="17"]
+layers = 1025
+
+[node name="Object_320" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="18"]
+layers = 1025
+
+[node name="Object_321" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="19"]
+layers = 1025
+
+[node name="Object_322" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="20"]
+layers = 1025
+
+[node name="Object_323" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="21"]
+layers = 1025
+
+[node name="Object_324" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="22"]
+layers = 1025
+
+[node name="Object_325" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="23"]
+layers = 1025
+
+[node name="Object_326" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="24"]
+layers = 1025
+
+[node name="Object_327" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="25"]
+layers = 1025
+
+[node name="Object_328" parent="CollisionShape3D/GawrGura/Sketchfab_model/e5a758ce81834cab9aeba608ea05a4cc_fbx/RootNode/GawrGura_arm/Object_4/Skeleton3D" index="26"]
+layers = 1025
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.562912, -0.242623)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00398469, 0.744603, -0.0635193)
+cull_mask = 1047551
 current = true
+near = 0.15
+
+[editable path="CollisionShape3D/GawrGura"]

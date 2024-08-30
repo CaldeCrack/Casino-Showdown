@@ -5,6 +5,8 @@ const SPEED: float = 5.0
 const JUMP_VELOCITY: float = 12.0
 const MOUSE_SENSITIVITY: float = 0.002
 
+@onready var mesh := $CollisionShape3D/GawrGura
+
 
 func get_input():
 	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
