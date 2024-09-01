@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0580shuwsxi8"]
+[gd_scene load_steps=7 format=3 uid="uid://c0580shuwsxi8"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_1yrpo"]
+[ext_resource type="Script" path="res://scenes/player_camera.gd" id="3_3xvhw"]
 [ext_resource type="PackedScene" uid="uid://b3r6r3p88pes2" path="res://resources/gawr_gura/gawr_gura_exported.glb" id="5_sakhp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ia8vc"]
@@ -275,8 +276,8 @@ skin = SubResource("Skin_um38a")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00398469, 0.744603, -0.0635193)
 cull_mask = 1047551
-current = true
 near = 0.15
+script = ExtResource("3_3xvhw")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.2005, 0)
