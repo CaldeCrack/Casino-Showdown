@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var player_scene: PackedScene
-@onready var markers: Node3D = $Markers
+@onready var markers: Node3D = $Spawnpoints
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

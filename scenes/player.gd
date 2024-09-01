@@ -6,6 +6,7 @@ const JUMP_VELOCITY: float = 12.0
 const MOUSE_SENSITIVITY: float = 0.002
 
 @onready var mesh := $CollisionShape3D/GawrGura
+@onready var label := $Label3D
 
 
 func get_input():
@@ -25,6 +26,7 @@ func _physics_process(delta: float) -> void:
 
 		get_input()
 		move_and_slide()
+		send_data.rpc(position, rotation)
 
 func _input(event):
 	if is_multiplayer_authority() and event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -35,3 +37,10 @@ func _input(event):
 func setup(player_data: Statics.PlayerData) -> void:
 	name = str(player_data.id)
 	set_multiplayer_authority(player_data.id)
+	label.text = player_data.name
+
+@rpc
+func send_data(pos: Vector3, rot: Vector3) -> void:
+	position = pos
+	rotation = rot
+	
