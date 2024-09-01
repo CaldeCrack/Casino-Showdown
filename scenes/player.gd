@@ -2,6 +2,9 @@ extends CharacterBody3D
 
 
 const SPEED: float = 5.0
+const SPRINT_MULT: float = 1.5
+const CROUCH_MULT: float = 0.55
+const CROUCH_SIZE: float = 0.5
 const JUMP_VELOCITY: float = 12.0
 const MOUSE_SENSITIVITY: float = 0.002
 
@@ -9,11 +12,24 @@ const MOUSE_SENSITIVITY: float = 0.002
 @onready var camera := $Camera3D
 
 
+func get_speed() -> float:
+	var speed: float = SPEED
+	if Input.is_action_pressed("sprint"):
+		speed = SPEED * SPRINT_MULT
+	elif Input.is_action_pressed("crouch"):
+		self.scale.y = CROUCH_SIZE
+		speed = SPEED * CROUCH_MULT
+	elif Input.is_action_just_released("crouch"):
+		self.scale.y = 1.0
+	return speed
+
+
 func get_input():
-	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var movement_dir = transform.basis * Vector3(input.x, 0, input.y)
-	velocity.x = movement_dir.x * SPEED
-	velocity.z = movement_dir.z * SPEED
+	var input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	var movement_dir: Vector3 = transform.basis * Vector3(input.x, 0, input.y)
+	var speed: float = get_speed()
+	velocity.x = movement_dir.x * speed
+	velocity.z = movement_dir.z * speed
 
 
 func _physics_process(delta: float) -> void:
@@ -26,7 +42,8 @@ func _physics_process(delta: float) -> void:
 
 		get_input()
 		move_and_slide()
-		send_data.rpc(position, rotation)
+		send_transform.rpc(position, rotation, scale)
+
 
 func _input(event):
 	if is_multiplayer_authority() and event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -42,6 +59,7 @@ func setup(player_data: Statics.PlayerData) -> void:
 
 
 @rpc
-func send_data(pos: Vector3, rot: Vector3) -> void:
+func send_transform(pos: Vector3, rot: Vector3, size: Vector3) -> void:
 	position = lerp(position, pos, 0.5)
-	rotation = lerp(rotation, rot, 0.5)
+	rotation.y = lerp_angle(rotation.y, rot.y, 0.5)
+	scale = lerp(scale, size, 0.5)

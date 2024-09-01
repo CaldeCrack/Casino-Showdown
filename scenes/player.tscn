@@ -281,5 +281,6 @@ script = ExtResource("3_3xvhw")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.2005, 0)
+billboard = 1
 
 [editable path="CollisionShape3D/GawrGura"]
