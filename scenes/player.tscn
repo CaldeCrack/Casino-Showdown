@@ -184,6 +184,7 @@ bind/27/bone = -1
 bind/27/pose = Transform3D(-5.78534, 99.7097, 4.95054, -92.5011, -3.48867, -37.8334, -37.5509, -6.7681, 92.4344, -1.04615, -1.96681, -11.6051)
 
 [node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_1yrpo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -273,14 +274,18 @@ skin = SubResource("Skin_um38a")
 [node name="Object_328" parent="CollisionShape3D/GawrGura" index="26"]
 skin = SubResource("Skin_um38a")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00398469, 0.744603, -0.0635193)
-cull_mask = 1047551
-near = 0.15
-script = ExtResource("3_3xvhw")
-
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.2005, 0)
 billboard = 1
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(0.978148, 0, 0.207912, -0.0538115, 0.965926, 0.253163, -0.200827, -0.258819, 0.944818, 0.435, 0.915, 0)
+rotation_order = 1
+spring_length = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+cull_mask = 1047551
+near = 0.15
+script = ExtResource("3_3xvhw")
 
 [editable path="CollisionShape3D/GawrGura"]

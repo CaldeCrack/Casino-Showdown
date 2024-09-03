@@ -8,8 +8,9 @@ const CROUCH_SIZE: float = 0.5
 const JUMP_VELOCITY: float = 12.0
 const MOUSE_SENSITIVITY: float = 0.002
 
-@onready var label := $Label3D
-@onready var camera := $Camera3D
+
+@onready var label: Label3D = $Label3D
+@onready var spring_arm: SpringArm3D = $SpringArm3D
 
 
 func get_speed() -> float:
@@ -48,8 +49,8 @@ func _physics_process(delta: float) -> void:
 func _input(event):
 	if is_multiplayer_authority() and event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
-		camera.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
-		camera.rotation.x = clampf(camera.rotation.x, -deg_to_rad(90), deg_to_rad(90))
+		spring_arm.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
+		spring_arm.rotation.x = clampf(spring_arm.rotation.x, -deg_to_rad(40), deg_to_rad(40))
 
 
 func setup(player_data: Statics.PlayerData) -> void:
