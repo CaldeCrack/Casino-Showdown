@@ -10,7 +10,6 @@ role = 1
 
 [node name="Game" type="Node"]
 script = ExtResource("1_fmbhi")
-multiplayer_test = true
 test_players = Array[ExtResource("2_xaonh")]([SubResource("Resource_nviqh")])
 
 [node name="PlayerId" type="Label" parent="."]

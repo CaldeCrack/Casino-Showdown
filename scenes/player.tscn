@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c0580shuwsxi8"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_1yrpo"]
-[ext_resource type="Script" path="res://scenes/player_camera.gd" id="3_3xvhw"]
-[ext_resource type="PackedScene" uid="uid://b3r6r3p88pes2" path="res://resources/gawr_gura/gawr_gura_exported.glb" id="5_sakhp"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_1yrpo"]
+[ext_resource type="Script" path="res://scripts/player_camera.gd" id="3_3xvhw"]
+[ext_resource type="PackedScene" uid="uid://b3r6r3p88pes2" path="res://resources/models/gawr_gura/gawr_gura_exported.glb" id="5_sakhp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ia8vc"]
 radius = 0.2

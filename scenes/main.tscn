@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://b5hufqs7sbm01"]
 
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_ysfbh"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_ysfbh"]
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="2_gjunx"]
 [ext_resource type="PackedScene" uid="uid://c0580shuwsxi8" path="res://scenes/player.tscn" id="2_kr317"]
-[ext_resource type="PackedScene" uid="uid://bibnnddaigihe" path="res://resources/Capoeira.fbx" id="4_nsisp"]
+[ext_resource type="PackedScene" uid="uid://bibnnddaigihe" path="res://resources/models/Capoeira.fbx" id="4_nsisp"]
 [ext_resource type="AnimationLibrary" uid="uid://ds44607r6l4ni" path="res://animations/capoeira.res" id="5_jakw4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_u2k5k"]

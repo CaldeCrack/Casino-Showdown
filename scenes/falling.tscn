@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhqfwu8pi8u8f"]
+
+[ext_resource type="PackedScene" uid="uid://cvvivhddrtcq1" path="res://scenes/objects/card.tscn" id="1_xak2w"]
+[ext_resource type="Script" path="res://scripts/falling.gd" id="1_y1u0b"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jtthu"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hl6yf"]
+size = Vector2(10, 10)
+
+[node name="Falling" type="Area2D"]
+script = ExtResource("1_y1u0b")
+
+[node name="Screen" type="Sprite2D" parent="."]
+texture = SubResource("ViewportTexture_jtthu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hl6yf")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+
+[node name="Card" parent="SubViewport" instance=ExtResource("1_xak2w")]
