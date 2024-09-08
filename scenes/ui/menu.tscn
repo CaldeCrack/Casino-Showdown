@@ -1,14 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://ltkr1u0005je"]
+[gd_scene load_steps=14 format=3 uid="uid://ltkr1u0005je"]
 
 [ext_resource type="Shader" path="res://resources/shaders/fog.gdshader" id="1_262jt"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="2_trsny"]
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="3_dmqu8"]
 [ext_resource type="FontFile" uid="uid://bo5l8x7yp2hfd" path="res://resources/fonts/CasinoShadow.ttf" id="4_br527"]
+[ext_resource type="Texture2D" uid="uid://c5hqxp0sj8frp" path="res://resources/sprites/gradient_sphere.png" id="5_mng5f"]
+[ext_resource type="Script" path="res://scripts/leds.gd" id="5_s10lk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ra6kj"]
 shader = ExtResource("1_262jt")
 shader_parameter/color = Vector3(0.5, 0.5, 0.55)
 shader_parameter/OCTAVES = 4
+
+[sub_resource type="Environment" id="Environment_8a7ei"]
+background_mode = 3
+glow_enabled = true
+glow_hdr_threshold = 1.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tv0er"]
 shader = ExtResource("1_262jt")
@@ -24,6 +31,9 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_x0d7c"]
 font_size = 50
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa5y4"]
+size = Vector2(1824, 120)
+
 [sub_resource type="GDScript" id="GDScript_ig4fr"]
 script/source = "extends Timer
 
@@ -38,9 +48,6 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa5y4"]
-size = Vector2(1824, 120)
-
 [node name="Menu" type="Control"]
 material = SubResource("ShaderMaterial_ra6kj")
 layout_mode = 3
@@ -50,6 +57,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_trsny")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8a7ei")
 
 [node name="Background" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_tv0er")
@@ -78,6 +88,1822 @@ text = "Casino
 Showdown"
 label_settings = SubResource("LabelSettings_a41rt")
 horizontal_alignment = 1
+
+[node name="LEDS" type="Control" parent="VBoxContainer/Title"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_s10lk")
+
+[node name="RedLEDS" type="Control" parent="VBoxContainer/Title/LEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="C" type="Control" parent="VBoxContainer/Title/LEDS/RedLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/C"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(188.5, 38.495)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/C"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(215, 26.4)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/C"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(239, 42.25)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/C"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(185.5, 66.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/C"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(186.5, 97.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/C"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(208.5, 113.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/C"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(238.5, 102.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="A" type="Control" parent="VBoxContainer/Title/LEDS/RedLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/A"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(281.5, 113.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/A"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(281.5, 82.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/A"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(284.5, 52.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/A"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(296.5, 23.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/A"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(316.5, 22.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/A"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(327.5, 51.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/A"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(330.5, 81.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/A"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(331.5, 112.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="S" type="Control" parent="VBoxContainer/Title/LEDS/RedLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/S"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(377.5, 100.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/S"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(405.5, 111.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/S"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(431.5, 96.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/S"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(422.5, 70.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/S"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(391.5, 68.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/S"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(374.5, 46.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/S"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(390.5, 23.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/S"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(420.5, 26.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="I" type="Control" parent="VBoxContainer/Title/LEDS/RedLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/I"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(473.5, 22.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/I"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(473.5, 52.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/I"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(473.5, 83.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/I"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(473.5, 113.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="N" type="Control" parent="VBoxContainer/Title/LEDS/RedLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(517.5, 114.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(517.5, 84.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(517.5, 54.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(517.5, 25.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(534.5, 56.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(551.5, 81.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(568.5, 113.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(568.5, 83.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED9" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(568.5, 53.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED10" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(568.5, 24.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="O" type="Control" parent="VBoxContainer/Title/LEDS/RedLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(629.5, 23.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(610.5, 44.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(609.5, 74.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(614.5, 103.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(641.5, 112.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(664.5, 97.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(667.5, 71.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(665.5, 42.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="S2" type="Control" parent="VBoxContainer/Title/LEDS/RedLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/S2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(18.5625, 279.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/S2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(46.5625, 290.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/S2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(72.5625, 276.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/S2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(63.5625, 249.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/S2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(32.5625, 247.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/S2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(15.5625, 225.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/S2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(31.5625, 202.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/S2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(61.5625, 205.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="H" type="Control" parent="VBoxContainer/Title/LEDS/RedLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/H"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(115.5, 205.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/H"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(114.5, 234.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/H"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(114.5, 264.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/H"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(114.5, 293.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/H"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(131.5, 249.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/H"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(166.5, 248.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/H"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(166.5, 218.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/H"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(166.5, 276.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="O2" type="Control" parent="VBoxContainer/Title/LEDS/RedLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(228.563, 202.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(209.562, 223.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(208.563, 253.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(213.563, 282.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(240.563, 291.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(263.563, 276.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(266.563, 250.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(264.563, 221.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="W" type="Control" parent="VBoxContainer/Title/LEDS/RedLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(309.5, 204.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(309.5, 233.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(311.5, 263.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(324.5, 291.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(348.5, 278.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(359.5, 249.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(360.5, 219.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(369.5, 279.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED9" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(394.5, 293.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED10" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(404.5, 263.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED11" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(410.5, 234.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED12" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(410.5, 204.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="D" type="Control" parent="VBoxContainer/Title/LEDS/RedLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/D"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(452.5, 202.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/D"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(452.5, 232.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/D"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(452.5, 262.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/D"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(452.5, 293.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/D"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(480.5, 292.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/D"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(502.5, 277.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/D"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(506.5, 251.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/D"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(504.5, 222.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED9" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/D"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(484.5, 204.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="O3" type="Control" parent="VBoxContainer/Title/LEDS/RedLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O3"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(563.563, 202.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O3"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(544.562, 223.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O3"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(543.563, 253.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O3"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(548.563, 282.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O3"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(575.563, 291.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O3"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(598.563, 276.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O3"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(601.563, 250.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/O3"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(599.563, 221.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="W2" type="Control" parent="VBoxContainer/Title/LEDS/RedLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(644.563, 204.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(644.563, 233.562)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(646.563, 263.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(659.563, 291.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(683.563, 278.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(694.563, 249.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(695.563, 219.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(704.563, 279.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED9" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(729.563, 293.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED10" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(739.563, 263.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED11" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(745.563, 234.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED12" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/W2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(745.563, 204.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="N2" type="Control" parent="VBoxContainer/Title/LEDS/RedLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(787.563, 293.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(787.563, 263.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(787.563, 233.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(787.563, 204.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(804.563, 235.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(821.563, 260.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(838.563, 292.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(838.563, 262.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED9" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(838.563, 232.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED10" type="Sprite2D" parent="VBoxContainer/Title/LEDS/RedLEDS/N2"]
+modulate = Color(3, 0, 0, 1)
+z_index = 2
+position = Vector2(838.563, 203.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="BlueLEDS" type="Control" parent="VBoxContainer/Title/LEDS"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="C" type="Control" parent="VBoxContainer/Title/LEDS/BlueLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/C"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(228.5, 30.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/C"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(200.5, 28.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/C"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(185.5, 52.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/C"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(185.5, 81.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/C"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(194.5, 109.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/C"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(225.5, 111.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="A" type="Control" parent="VBoxContainer/Title/LEDS/BlueLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/A"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(281.5, 98.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/A"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(282.5, 67.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/A"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(291.5, 37.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/A"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(297.5, 82.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/A"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(314.5, 82.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/A"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(330.5, 66.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/A"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(321.5, 36.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/A"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(331.5, 96.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="S" type="Control" parent="VBoxContainer/Title/LEDS/BlueLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED9" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/S"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(389.5, 110.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED10" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/S"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(421.5, 109.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED11" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/S"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(431.5, 81.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED12" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/S"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(407.5, 68.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED13" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/S"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(380.5, 60.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED14" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/S"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(378.5, 32.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED15" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/S"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(405.5, 23.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED16" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/S"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(431.5, 38.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="I" type="Control" parent="VBoxContainer/Title/LEDS/BlueLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/I"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(473.5, 37.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/I"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(473.5, 67.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/I"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(473.5, 97.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="N" type="Control" parent="VBoxContainer/Title/LEDS/BlueLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(517.5, 98.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(517.5, 69.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(517.5, 39.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(526.5, 45.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(543.5, 68.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(560.5, 94.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(568.5, 98.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(568.5, 68.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED9" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(568.5, 39.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="O" type="Control" parent="VBoxContainer/Title/LEDS/BlueLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(617.5, 30.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(609.5, 60.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(609.5, 90.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(627.5, 111.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(655.5, 109.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(668.5, 84.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(667.5, 57.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(659.5, 29.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED9" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(646.5, 24.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="S2" type="Control" parent="VBoxContainer/Title/LEDS/BlueLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED9" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/S2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(31.5625, 289.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED10" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/S2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(63.5625, 288.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED11" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/S2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(73.5625, 260.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED12" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/S2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(49.5625, 247.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED13" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/S2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(22.5625, 239.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED14" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/S2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(20.5625, 211.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED15" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/S2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(47.5625, 202.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED16" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/S2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(73.5625, 217.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="H" type="Control" parent="VBoxContainer/Title/LEDS/BlueLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/H"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(115.5, 219.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/H"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(115.5, 249.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/H"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(115.5, 278.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/H"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(148.5, 249.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/H"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(166.5, 262.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/H"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(166.5, 291.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/H"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(166.5, 233.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/H"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(166.5, 203.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="O2" type="Control" parent="VBoxContainer/Title/LEDS/BlueLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(215.563, 209.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(207.563, 239.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(207.563, 269.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(225.563, 290.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(253.563, 288.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(266.563, 263.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(265.563, 236.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(257.563, 208.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED9" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(244.563, 203.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="W" type="Control" parent="VBoxContainer/Title/LEDS/BlueLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(309.5, 218.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(309.5, 248.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(318.5, 277.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(341.5, 292.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(359.5, 265.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(360.5, 235.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(360.5, 204.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(376.5, 294.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED9" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(400.5, 278.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED10" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(410.5, 249.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED11" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(410.5, 219.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="D" type="Control" parent="VBoxContainer/Title/LEDS/BlueLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/D"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(452.5, 217.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/D"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(452.5, 247.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/D"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(452.5, 277.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/D"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(466.5, 293.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/D"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(493.5, 288.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/D"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(506.5, 264.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/D"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(506.5, 237.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/D"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(497.5, 209.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED9" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/D"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(468.5, 203.5)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="O3" type="Control" parent="VBoxContainer/Title/LEDS/BlueLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O3"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(551.563, 208.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O3"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(543.563, 238.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O3"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(543.563, 268.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O3"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(561.563, 289.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O3"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(589.563, 287.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O3"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(602.563, 262.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O3"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(601.563, 235.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O3"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(593.563, 207.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED9" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/O3"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(580.563, 202.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="W2" type="Control" parent="VBoxContainer/Title/LEDS/BlueLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(644.563, 218.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(644.563, 248.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(653.563, 277.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(676.563, 292.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(694.563, 265.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(695.563, 235.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(695.563, 204.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(711.563, 294.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED9" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(735.563, 278.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED10" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(745.563, 249.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED11" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/W2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(745.563, 219.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="N2" type="Control" parent="VBoxContainer/Title/LEDS/BlueLEDS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LED1" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(787.563, 277.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED2" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(787.563, 248.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED3" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(787.563, 218.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED4" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(796.563, 224.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED5" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(813.563, 247.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED6" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(830.563, 273.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED7" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(838.563, 277.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED8" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(838.563, 247.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
+
+[node name="LED9" type="Sprite2D" parent="VBoxContainer/Title/LEDS/BlueLEDS/N2"]
+modulate = Color(0, 0, 1, 1)
+z_index = 2
+position = Vector2(838.563, 218.563)
+scale = Vector2(0.00947264, 0.00947264)
+texture = ExtResource("5_mng5f")
 
 [node name="Start" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(250, 60)
@@ -168,11 +1994,6 @@ label_settings = SubResource("LabelSettings_x0d7c")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpawnerCD" type="Timer" parent="."]
-wait_time = 3.0
-autostart = true
-script = SubResource("GDScript_ig4fr")
-
 [node name="FallingObjects" type="Node2D" parent="."]
 
 [node name="DeleteBorder" type="Area2D" parent="FallingObjects"]
@@ -181,7 +2002,17 @@ script = SubResource("GDScript_ig4fr")
 position = Vector2(780, 1090)
 shape = SubResource("RectangleShape2D_pa5y4")
 
+[node name="SpawnerCD" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+script = SubResource("GDScript_ig4fr")
+
+[node name="LedLights" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
-[connection signal="timeout" from="SpawnerCD" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="FallingObjects/DeleteBorder" to="." method="_on_delete_border_area_entered"]
+[connection signal="timeout" from="SpawnerCD" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="LedLights" to="VBoxContainer/Title/LEDS" method="_on_led_lights_timeout"]

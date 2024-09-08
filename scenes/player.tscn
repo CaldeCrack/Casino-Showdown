@@ -185,6 +185,7 @@ bind/27/pose = Transform3D(-5.78534, 99.7097, 4.95054, -92.5011, -3.48867, -37.8
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
 script = ExtResource("1_1yrpo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -279,7 +280,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.2
 billboard = 1
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
-transform = Transform3D(0.978148, 0, 0.207912, -0.0538115, 0.965926, 0.253163, -0.200827, -0.258819, 0.944818, 0.435, 0.915, 0)
+transform = Transform3D(0.975122, 0.0556235, 0.21458, -0.106962, 0.965926, 0.235683, -0.194159, -0.252771, 0.947844, 0.435, 0.915, 0)
 rotation_order = 1
 spring_length = 2.0
 

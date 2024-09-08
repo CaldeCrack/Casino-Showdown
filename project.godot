@@ -11,14 +11,20 @@ config_version=5
 [application]
 
 config/name="Casino Showdown"
+config/version="1.0.0"
 run/main_scene="res://scenes/ui/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://resources/sprites/Chips/chips2.png"
 
 [autoload]
 
 Debug="*res://autoloads/debug.gd"
 Game="*res://autoloads/game.tscn"
+
+[display]
+
+window/size/mode=2
 
 [gui]
 
@@ -70,3 +76,7 @@ crouch={
 [physics]
 
 3d/default_gravity=30.0
+
+[rendering]
+
+viewport/hdr_2d=true
