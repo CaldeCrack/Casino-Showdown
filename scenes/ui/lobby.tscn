@@ -1,16 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bslhrv3eo36wd"]
+[gd_scene load_steps=5 format=3 uid="uid://bslhrv3eo36wd"]
 
 [ext_resource type="Script" path="res://scripts/lobby.gd" id="1_g2fmt"]
 [ext_resource type="PackedScene" uid="uid://chbh4lxk8rmmd" path="res://scenes/ui/lobby_player.tscn" id="2_060bj"]
 [ext_resource type="Shader" path="res://resources/shaders/fog.gdshader" id="3_1uyds"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="4_oc26y"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sieme"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6u543"]
 shader = ExtResource("3_1uyds")
 shader_parameter/color = Vector3(0.5, 0.5, 0.55)
 shader_parameter/OCTAVES = 4
 
-[node name="Lobby" type="MarginContainer"]
+[node name="Lobby" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19,14 +19,29 @@ grow_vertical = 2
 script = ExtResource("1_g2fmt")
 lobby_player_scene = ExtResource("2_060bj")
 
-[node name="Background" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_sieme")
-scale = Vector2(12.2266, 6.47656)
-texture = ExtResource("4_oc26y")
-centered = false
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_6u543")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 2
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -66.5
+offset_right = 145.0
+offset_bottom = 66.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 

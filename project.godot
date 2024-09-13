@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Casino Showdown"
-config/version="1.0.0"
+config/version="0.0.1"
 run/main_scene="res://scenes/ui/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -21,6 +21,7 @@ config/icon="res://resources/sprites/Chips/chips2.png"
 
 Debug="*res://autoloads/debug.gd"
 Game="*res://autoloads/game.tscn"
+FallingObjects="*res://autoloads/falling_objects.tscn"
 
 [display]
 

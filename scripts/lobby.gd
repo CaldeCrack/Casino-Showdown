@@ -1,10 +1,12 @@
-extends MarginContainer
+extends Control
 
 @export var lobby_player_scene: PackedScene
 
 # { id: true }
 var status = { 1 : false }
 var _menu_stack: Array[Control] = []
+var falling := load("res://autoloads/falling_objects.tscn")
+var fallingInst = falling.instantiate()
 
 @onready var user = %User
 @onready var host = %Host
@@ -29,6 +31,7 @@ var _menu_stack: Array[Control] = []
 
 
 func _ready():
+	add_child(fallingInst)
 	if Game.multiplayer_test:
 		get_tree().change_scene_to_file.call_deferred("res://scenes/lobby_test.tscn")
 		return
@@ -232,8 +235,8 @@ func starting_game(value: bool):
 @rpc("any_peer", "call_local", "reliable")
 func start_game() -> void:
 	Game.players.sort_custom(func(a, b): return a.index < b.index)
+	remove_child(fallingInst)
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
-
 
 
 func _check_ready() -> void:
