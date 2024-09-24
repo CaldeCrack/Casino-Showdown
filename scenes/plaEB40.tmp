@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0580shuwsxi8"]
+[gd_scene load_steps=7 format=3 uid="uid://c0580shuwsxi8"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1yrpo"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="3_3xvhw"]
@@ -183,9 +183,6 @@ bind/27/name = &"mixamorig_RightHandIndex3"
 bind/27/bone = -1
 bind/27/pose = Transform3D(-5.78534, 99.7097, 4.95054, -92.5011, -3.48867, -37.8334, -37.5509, -6.7681, 92.4344, -1.04615, -1.96681, -11.6051)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xx2tp"]
-size = Vector3(1, 1.9765, 0.602051)
-
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
@@ -283,12 +280,11 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.2
 billboard = 1
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
-transform = Transform3D(0.97515, 0, 0.221548, -0.0520954, 0.971961, 0.229299, -0.215337, -0.235142, 0.947807, 0.435, 0.915, 0)
+transform = Transform3D(0.975122, 0.0556235, 0.21458, -0.106962, 0.965926, 0.235683, -0.194159, -0.252771, 0.947844, 0.435, 0.915, 0)
 rotation_order = 1
 spring_length = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
-transform = Transform3D(0.999944, 9.13824e-05, -0.0104714, 0, 0.999962, 0.00872654, 0.0104718, -0.00872605, 0.999907, 0, 0, 0)
 cull_mask = 1047551
 near = 0.15
 script = ExtResource("3_3xvhw")
@@ -299,19 +295,11 @@ script = ExtResource("3_3xvhw")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -90.0
-offset_right = 597.0
+offset_top = -67.0
+offset_right = 500.0
 grow_vertical = 0
 
-[node name="HealthBar" type="ProgressBar" parent="UI/MarginContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="UI/MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 4
-rounded = true
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0151672, 0.0583496)
-shape = SubResource("BoxShape3D_xx2tp")
 
 [editable path="CollisionShape3D/GawrGura"]

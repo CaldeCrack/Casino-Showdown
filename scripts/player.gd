@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+const MAX_HEALTH: float = 100
+var HEALTH: float = 100
 
 const SPEED: float = 5.0
 const SPRINT_MULT: float = 1.5
@@ -8,32 +10,42 @@ const CROUCH_SIZE: float = 0.5
 const JUMP_VELOCITY: float = 12.0
 const MOUSE_SENSITIVITY: float = 0.002
 
-
+@onready var collision_shape_3d = $CollisionShape3D
 @onready var label: Label3D = $Label3D
 @onready var spring_arm: SpringArm3D = $SpringArm3D
+@onready var health_bar = $UI/MarginContainer/HealthBar
+
+func _ready() -> void:
+	health_bar.value = HEALTH
+	health_bar.max_value = MAX_HEALTH
 
 
-func get_speed() -> float:
+
+func _set_speed() -> float:
 	var speed: float = SPEED
 	if Input.is_action_pressed("sprint"):
 		speed = SPEED * SPRINT_MULT
 	elif Input.is_action_pressed("crouch"):
-		self.scale.y = CROUCH_SIZE
+		#self.scale.y = CROUCH_SIZE
+		collision_shape_3d.scale.y = CROUCH_SIZE
 		speed = SPEED * CROUCH_MULT
 	elif Input.is_action_just_released("crouch"):
-		self.scale.y = 1.0
+		#self.scale.y = 1.0}
+		collision_shape_3d.scale.y = 1.0
 	return speed
 
 
 func get_input():
 	var input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var movement_dir: Vector3 = transform.basis * Vector3(input.x, 0, input.y)
-	var speed: float = get_speed()
+	var speed: float = _set_speed()
 	velocity.x = movement_dir.x * speed
 	velocity.z = movement_dir.z * speed
 
 
 func _physics_process(delta: float) -> void:
+	health_bar.value = HEALTH
+	
 	if is_multiplayer_authority():
 		if not is_on_floor():
 			velocity += get_gravity() * delta
