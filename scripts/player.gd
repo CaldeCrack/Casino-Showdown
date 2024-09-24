@@ -10,12 +10,20 @@ const CROUCH_SIZE: float = 0.5
 const JUMP_VELOCITY: float = 12.0
 const MOUSE_SENSITIVITY: float = 0.002
 
+@onready var godot_anim: AnimationPlayer = $"./3DGodotRobot/AnimationPlayer"
+@onready var godot_hitbox: Hitbox = $"3DGodotRobot/Hitbox"
+@onready var godot_hitbox_shape: CollisionShape3D = $"3DGodotRobot/Hitbox/HitboxShape"
+@onready var godot_animation_tree: AnimationTree = $"3DGodotRobot/AnimationTree"
+@onready var godot_playback: AnimationNodeStateMachinePlayback = godot_animation_tree.get("parameters/movement/playback")
+
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var label: Label3D = $Label3D
 @onready var spring_arm: SpringArm3D = $SpringArm3D
 @onready var health_bar: ProgressBar = $UI/HealthBar
 
 func _ready() -> void:
+	#godot_animation_tree.active = true
+	
 	health_bar.value = HEALTH
 	health_bar.max_value = MAX_HEALTH
 	health_bar.modulate = Color(0.8, 0., 0., 1.)
@@ -27,11 +35,11 @@ func _set_speed() -> float:
 		speed = SPEED * SPRINT_MULT
 	elif Input.is_action_pressed("crouch"):
 		#self.scale.y = CROUCH_SIZE
-		collision_shape_3d.scale.y = CROUCH_SIZE
+		#collision_shape_3d.scale.y = CROUCH_SIZE
 		speed = SPEED * CROUCH_MULT
-	elif Input.is_action_just_released("crouch"):
+	#elif Input.is_action_just_released("crouch"):
 		#self.scale.y = 1.0}
-		collision_shape_3d.scale.y = 1.0
+		#collision_shape_3d.scale.y = 1.0
 	return speed
 
 
@@ -41,12 +49,33 @@ func get_input():
 	var speed: float = _set_speed()
 	velocity.x = movement_dir.x * speed
 	velocity.z = movement_dir.z * speed
+	
+	if Input.is_action_pressed("crouch"):
+		godot_anim.play("Crouch")
+		#godot_playback.travel("Crouch")
+		velocity.x = 0.
+		velocity.z = 0.
+	elif Input.is_action_pressed("attack"):
+		godot_anim.play("Attack1")
+		#godot_playback.travel("Attack1")
+	elif Input.is_action_pressed("sprint") and (velocity.x or velocity.z):
+		godot_anim.play("Sprint")
+		#godot_playback.travel("Sprint")
+	elif (velocity.x or velocity.z):
+		godot_anim.play("Run")
+		#godot_playback.travel("Run")
+	else:
+		godot_anim.play("Idle")
+		#godot_playback.travel("Idle")
+		
+
 
 
 func _physics_process(delta: float) -> void:
-	health_bar.value = HEALTH
-	
 	if is_multiplayer_authority():
+		
+		health_bar.value = HEALTH
+		
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 
