@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://b5hufqs7sbm01"]
+[gd_scene load_steps=14 format=3 uid="uid://b5hufqs7sbm01"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ysfbh"]
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="2_gjunx"]
 [ext_resource type="PackedScene" uid="uid://c0580shuwsxi8" path="res://scenes/player.tscn" id="2_kr317"]
 [ext_resource type="PackedScene" uid="uid://bibnnddaigihe" path="res://resources/models/Capoeira.fbx" id="4_nsisp"]
 [ext_resource type="AnimationLibrary" uid="uid://ds44607r6l4ni" path="res://animations/capoeira.res" id="5_jakw4"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="6_01ohq"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_u2k5k"]
 panorama = ExtResource("2_gjunx")
@@ -29,6 +30,8 @@ uv1_triplanar = true
 lightmap_size_hint = Vector2i(12, 12)
 material = SubResource("StandardMaterial3D_0wtb3")
 size = Vector2(30, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_de5wv"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ysfbh")
@@ -102,5 +105,12 @@ autoplay = "mixamo_com"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.78312, -0.133552, 0.607361, -0.381822, 0.667635, 0.639121, -0.490851, -0.732412, 0.471845, 100, 100, 6.457)
+
+[node name="Hitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41385, 0)
+script = ExtResource("6_01ohq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("BoxShape3D_de5wv")
 
 [editable path="Capoeira"]

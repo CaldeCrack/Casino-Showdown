@@ -10,15 +10,15 @@ const CROUCH_SIZE: float = 0.5
 const JUMP_VELOCITY: float = 12.0
 const MOUSE_SENSITIVITY: float = 0.002
 
-@onready var collision_shape_3d = $CollisionShape3D
+@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var label: Label3D = $Label3D
 @onready var spring_arm: SpringArm3D = $SpringArm3D
-@onready var health_bar = $UI/MarginContainer/HealthBar
+@onready var health_bar: ProgressBar = $UI/HealthBar
 
 func _ready() -> void:
 	health_bar.value = HEALTH
 	health_bar.max_value = MAX_HEALTH
-
+	health_bar.modulate = Color(0.8, 0., 0., 1.)
 
 
 func _set_speed() -> float:
@@ -76,3 +76,7 @@ func send_transform(pos: Vector3, rot: Vector3, size: Vector3) -> void:
 	position = lerp(position, pos, 0.5)
 	rotation.y = lerp_angle(rotation.y, rot.y, 0.5)
 	scale = lerp(scale, size, 0.5)
+
+
+func take_damage(damage: float) -> void:
+	HEALTH -= damage 
