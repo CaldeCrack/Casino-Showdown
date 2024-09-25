@@ -13,7 +13,6 @@ const MOUSE_SENSITIVITY: float = 0.002
 @onready var godot_anim: AnimationPlayer = $"3DGodotRobot/AnimationPlayer"
 @onready var godot_animation_tree: AnimationTree = $"3DGodotRobot/AnimationTree"
 @onready var godot_playback: AnimationNodeStateMachinePlayback = godot_animation_tree.get("parameters/playback")
-@onready var godot_hitbox_shape: CollisionShape3D = $"3DGodotRobot/Hitbox/CollisionShape3D"
 
 @onready var collision_shape_3d: CollisionShape3D = $"CollisionShape3D"
 @onready var spring_arm: SpringArm3D = $SpringArm3D
@@ -86,6 +85,7 @@ func _set_movement():
 func setup(player_data: Statics.PlayerData) -> void:
 	name = str(player_data.id)
 	set_multiplayer_authority(player_data.id)
+	label.text = player_data.name
 
 
 @rpc
