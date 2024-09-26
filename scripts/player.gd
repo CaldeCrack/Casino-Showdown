@@ -18,6 +18,7 @@ const MOUSE_SENSITIVITY: float = 0.002
 @onready var spring_arm: SpringArm3D = $SpringArm3D
 @onready var health_bar: ProgressBar = $UI/HealthBar
 @onready var health_label: Label = $UI/MarginContainer/HealthLabel
+@onready var label: Label3D = $Label3D
 
 
 func _ready() -> void:
@@ -49,8 +50,7 @@ func _input(event: InputEvent) -> void:
 			spring_arm.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 			spring_arm.rotation.x = clampf(spring_arm.rotation.x, -deg_to_rad(40), deg_to_rad(40))
 		
-		if event is InputEventKey:
-			_set_movement()
+		_set_movement()
 		
 		if event is InputEventMouseButton:
 			if event.is_action_pressed("attack"):
