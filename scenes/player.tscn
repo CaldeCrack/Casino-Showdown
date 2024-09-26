@@ -1,189 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0580shuwsxi8"]
+[gd_scene load_steps=7 format=3 uid="uid://c0580shuwsxi8"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1yrpo"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="3_3xvhw"]
 [ext_resource type="PackedScene" uid="uid://ixdslqh7ecj4" path="res://scenes/models/3d_godot_robot.tscn" id="3_h8wr4"]
-[ext_resource type="PackedScene" uid="uid://b3r6r3p88pes2" path="res://resources/models/gawr_gura/gawr_gura_exported.glb" id="5_sakhp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ia8vc"]
 radius = 0.3
 height = 1.0
 
-[sub_resource type="Skin" id="Skin_ktrlc"]
-resource_name = "Skin"
-bind_count = 28
-bind/0/name = &"mixamorig_LeftArm"
-bind/0/bone = -1
-bind/0/pose = Transform3D(0.121527, 99.9987, -0.491594, 62.8505, -0.458744, -77.7792, -77.7805, -0.214446, -62.8502, -0.249806, 10.0582, 9.89829)
-bind/1/name = &"mixamorig_LeftForeArm"
-bind/1/bone = -1
-bind/1/pose = Transform3D(1.15561, 99.9776, -1.77125, 76.4466, -2.02518, -64.4346, -64.456, -0.609451, -76.4529, -0.129981, 5.27508, 11.0997)
-bind/2/name = &"mixamorig_LeftHand"
-bind/2/bone = -1
-bind/2/pose = Transform3D(-5.53238, -99.788, -3.42741, 98.6224, -4.92537, -15.7913, 15.5891, -4.25383, 98.6858, 0.883845, -3.22083, -10.977)
-bind/3/name = &"mixamorig_Spine2"
-bind/3/bone = -1
-bind/3/pose = Transform3D(100, 0, 0, 0, 5.50347, 99.8484, 0, -99.8484, 5.50347, -5.49316e-06, -12.8837, -0.455238)
-bind/4/name = &"mixamorig_LeftHandIndex1"
-bind/4/bone = -1
-bind/4/pose = Transform3D(-11.6154, -99.293, -2.44515, 85.1415, -8.68619, -51.725, 51.1469, -8.08991, 85.5485, 1.14578, 0.206957, -11.7526)
-bind/5/name = &"mixamorig_LeftHandIndex2"
-bind/5/bone = -1
-bind/5/pose = Transform3D(-11.6154, -99.293, -2.44515, 85.1415, -8.68619, -51.725, 51.1469, -8.08991, 85.5485, 1.14578, 0.102868, -11.7526)
-bind/6/name = &"mixamorig_LeftHandIndex3"
-bind/6/bone = -1
-bind/6/pose = Transform3D(-11.6154, -99.293, -2.44515, 85.1415, -8.68619, -51.725, 51.1469, -8.08991, 85.5485, 1.16, -0.0864402, -11.7544)
-bind/7/name = &"mixamorig_Spine1"
-bind/7/bone = -1
-bind/7/pose = Transform3D(100, 0, 0, 0, 5.50347, 99.8484, 0, -99.8484, 5.50347, -5.49316e-06, -11.8216, -0.455238)
-bind/8/name = &"mixamorig_Hips"
-bind/8/bone = -1
-bind/8/pose = Transform3D(100, 0, 0, 0, -1.62921e-05, 100, 0, -100, -1.62921e-05, -5.49316e-06, -10.1055, 0.10107)
-bind/9/name = &"mixamorig_Spine"
-bind/9/bone = -1
-bind/9/pose = Transform3D(100, 0, 0, 0, 5.50346, 99.8484, 0, -99.8484, 5.50346, -5.49316e-06, -10.8923, -0.455236)
-bind/10/name = &"mixamorig_LeftUpLeg"
-bind/10/bone = -1
-bind/10/pose = Transform3D(-99.9999, -0.00104713, -0.149926, 0.14993, -0.698413, -99.9975, 2.1071e-11, -99.9976, 0.698413, 0.790092, 9.66183, 0.0394514)
-bind/11/name = &"mixamorig_LeftShoulder"
-bind/11/bone = -1
-bind/11/pose = Transform3D(-0.723376, 99.8933, -4.56166, 97.9135, -0.218887, -20.3201, -20.3084, -4.61347, -97.8074, 0.333731, 2.44722, 14.0296)
-bind/12/name = &"mixamorig_Head"
-bind/12/bone = -1
-bind/12/pose = Transform3D(100, 0, 0, 0, -1.62921e-05, 100, 0, -100, -1.62921e-05, -5.49316e-06, -14.6902, 0.352589)
-bind/13/name = &"mixamorig_Neck"
-bind/13/bone = -1
-bind/13/pose = Transform3D(100, 0, 0, 0, -1.62921e-05, 100, 0, -100, -1.62921e-05, -5.49316e-06, -14.0823, 0.320265)
-bind/14/name = &"mixamorig_RightUpLeg"
-bind/14/bone = -1
-bind/14/pose = Transform3D(-99.9999, 0.00103883, 0.149926, -0.14993, -0.69288, -99.9975, -4.98138e-11, -99.9976, 0.692881, -0.790081, 9.66176, 0.030812)
-bind/15/name = &"mixamorig_RightLeg"
-bind/15/bone = -1
-bind/15/pose = Transform3D(-99.9639, -0.0186201, -2.68728, 2.68386, 4.40062, -99.8671, 0.136852, -99.9031, -4.39853, -0.634129, 5.49695, 0.311146)
-bind/16/name = &"mixamorig_LeftLeg"
-bind/16/bone = -1
-bind/16/pose = Transform3D(-99.9639, 0.0187686, 2.68726, -2.684, 4.27684, -99.8724, -0.133675, -99.9085, -4.27479, 0.634139, 5.49695, 0.313272)
-bind/17/name = &"mixamorig_LeftFoot"
-bind/17/bone = -1
-bind/17/pose = Transform3D(-99.8658, -4.54106, 2.48936, 1.39321, -69.8569, -71.5407, 4.9877, -71.41, 69.8265, 0.647776, 0.932094, -0.578346)
-bind/18/name = &"mixamorig_LeftToeBase"
-bind/18/bone = -1
-bind/18/pose = Transform3D(-99.7761, 3.70922, -5.565, -3.82153, -99.9084, 1.92539, -5.48849, 2.13375, 99.8265, 0.710044, -0.685937, 0.00100331)
-bind/19/name = &"mixamorig_RightArm"
-bind/19/bone = -1
-bind/19/pose = Transform3D(-0.424319, -99.9944, 0.967435, -62.8504, -0.485803, -77.7791, 77.7795, -0.938069, -62.8449, 0.181634, 10.0583, 9.89986)
-bind/20/name = &"mixamorig_RightForeArm"
-bind/20/bone = -1
-bind/20/pose = Transform3D(0.808527, -99.9657, 2.49283, -76.4434, -2.225, -64.4318, 64.4651, -1.38465, -76.4351, 0.038792, 5.27559, 11.1003)
-bind/21/name = &"mixamorig_RightHand"
-bind/21/bone = -1
-bind/21/pose = Transform3D(-6.90404, 99.6482, 4.74999, -98.2496, -5.96593, -17.6473, -17.3019, -5.88522, 98.3159, -1.08883, -3.00753, -11.019)
-bind/22/name = &"mixamorig_RightShoulder"
-bind/22/bone = -1
-bind/22/pose = Transform3D(-1.17032, -99.889, 4.56321, -97.9135, 0.218894, -20.3201, 20.2876, -4.70581, -97.8073, -0.333942, 2.44583, 14.0299)
-bind/23/name = &"mixamorig_RightFoot"
-bind/23/bone = -1
-bind/23/pose = Transform3D(-99.8644, 4.57547, -2.48217, -1.39944, -69.528, -71.8603, -5.01375, -71.7282, 69.4977, -0.647766, 0.932152, -0.576668)
-bind/24/name = &"mixamorig_RightToeBase"
-bind/24/bone = -1
-bind/24/pose = Transform3D(-99.7827, -3.65659, 5.48111, 3.7655, -99.9111, 1.89716, 5.40687, 2.09943, 99.8316, -0.709459, -0.680822, 8.33151e-05)
-bind/25/name = &"mixamorig_RightHandIndex1"
-bind/25/bone = -1
-bind/25/pose = Transform3D(-5.78534, 99.7097, 4.95054, -92.5011, -3.48867, -37.8334, -37.5509, -6.7681, 92.4344, -1.04242, -1.68022, -11.6306)
-bind/26/name = &"mixamorig_RightHandIndex2"
-bind/26/bone = -1
-bind/26/pose = Transform3D(-5.78534, 99.7097, 4.95054, -92.5011, -3.48867, -37.8334, -37.5509, -6.7681, 92.4344, -1.04242, -1.78324, -11.6306)
-bind/27/name = &"mixamorig_RightHandIndex3"
-bind/27/bone = -1
-bind/27/pose = Transform3D(-5.78534, 99.7097, 4.95054, -92.5011, -3.48867, -37.8334, -37.5509, -6.7681, 92.4344, -1.04615, -1.96681, -11.6051)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f7llx"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
 
-[sub_resource type="Skin" id="Skin_um38a"]
-resource_name = "Skin"
-bind_count = 28
-bind/0/name = &"mixamorig_LeftArm"
-bind/0/bone = -1
-bind/0/pose = Transform3D(0.121527, 99.9987, -0.491594, 62.8505, -0.458744, -77.7792, -77.7805, -0.214446, -62.8502, -0.249806, 10.0582, 9.89829)
-bind/1/name = &"mixamorig_LeftForeArm"
-bind/1/bone = -1
-bind/1/pose = Transform3D(1.15561, 99.9776, -1.77125, 76.4466, -2.02518, -64.4346, -64.456, -0.609451, -76.4529, -0.129981, 5.27508, 11.0997)
-bind/2/name = &"mixamorig_LeftHand"
-bind/2/bone = -1
-bind/2/pose = Transform3D(-5.53238, -99.788, -3.42741, 98.6224, -4.92537, -15.7913, 15.5891, -4.25383, 98.6858, 0.883845, -3.22083, -10.977)
-bind/3/name = &"mixamorig_Spine2"
-bind/3/bone = -1
-bind/3/pose = Transform3D(100, 0, 0, 0, 5.50347, 99.8484, 0, -99.8484, 5.50347, -5.49316e-06, -12.8837, -0.455238)
-bind/4/name = &"mixamorig_LeftHandIndex1"
-bind/4/bone = -1
-bind/4/pose = Transform3D(-11.6154, -99.293, -2.44515, 85.1415, -8.68619, -51.725, 51.1469, -8.08991, 85.5485, 1.14578, 0.206957, -11.7526)
-bind/5/name = &"mixamorig_LeftHandIndex2"
-bind/5/bone = -1
-bind/5/pose = Transform3D(-11.6154, -99.293, -2.44515, 85.1415, -8.68619, -51.725, 51.1469, -8.08991, 85.5485, 1.14578, 0.102868, -11.7526)
-bind/6/name = &"mixamorig_LeftHandIndex3"
-bind/6/bone = -1
-bind/6/pose = Transform3D(-11.6154, -99.293, -2.44515, 85.1415, -8.68619, -51.725, 51.1469, -8.08991, 85.5485, 1.16, -0.0864402, -11.7544)
-bind/7/name = &"mixamorig_Spine1"
-bind/7/bone = -1
-bind/7/pose = Transform3D(100, 0, 0, 0, 5.50347, 99.8484, 0, -99.8484, 5.50347, -5.49316e-06, -11.8216, -0.455238)
-bind/8/name = &"mixamorig_Hips"
-bind/8/bone = -1
-bind/8/pose = Transform3D(100, 0, 0, 0, -1.62921e-05, 100, 0, -100, -1.62921e-05, -5.49316e-06, -10.1055, 0.10107)
-bind/9/name = &"mixamorig_Spine"
-bind/9/bone = -1
-bind/9/pose = Transform3D(100, 0, 0, 0, 5.50346, 99.8484, 0, -99.8484, 5.50346, -5.49316e-06, -10.8923, -0.455236)
-bind/10/name = &"mixamorig_LeftUpLeg"
-bind/10/bone = -1
-bind/10/pose = Transform3D(-99.9999, -0.00104713, -0.149926, 0.14993, -0.698413, -99.9975, 2.1071e-11, -99.9976, 0.698413, 0.790092, 9.66183, 0.0394514)
-bind/11/name = &"mixamorig_LeftShoulder"
-bind/11/bone = -1
-bind/11/pose = Transform3D(-0.723376, 99.8933, -4.56166, 97.9135, -0.218887, -20.3201, -20.3084, -4.61347, -97.8074, 0.333731, 2.44722, 14.0296)
-bind/12/name = &"mixamorig_Head"
-bind/12/bone = -1
-bind/12/pose = Transform3D(100, 0, 0, 0, -1.62921e-05, 100, 0, -100, -1.62921e-05, -5.49316e-06, -14.6902, 0.352589)
-bind/13/name = &"mixamorig_Neck"
-bind/13/bone = -1
-bind/13/pose = Transform3D(100, 0, 0, 0, -1.62921e-05, 100, 0, -100, -1.62921e-05, -5.49316e-06, -14.0823, 0.320265)
-bind/14/name = &"mixamorig_RightUpLeg"
-bind/14/bone = -1
-bind/14/pose = Transform3D(-99.9999, 0.00103883, 0.149926, -0.14993, -0.69288, -99.9975, -4.98138e-11, -99.9976, 0.692881, -0.790081, 9.66176, 0.030812)
-bind/15/name = &"mixamorig_RightLeg"
-bind/15/bone = -1
-bind/15/pose = Transform3D(-99.9639, -0.0186201, -2.68728, 2.68386, 4.40062, -99.8671, 0.136852, -99.9031, -4.39853, -0.634129, 5.49695, 0.311146)
-bind/16/name = &"mixamorig_LeftLeg"
-bind/16/bone = -1
-bind/16/pose = Transform3D(-99.9639, 0.0187686, 2.68726, -2.684, 4.27684, -99.8724, -0.133675, -99.9085, -4.27479, 0.634139, 5.49695, 0.313272)
-bind/17/name = &"mixamorig_LeftFoot"
-bind/17/bone = -1
-bind/17/pose = Transform3D(-99.8658, -4.54106, 2.48936, 1.39321, -69.8569, -71.5407, 4.9877, -71.41, 69.8265, 0.647776, 0.932094, -0.578346)
-bind/18/name = &"mixamorig_LeftToeBase"
-bind/18/bone = -1
-bind/18/pose = Transform3D(-99.7761, 3.70922, -5.565, -3.82153, -99.9084, 1.92539, -5.48849, 2.13375, 99.8265, 0.710044, -0.685937, 0.00100331)
-bind/19/name = &"mixamorig_RightArm"
-bind/19/bone = -1
-bind/19/pose = Transform3D(-0.424319, -99.9944, 0.967435, -62.8504, -0.485803, -77.7791, 77.7795, -0.938069, -62.8449, 0.181634, 10.0583, 9.89986)
-bind/20/name = &"mixamorig_RightForeArm"
-bind/20/bone = -1
-bind/20/pose = Transform3D(0.808527, -99.9657, 2.49283, -76.4434, -2.225, -64.4318, 64.4651, -1.38465, -76.4351, 0.038792, 5.27559, 11.1003)
-bind/21/name = &"mixamorig_RightHand"
-bind/21/bone = -1
-bind/21/pose = Transform3D(-6.90404, 99.6482, 4.74999, -98.2496, -5.96593, -17.6473, -17.3019, -5.88522, 98.3159, -1.08883, -3.00753, -11.019)
-bind/22/name = &"mixamorig_RightShoulder"
-bind/22/bone = -1
-bind/22/pose = Transform3D(-1.17032, -99.889, 4.56321, -97.9135, 0.218894, -20.3201, 20.2876, -4.70581, -97.8073, -0.333942, 2.44583, 14.0299)
-bind/23/name = &"mixamorig_RightFoot"
-bind/23/bone = -1
-bind/23/pose = Transform3D(-99.8644, 4.57547, -2.48217, -1.39944, -69.528, -71.8603, -5.01375, -71.7282, 69.4977, -0.647766, 0.932152, -0.576668)
-bind/24/name = &"mixamorig_RightToeBase"
-bind/24/bone = -1
-bind/24/pose = Transform3D(-99.7827, -3.65659, 5.48111, 3.7655, -99.9111, 1.89716, 5.40687, 2.09943, 99.8316, -0.709459, -0.680822, 8.33151e-05)
-bind/25/name = &"mixamorig_RightHandIndex1"
-bind/25/bone = -1
-bind/25/pose = Transform3D(-5.78534, 99.7097, 4.95054, -92.5011, -3.48867, -37.8334, -37.5509, -6.7681, 92.4344, -1.04242, -1.68022, -11.6306)
-bind/26/name = &"mixamorig_RightHandIndex2"
-bind/26/bone = -1
-bind/26/pose = Transform3D(-5.78534, 99.7097, 4.95054, -92.5011, -3.48867, -37.8334, -37.5509, -6.7681, 92.4344, -1.04242, -1.78324, -11.6306)
-bind/27/name = &"mixamorig_RightHandIndex3"
-bind/27/bone = -1
-bind/27/pose = Transform3D(-5.78534, 99.7097, 4.95054, -92.5011, -3.48867, -37.8334, -37.5509, -6.7681, 92.4344, -1.04615, -1.96681, -11.6051)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkd1p"]
+bg_color = Color(0.905882, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -250,117 +89,18 @@ script = ExtResource("3_3xvhw")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="HealthBar" type="ProgressBar" parent="UI"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = -57.0
-offset_right = 562.0
-offset_bottom = -16.0
-grow_vertical = 0
-size_flags_vertical = 8
-rounded = true
-show_percentage = false
-
 [node name="MarginContainer" type="MarginContainer" parent="UI"]
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -68.0
-offset_right = 321.0
-offset_bottom = -5.0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="HealthLabel" type="Label" parent="UI/MarginContainer"]
+[node name="HealthBar" type="ProgressBar" parent="UI/MarginContainer"]
+custom_minimum_size = Vector2(358, 40)
 layout_mode = 2
-text = "100"
-
-[node name="GawrGura (deprecated)" parent="." instance=ExtResource("5_sakhp")]
-transform = Transform3D(-0.11, 0, -9.6165e-09, 0, 0.11, 0, 9.6165e-09, 0, -0.11, 7.10543e-15, -1, -0.336654)
-visible = false
-
-[node name="Object_302" parent="GawrGura (deprecated)" index="0"]
-skin = SubResource("Skin_ktrlc")
-
-[node name="Object_303" parent="GawrGura (deprecated)" index="1"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_304" parent="GawrGura (deprecated)" index="2"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_305" parent="GawrGura (deprecated)" index="3"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_306" parent="GawrGura (deprecated)" index="4"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_307" parent="GawrGura (deprecated)" index="5"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_308" parent="GawrGura (deprecated)" index="6"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_309" parent="GawrGura (deprecated)" index="7"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_310" parent="GawrGura (deprecated)" index="8"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_311" parent="GawrGura (deprecated)" index="9"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_312" parent="GawrGura (deprecated)" index="10"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_313" parent="GawrGura (deprecated)" index="11"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_314" parent="GawrGura (deprecated)" index="12"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_315" parent="GawrGura (deprecated)" index="13"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_316" parent="GawrGura (deprecated)" index="14"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_317" parent="GawrGura (deprecated)" index="15"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_318" parent="GawrGura (deprecated)" index="16"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_319" parent="GawrGura (deprecated)" index="17"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_320" parent="GawrGura (deprecated)" index="18"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_321" parent="GawrGura (deprecated)" index="19"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_322" parent="GawrGura (deprecated)" index="20"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_323" parent="GawrGura (deprecated)" index="21"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_324" parent="GawrGura (deprecated)" index="22"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_325" parent="GawrGura (deprecated)" index="23"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_326" parent="GawrGura (deprecated)" index="24"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_327" parent="GawrGura (deprecated)" index="25"]
-skin = SubResource("Skin_um38a")
-
-[node name="Object_328" parent="GawrGura (deprecated)" index="26"]
-skin = SubResource("Skin_um38a")
-
-[editable path="3DGodotRobot"]
-[editable path="GawrGura (deprecated)"]
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_styles/background = SubResource("StyleBoxEmpty_f7llx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nkd1p")
+rounded = true

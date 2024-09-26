@@ -16,31 +16,27 @@ const MOUSE_SENSITIVITY: float = 0.002
 
 @onready var collision_shape_3d: CollisionShape3D = $"CollisionShape3D"
 @onready var spring_arm: SpringArm3D = $SpringArm3D
-@onready var health_bar: ProgressBar = $UI/HealthBar
-@onready var health_label: Label = $UI/MarginContainer/HealthLabel
+@onready var health_bar: ProgressBar = $UI/MarginContainer/HealthBar
 @onready var label: Label3D = $Label3D
 
 
 func _ready() -> void:
 	godot_animation_tree.active = true
-	
+
 	health_bar.value = HEALTH
 	health_bar.max_value = MAX_HEALTH
-	health_label.text = str(MAX_HEALTH)
-	health_bar.modulate = Color(0.8, 0., 0., 1.)
 
 
 func _physics_process(delta: float) -> void:
 	if is_multiplayer_authority():
 		if not is_on_floor():
 			velocity += get_gravity() * delta
-	
+
 		move_and_slide()
 		send_transform.rpc(position, rotation, scale)
-	
+
 	else:
 		health_bar.hide()
-		health_label.hide()
 
 
 func _input(event: InputEvent) -> void:
@@ -49,9 +45,9 @@ func _input(event: InputEvent) -> void:
 			rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 			spring_arm.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 			spring_arm.rotation.x = clampf(spring_arm.rotation.x, -deg_to_rad(40), deg_to_rad(40))
-		
+
 		_set_movement()
-		
+
 		if event is InputEventMouseButton:
 			if event.is_action_pressed("attack"):
 				send_animations.rpc("Attack1")
@@ -64,10 +60,10 @@ func _set_movement():
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		
+
 	velocity.x = movement_dir.x * speed
 	velocity.z = movement_dir.z * speed
-		
+
 	if Input.is_action_pressed("crouch"):
 		send_animations.rpc("Crouch")
 		velocity.x = 0.
@@ -103,5 +99,4 @@ func send_animations(anim_name: String) -> void:
 func take_damage(damage: float) -> void:
 	if is_multiplayer_authority():
 		health_bar.value = HEALTH
-		health_label.text = str(HEALTH)
 		HEALTH -= damage
