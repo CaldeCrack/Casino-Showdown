@@ -57,25 +57,24 @@ func _set_movement():
 	var input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var movement_dir: Vector3 = transform.basis * Vector3(input.x, 0, input.y)
 	var speed: float = SPEED
-	
+
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
-	velocity.x = movement_dir.x * speed
-	velocity.z = movement_dir.z * speed
 
 	if Input.is_action_pressed("crouch"):
 		send_animations.rpc("Crouch")
 		velocity.x = 0.
 		velocity.z = 0.
-	elif (velocity.x > 10) or (velocity.z > 10) or input:
-		if Input.is_action_pressed("sprint"):
-			send_animations.rpc("Sprint")
-			speed = SPEED * SPRINT_MULT
-		else:
-			send_animations.rpc("Run")
+	elif Input.is_action_pressed("sprint"):
+		send_animations.rpc("Sprint")
+		speed = SPEED * SPRINT_MULT
+	elif Input.is_anything_pressed():
+		send_animations.rpc("Run")
 	else:
 		send_animations.rpc("Idle")
+
+	velocity.x = movement_dir.x * speed
+	velocity.z = movement_dir.z * speed
 
 
 func setup(player_data: Statics.PlayerData) -> void:
