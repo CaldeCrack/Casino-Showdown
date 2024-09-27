@@ -107,7 +107,7 @@ autoplay = "mixamo_com"
 transform = Transform3D(0.78312, -0.133552, 0.607361, -0.381822, 0.667635, 0.639121, -0.490851, -0.732412, 0.471845, 100, 100, 6.457)
 
 [node name="Hitbox" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41385, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.004, 0.5, -1.457)
 script = ExtResource("6_01ohq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
