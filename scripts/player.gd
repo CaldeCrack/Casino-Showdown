@@ -9,7 +9,9 @@ const CROUCH_MULT: float = 0.55
 const CROUCH_SIZE: float = 0.5
 const JUMP_VELOCITY: float = 12.0
 const MOUSE_SENSITIVITY: float = 0.002
+var direction = Vector3.FORWARD
 
+@onready var model: Node3D = $"3DGodotRobot"
 @onready var godot_anim: AnimationPlayer = $"3DGodotRobot/AnimationPlayer"
 @onready var godot_animation_tree: AnimationTree = $"3DGodotRobot/AnimationTree"
 @onready var godot_playback: AnimationNodeStateMachinePlayback = godot_animation_tree.get("parameters/playback")
@@ -77,6 +79,14 @@ func _set_movement():
 
 	velocity.x = movement_dir.x * speed
 	velocity.z = movement_dir.z * speed
+
+	# Debug.log(model.transform.basis.z)
+	#model.rotation.y = lerp_angle(
+		#model.rotation.y,
+		#atan2((model.global_position - velocity).x, (model.global_position - velocity).z),
+		#0.5)
+	if velocity:
+		model.look_at(model.global_position - velocity, Vector3.UP)
 
 
 func setup(player_data: Statics.PlayerData) -> void:
