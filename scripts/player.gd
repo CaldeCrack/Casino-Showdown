@@ -63,9 +63,8 @@ func _set_movement():
 
 	if Input.is_action_pressed("crouch"):
 		send_animations.rpc("Crouch")
-		velocity.x = 0.
-		velocity.z = 0.
-	elif Input.is_action_pressed("sprint"):
+		speed = 0
+	elif Input.is_action_pressed("sprint") and Input.is_action_pressed("move_forward"):
 		send_animations.rpc("Sprint")
 		speed = SPEED * SPRINT_MULT
 	elif Input.is_action_pressed("move_back") \
