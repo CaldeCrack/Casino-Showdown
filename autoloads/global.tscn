@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://be70k055e1tle"]
+
+[ext_resource type="Script" path="res://autoloads/global.gd" id="1_rdm6k"]
+
+[node name="Global" type="Node"]
+script = ExtResource("1_rdm6k")
+
+[node name="RoundTime" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

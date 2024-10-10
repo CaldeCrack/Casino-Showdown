@@ -34,11 +34,18 @@ func _physics_process(delta: float) -> void:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 
+		_time_left()
+
 		move_and_slide()
 		send_transform.rpc(position, rotation, scale)
 
 	else:
 		health_bar.hide()
+		
+func _time_left() -> void:
+	if !Global.round_time.time_left:
+		Debug.log('time left')
+		
 
 
 func _input(event: InputEvent) -> void:

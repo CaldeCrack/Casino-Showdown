@@ -22,6 +22,7 @@ config/icon="res://resources/sprites/Chips/chips2.png"
 Debug="*res://autoloads/debug.gd"
 Game="*res://autoloads/game.tscn"
 FallingObjects="*res://autoloads/falling_objects.tscn"
+Global="*res://autoloads/global.tscn"
 
 [display]
 
