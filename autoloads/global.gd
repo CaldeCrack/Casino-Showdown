@@ -1,3 +1,3 @@
 extends Node
 
-@onready var round_time: Timer = $RoundTime
+@onready var round_timer: Timer = $RoundTime

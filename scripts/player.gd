@@ -11,6 +11,15 @@ const JUMP_VELOCITY: float = 12.0
 const MOUSE_SENSITIVITY: float = 0.002
 var direction = Vector3.FORWARD
 
+#preloads
+
+@onready var round_end_menu = preload("res://scenes/ui/round_end_menu.tscn")
+
+
+
+## globals
+@onready var round_timer: Timer = Global.round_timer
+
 @onready var model: Node3D = $"3DGodotRobot"
 @onready var godot_anim: AnimationPlayer = $"3DGodotRobot/AnimationPlayer"
 @onready var godot_animation_tree: AnimationTree = $"3DGodotRobot/AnimationTree"
@@ -18,7 +27,10 @@ var direction = Vector3.FORWARD
 
 @onready var collision_shape_3d: CollisionShape3D = $"CollisionShape3D"
 @onready var spring_arm: SpringArm3D = $SpringArm3D
+
+@onready var ui = $UI
 @onready var health_bar: ProgressBar = $UI/MarginContainer/HealthBar
+@onready var round_progress_bar = $UI/RoundProgressBar
 @onready var label: Label3D = $Label3D
 
 
@@ -27,6 +39,9 @@ func _ready() -> void:
 
 	health_bar.value = HEALTH
 	health_bar.max_value = MAX_HEALTH
+	
+	#signals
+	round_timer.timeout.connect(_on_round_end)
 
 
 func _physics_process(delta: float) -> void:
@@ -34,7 +49,7 @@ func _physics_process(delta: float) -> void:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 
-		_time_left()
+		_ui_update()
 
 		move_and_slide()
 		send_transform.rpc(position, rotation, scale)
@@ -42,11 +57,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		health_bar.hide()
 		
-func _time_left() -> void:
-	if !Global.round_time.time_left:
-		Debug.log('time left')
-		
-
+func _ui_update() -> void:
+	round_progress_bar.value = round_timer.time_left / round_timer.wait_time * 100
 
 func _input(event: InputEvent) -> void:
 	if is_multiplayer_authority():
@@ -118,3 +130,10 @@ func take_damage(damage: float) -> void:
 	if is_multiplayer_authority():
 		health_bar.value = HEALTH
 		HEALTH -= damage
+
+
+func _on_round_end() -> void:
+	ui.add_child(round_end_menu.instantiate())
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().paused = true
