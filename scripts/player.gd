@@ -11,6 +11,10 @@ const JUMP_VELOCITY: float = 12.0
 const MOUSE_SENSITIVITY: float = 0.002
 var direction = Vector3.FORWARD
 
+
+@onready var pause_menu: Control = $UI/MarginContainer/PauseMenu
+var paused = false
+
 @onready var model: Node3D = $"3DGodotRobot"
 @onready var godot_anim: AnimationPlayer = $"3DGodotRobot/AnimationPlayer"
 @onready var godot_animation_tree: AnimationTree = $"3DGodotRobot/AnimationTree"
@@ -111,3 +115,20 @@ func take_damage(damage: float) -> void:
 	if is_multiplayer_authority():
 		health_bar.value = HEALTH
 		HEALTH -= damage
+
+
+func _process(_delta):
+	if Input.is_action_just_pressed("pause"):
+		pauseMenu()
+		
+
+
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	else:
+		pause_menu.show()
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		
+	paused = !paused
