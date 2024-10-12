@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 const MAX_HEALTH: float = 100
 var HEALTH: float = 100
+var KILLS: int = 0
 
 const SPEED: float = 5.0
 const SPRINT_MULT: float = 1.8
@@ -31,6 +32,7 @@ var direction = Vector3.FORWARD
 @onready var ui = $UI
 @onready var health_bar: ProgressBar = $UI/MarginContainer/HealthBar
 @onready var round_progress_bar = $UI/RoundProgressBar
+@onready var kills_bar = $UI/KillsBar
 @onready var label: Label3D = $Label3D
 
 
@@ -39,6 +41,8 @@ func _ready() -> void:
 
 	health_bar.value = HEALTH
 	health_bar.max_value = MAX_HEALTH
+	
+	kills_bar.value = KILLS
 	
 	#signals
 	round_timer.timeout.connect(_on_round_end)
@@ -56,6 +60,8 @@ func _physics_process(delta: float) -> void:
 
 	else:
 		health_bar.hide()
+		round_progress_bar.hide()
+		kills_bar.hide()
 		
 func _ui_update() -> void:
 	round_progress_bar.value = round_timer.time_left / round_timer.wait_time * 100
@@ -99,11 +105,6 @@ func _set_movement():
 	velocity.x = movement_dir.x * speed
 	velocity.z = movement_dir.z * speed
 
-	# Debug.log(model.transform.basis.z)
-	#model.rotation.y = lerp_angle(
-		#model.rotation.y,
-		#atan2((model.global_position - velocity).x, (model.global_position - velocity).z),
-		#0.5)
 	if velocity:
 		model.look_at(model.global_position - velocity, Vector3.UP)
 
@@ -126,10 +127,18 @@ func send_animations(anim_name: String) -> void:
 	godot_playback.travel(anim_name)
 
 
-func take_damage(damage: float) -> void:
+func take_damage(damage: float, from: Node3D) -> void:
 	if is_multiplayer_authority():
 		health_bar.value = HEALTH
 		HEALTH -= damage
+	
+		if HEALTH <= 0:
+			from.on_kill()
+
+
+func on_kill() -> void:
+	KILLS += 1
+	kills_bar.value = KILLS * 3
 
 
 func _on_round_end() -> void:

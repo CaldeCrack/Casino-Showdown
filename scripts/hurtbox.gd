@@ -12,6 +12,5 @@ func _on_area_entered(area: Area3D) -> void:
 	
 	if hitbox:
 		if OWNER.has_method("take_damage"):
-			OWNER.take_damage(hitbox.damage)
+			OWNER.take_damage(hitbox.damage, hitbox.OWNER)
 			hitbox.damage_dealt.emit()
-			
