@@ -15,6 +15,8 @@ var direction = Vector3.FORWARD
 @onready var pause_menu: Control = $UI/MarginContainer/PauseMenu
 var paused = false
 
+@onready var crosshair: TextureRect = $UI/MarginContainer/Crosshair
+
 @onready var model: Node3D = $"3DGodotRobot"
 @onready var godot_anim: AnimationPlayer = $"3DGodotRobot/AnimationPlayer"
 @onready var godot_animation_tree: AnimationTree = $"3DGodotRobot/AnimationTree"
@@ -126,8 +128,10 @@ func _process(_delta):
 func pauseMenu():
 	if paused:
 		pause_menu.hide()
+		crosshair.show()
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	else:
+		crosshair.hide()
 		pause_menu.show()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		
