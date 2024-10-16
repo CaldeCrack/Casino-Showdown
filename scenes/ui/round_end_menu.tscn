@@ -33,11 +33,44 @@ grow_vertical = 2
 [node name="Button1" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+text = "Reset (temporal)"
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+text = "Attack"
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+text = "Defense"
+
+[node name="Button4" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Evation"
+
+[node name="Button5" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Accuracy"
+
+[node name="Button6" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Health"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.155
+anchor_right = 0.5
+anchor_bottom = 0.155
+offset_left = -133.0
+offset_top = -10.44
+offset_right = 135.0
+offset_bottom = 12.56
+grow_horizontal = 2
+text = "Which stat do you want to bet on?"
+uppercase = true

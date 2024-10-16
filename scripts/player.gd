@@ -3,6 +3,11 @@ extends CharacterBody3D
 const MAX_HEALTH: float = 100
 var HEALTH: float = 100
 
+var ATTACK: float = 1
+var DEFENSE: float = 1
+var EVATION: float = 1
+var ACCURACY: float = 1
+
 const SPEED: float = 5.0
 const SPRINT_MULT: float = 1.8
 const CROUCH_MULT: float = 0.55
