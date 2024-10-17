@@ -1,11 +1,11 @@
 extends CharacterBody3D
 
-const MAX_HEALTH: float = 100
+var MAX_HEALTH: float = 100
 var HEALTH: float = 100
 
 var ATTACK: float = 1
 var DEFENSE: float = 1
-var EVATION: float = 1
+var EVASION: float = 1
 var ACCURACY: float = 1
 
 const SPEED: float = 5.0
@@ -24,6 +24,7 @@ var direction = Vector3.FORWARD
 
 ## globals
 @onready var round_timer: Timer = Global.round_timer
+
 
 @onready var model: Node3D = $"3DGodotRobot"
 @onready var godot_anim: AnimationPlayer = $"3DGodotRobot/AnimationPlayer"
@@ -136,9 +137,43 @@ func take_damage(damage: float) -> void:
 		health_bar.value = HEALTH
 		HEALTH -= damage
 
+func slot(stat: float) -> float:
+	var number_one: int = Global.random_int_range(1,5)
+	var number_two: int = Global.random_int_range(1,5)
+	var number_three: int = Global.random_int_range(1,5)
+	
+	if number_one == number_two and number_one == number_three:
+		return stat * 2
+	
+	elif number_one == number_two:
+		return stat * 1.5
+	
+	elif number_one == number_three:
+		return stat * 1.5
+	
+	elif number_two == number_three:
+		return stat * 1.5
+	
+	else:
+		return stat / 2
 
 func _on_round_end() -> void:
 	ui.add_child(round_end_menu.instantiate())
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
+
+func _bet_on_attack() -> void:
+	ATTACK = slot(ATTACK)
+
+func _bet_on_defense() -> void:
+	DEFENSE = slot(DEFENSE)
+
+func _bet_on_evasion() -> void:
+	EVASION = slot(EVASION)
+
+func _bet_on_accuracy() -> void:
+	ACCURACY = slot(ACCURACY)
+
+func _bet_on_max_health() -> void:
+	MAX_HEALTH = slot(MAX_HEALTH)

@@ -35,30 +35,30 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Reset (temporal)"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Attack" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Attack"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="Defense" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Defense"
 
-[node name="Button4" type="Button" parent="VBoxContainer"]
+[node name="Evasion" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Evation"
+text = "Evasion"
 
-[node name="Button5" type="Button" parent="VBoxContainer"]
+[node name="Accuracy" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Accuracy"
 
-[node name="Button6" type="Button" parent="VBoxContainer"]
+[node name="MaxHealth" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Health"
+text = "Max-Health"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
