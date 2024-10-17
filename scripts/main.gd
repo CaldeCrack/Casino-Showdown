@@ -11,6 +11,7 @@ func _ready() -> void:
 		var player_inst: Node = player_scene.instantiate()
 		add_child(player_inst)
 		player_inst.setup(player_data)
+		# player_inst.SPAWNPOINT = markers.get_child(i).global_position
 		player_inst.global_position = markers.get_child(i).global_position
 		Global.round_timer.start()
 		

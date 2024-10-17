@@ -36,3 +36,8 @@ func _on_pressed_accuracy() -> void:
 
 func _on_pressed_max_health() -> void:
 	get_parent().get_parent()._bet_on_max_health()
+	
+func _end_bet() -> void:
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	queue_free()

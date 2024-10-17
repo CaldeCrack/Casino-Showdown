@@ -20,7 +20,7 @@ var direction = Vector3.FORWARD
 
 @onready var round_end_menu = preload("res://scenes/ui/round_end_menu.tscn")
 
-
+# var SPAWNPOINT: Vector3
 
 ## globals
 @onready var round_timer: Timer = Global.round_timer
@@ -38,7 +38,7 @@ var direction = Vector3.FORWARD
 @onready var health_bar: ProgressBar = $UI/MarginContainer/HealthBar
 @onready var round_progress_bar = $UI/RoundProgressBar
 @onready var label: Label3D = $Label3D
-
+@onready var round_menu: Control
 
 func _ready() -> void:
 	godot_animation_tree.active = true
@@ -135,45 +135,67 @@ func send_animations(anim_name: String) -> void:
 func take_damage(damage: float) -> void:
 	if is_multiplayer_authority():
 		health_bar.value = HEALTH
-		HEALTH -= damage
+		var real_damage : float
+		if DEFENSE == 0:
+			real_damage = 2*damage
+		else:
+			real_damage = damage / DEFENSE
+
+		if real_damage >= HEALTH:
+			HEALTH = 0
+		else:
+			HEALTH -= real_damage
 
 func slot(stat: float) -> float:
-	var number_one: int = Global.random_int_range(1,5)
-	var number_two: int = Global.random_int_range(1,5)
-	var number_three: int = Global.random_int_range(1,5)
+	var number_one: int = Global.random_int_range(1,4)
+	var number_two: int = Global.random_int_range(1,4)
+	var number_three: int = Global.random_int_range(1,4)
 	
 	if number_one == number_two and number_one == number_three:
-		return stat * 2
+		return stat * 1.5
 	
 	elif number_one == number_two:
-		return stat * 1.5
+		return stat * 1.25
 	
 	elif number_one == number_three:
-		return stat * 1.5
+		return stat * 1.25
 	
 	elif number_two == number_three:
-		return stat * 1.5
+		return stat * 1.25
 	
 	else:
-		return stat / 2
+		return stat * 0.75
 
 func _on_round_end() -> void:
-	ui.add_child(round_end_menu.instantiate())
+	round_menu = round_end_menu.instantiate()
+	ui.add_child(round_menu)
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
 
+func _reset_round() -> void:
+	round_menu._end_bet()
+	velocity = Vector3(0,0,0)
+	HEALTH = MAX_HEALTH
+	round_timer.start()
+	send_animations.rpc("Idle")
+
 func _bet_on_attack() -> void:
 	ATTACK = slot(ATTACK)
-
+	# _reset_round()
+	
 func _bet_on_defense() -> void:
 	DEFENSE = slot(DEFENSE)
+	# _reset_round()
 
 func _bet_on_evasion() -> void:
 	EVASION = slot(EVASION)
+	# _reset_round()
 
 func _bet_on_accuracy() -> void:
 	ACCURACY = slot(ACCURACY)
+	# _reset_round()
 
 func _bet_on_max_health() -> void:
 	MAX_HEALTH = slot(MAX_HEALTH)
+	# _reset_round()
