@@ -14,15 +14,10 @@ const JUMP_VELOCITY: float = 12.0
 const MOUSE_SENSITIVITY: float = 0.002
 var direction = Vector3.FORWARD
 
-#preloads
-
-@onready var round_end_menu = preload("res://scenes/ui/round_end_menu.tscn")
-
 var SPAWNPOINT: Vector3
 
 ## globals
 @onready var round_timer: Timer = Global.round_timer
-
 
 @onready var model: Node3D = $"3DGodotRobot"
 @onready var godot_anim: AnimationPlayer = $"3DGodotRobot/AnimationPlayer"
@@ -40,13 +35,14 @@ var SPAWNPOINT: Vector3
 @onready var spd_label = %SPDLabel
 @onready var round_progress_bar = $UI/RoundProgressBar
 @onready var label: Label3D = $Label3D
-@onready var round_menu: Control
+@onready var round_end_menu = $UI/RoundEndMenu
 
 func _ready() -> void:
 	godot_animation_tree.active = true
 
 	#UI setup
 	_manual_ui_update()
+	round_end_menu.hide()
 	
 	#signals
 	round_timer.timeout.connect(_on_round_end)
@@ -64,7 +60,12 @@ func _physics_process(delta: float) -> void:
 
 	else:
 		health_bar.hide()
-		
+		round_progress_bar.hide()
+		hp_label.hide()
+		atk_label.hide()
+		def_label.hide()
+		spd_label.hide()
+
 func _ui_update() -> void:
 	round_progress_bar.value = round_timer.time_left / round_timer.wait_time * 100
 	
@@ -163,20 +164,21 @@ func take_damage(damage: float) -> void:
 
 
 func _on_round_end() -> void:
-	round_menu = round_end_menu.instantiate()
-	ui.add_child(round_menu)
-	
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	get_tree().paused = true
+	if is_multiplayer_authority():
+		round_end_menu.show()
+		
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		get_tree().paused = true
 
 
 func _reset_round() -> void:
-	round_menu._end_bet()
-	velocity = Vector3(0,0,0)
-	_manual_ui_update()
-	round_timer.start()
-	send_animations.rpc("Idle")
-	position = SPAWNPOINT
+	if is_multiplayer_authority():
+		round_end_menu._end_bet()
+		velocity = Vector3(0,0,0)
+		_manual_ui_update()
+		round_timer.start()
+		send_animations.rpc("Idle")
+		position = SPAWNPOINT
 
 
 func _bet(stat: String) -> void:
