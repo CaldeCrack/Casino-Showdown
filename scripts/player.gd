@@ -5,8 +5,6 @@ var HEALTH: float = 100
 
 var ATTACK: float = 1
 var DEFENSE: float = 1
-var EVASION: float = 1
-var ACCURACY: float = 1
 
 const SPEED: float = 5.0
 const SPRINT_MULT: float = 1.8
@@ -20,7 +18,7 @@ var direction = Vector3.FORWARD
 
 @onready var round_end_menu = preload("res://scenes/ui/round_end_menu.tscn")
 
-# var SPAWNPOINT: Vector3
+var SPAWNPOINT: Vector3
 
 ## globals
 @onready var round_timer: Timer = Global.round_timer
@@ -36,6 +34,10 @@ var direction = Vector3.FORWARD
 
 @onready var ui = $UI
 @onready var health_bar: ProgressBar = $UI/MarginContainer/HealthBar
+@onready var hp_label = %HPLabel
+@onready var atk_label = %ATKLabel
+@onready var def_label = %DEFLabel
+@onready var spd_label = %SPDLabel
 @onready var round_progress_bar = $UI/RoundProgressBar
 @onready var label: Label3D = $Label3D
 @onready var round_menu: Control
@@ -43,8 +45,8 @@ var direction = Vector3.FORWARD
 func _ready() -> void:
 	godot_animation_tree.active = true
 
-	health_bar.value = HEALTH
-	health_bar.max_value = MAX_HEALTH
+	#UI setup
+	_manual_ui_update()
 	
 	#signals
 	round_timer.timeout.connect(_on_round_end)
@@ -65,6 +67,18 @@ func _physics_process(delta: float) -> void:
 		
 func _ui_update() -> void:
 	round_progress_bar.value = round_timer.time_left / round_timer.wait_time * 100
+	
+
+func _manual_ui_update() -> void:
+	health_bar.max_value = MAX_HEALTH
+	HEALTH = MAX_HEALTH
+	health_bar.value = HEALTH
+	
+	hp_label.text = "MAX HP: " + str(MAX_HEALTH)
+	atk_label.text = "ATK: " + str(ATTACK)
+	def_label.text = "DEF: " + str(DEFENSE)
+	spd_label.text = "SPEED: " + str(SPEED)
+
 
 func _input(event: InputEvent) -> void:
 	if is_multiplayer_authority():
@@ -118,6 +132,7 @@ func setup(player_data: Statics.PlayerData) -> void:
 	name = str(player_data.id)
 	set_multiplayer_authority(player_data.id)
 	label.text = player_data.name
+	SPAWNPOINT = position
 
 
 @rpc
@@ -146,25 +161,6 @@ func take_damage(damage: float) -> void:
 		else:
 			HEALTH -= real_damage
 
-func slot(stat: float) -> float:
-	var number_one: int = Global.random_int_range(1,4)
-	var number_two: int = Global.random_int_range(1,4)
-	var number_three: int = Global.random_int_range(1,4)
-	
-	if number_one == number_two and number_one == number_three:
-		return stat * 1.5
-	
-	elif number_one == number_two:
-		return stat * 1.25
-	
-	elif number_one == number_three:
-		return stat * 1.25
-	
-	elif number_two == number_three:
-		return stat * 1.25
-	
-	else:
-		return stat * 0.75
 
 func _on_round_end() -> void:
 	round_menu = round_end_menu.instantiate()
@@ -173,29 +169,16 @@ func _on_round_end() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
 
+
 func _reset_round() -> void:
 	round_menu._end_bet()
 	velocity = Vector3(0,0,0)
-	HEALTH = MAX_HEALTH
+	_manual_ui_update()
 	round_timer.start()
 	send_animations.rpc("Idle")
+	position = SPAWNPOINT
 
-func _bet_on_attack() -> void:
-	ATTACK = slot(ATTACK)
-	# _reset_round()
-	
-func _bet_on_defense() -> void:
-	DEFENSE = slot(DEFENSE)
-	# _reset_round()
 
-func _bet_on_evasion() -> void:
-	EVASION = slot(EVASION)
-	# _reset_round()
-
-func _bet_on_accuracy() -> void:
-	ACCURACY = slot(ACCURACY)
-	# _reset_round()
-
-func _bet_on_max_health() -> void:
-	MAX_HEALTH = slot(MAX_HEALTH)
-	# _reset_round()
+func _bet(stat: String) -> void:
+	set(stat, Global.slot(get(stat)))
+	_reset_round()

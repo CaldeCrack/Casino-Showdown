@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvcjagjgkfvw4"]
+[gd_scene load_steps=3 format=3 uid="uid://bvcjagjgkfvw4"]
 
 [ext_resource type="Script" path="res://scripts/round_end_menu.gd" id="1_wvwhy"]
+[ext_resource type="LabelSettings" uid="uid://b1yf0nwmsim8t" path="res://resources/fonts/stats_font.tres" id="2_10si5"]
 
 [node name="RoundEndMenu" type="Control"]
 process_mode = 3
@@ -23,54 +24,58 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -424.0
-offset_top = -134.0
-offset_right = 394.0
-offset_bottom = 122.0
+offset_left = -409.0
+offset_top = -107.5
+offset_right = 409.0
+offset_bottom = 107.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Stats" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Attack" type="Button" parent="VBoxContainer/Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Attack"
+
+[node name="Defense" type="Button" parent="VBoxContainer/Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Defense"
+
+[node name="Speed" type="Button" parent="VBoxContainer/Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Speed
+"
+
+[node name="MaxHealth" type="Button" parent="VBoxContainer/Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Max-Health"
 
 [node name="Button1" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Reset (temporal)"
-
-[node name="Attack" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Attack"
-
-[node name="Defense" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Defense"
-
-[node name="Evasion" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Evasion"
-
-[node name="Accuracy" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Accuracy"
-
-[node name="MaxHealth" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Max-Health"
+text = "CONFIRMAR
+"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.155
 anchor_right = 0.5
-anchor_bottom = 0.155
-offset_left = -133.0
-offset_top = -10.44
-offset_right = 135.0
-offset_bottom = 12.56
+offset_left = -309.0
+offset_top = 158.0
+offset_right = 309.0
+offset_bottom = 203.0
 grow_horizontal = 2
 text = "Which stat do you want to bet on?"
+label_settings = ExtResource("2_10si5")
 uppercase = true
