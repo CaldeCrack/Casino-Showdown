@@ -4,9 +4,9 @@ var MAX_HEALTH: float = 100
 var HEALTH: float = 100
 
 var ATTACK: float = 1
-var DEFENSE: float = 1
+var DEFENSE: float = 1	
 
-const SPEED: float = 5.0
+var SPEED: float = 5.0
 const SPRINT_MULT: float = 1.8
 const CROUCH_MULT: float = 0.55
 const CROUCH_SIZE: float = 0.5
@@ -35,9 +35,12 @@ var SPAWNPOINT: Vector3
 @onready var spd_label = %SPDLabel
 @onready var round_progress_bar = $UI/RoundProgressBar
 @onready var label: Label3D = $Label3D
-@onready var round_end_menu = $UI/RoundEndMenu
+@onready var round_end_menu = Global.round_end_menu
 
 func _ready() -> void:
+	if is_multiplayer_authority():
+		Global.PLAYER = self
+	
 	godot_animation_tree.active = true
 
 	#UI setup
@@ -65,6 +68,7 @@ func _physics_process(delta: float) -> void:
 		atk_label.hide()
 		def_label.hide()
 		spd_label.hide()
+		round_end_menu.hide()
 
 func _ui_update() -> void:
 	round_progress_bar.value = round_timer.time_left / round_timer.wait_time * 100
@@ -156,7 +160,7 @@ func take_damage(damage: float) -> void:
 			real_damage = 2*damage
 		else:
 			real_damage = damage / DEFENSE
-
+	
 		if real_damage >= HEALTH:
 			HEALTH = 0
 		else:
@@ -166,7 +170,7 @@ func take_damage(damage: float) -> void:
 func _on_round_end() -> void:
 	if is_multiplayer_authority():
 		round_end_menu.show()
-		
+	
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().paused = true
 

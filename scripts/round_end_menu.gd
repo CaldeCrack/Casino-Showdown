@@ -15,16 +15,20 @@ func _ready():
 
 
 func _on_press1() -> void:
-	get_tree().paused = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	#get_tree().change_scene_to_file("res://scenes/main.tscn")
-	hide()
+	#get_tree().paused = false
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	##get_tree().change_scene_to_file("res://scenes/main.tscn")
+	#hide()
+	print("asdasdas")
+
 
 func _on_bet(name: String) -> void:
-	get_parent().get_parent()._bet(name)
+	Global.PLAYER._bet(name)
+	print("boton")
 
 
 func _end_bet() -> void:
 	get_tree().paused = false
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	hide()
