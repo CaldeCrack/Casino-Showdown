@@ -15,3 +15,11 @@ func _on_area_entered(area: Area3D) -> void:
 			OWNER.take_damage(hitbox.damage)
 			hitbox.damage_dealt.emit()
 			
+			if OWNER.HEALTH <= 0:
+				var pp = get_parent().get_parent()
+				pp.KILLS += 1
+				pp.kills.text = "KILLS: %d" % OWNER.KILLS
+				
+				print(pp.KILLS," | " , multiplayer.get_unique_id())
+				
+				#Global.round_timer.stop()

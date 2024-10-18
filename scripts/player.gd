@@ -1,10 +1,13 @@
 extends CharacterBody3D
 
+var WINNER:String = ""
+var KILLS: int = 0
+
 var MAX_HEALTH: float = 100
 var HEALTH: float = 100
 
 var ATTACK: float = 1
-var DEFENSE: float = 1	
+var DEFENSE: float = 1
 
 var SPEED: float = 5.0
 const SPRINT_MULT: float = 1.8
@@ -33,12 +36,17 @@ var SPAWNPOINT: Vector3
 @onready var atk_label = %ATKLabel
 @onready var def_label = %DEFLabel
 @onready var spd_label = %SPDLabel
+@onready var rounds: Label = %Rounds
+@onready var kills: Label = %Kills
+@onready var winner: Label = %WINNER
 @onready var round_end_menu: Control = $UI/RoundEndMenu
 @onready var round_progress_bar = $UI/RoundProgressBar
 @onready var label: Label3D = $Label3D
 
 
 func _ready() -> void:
+	winner.hide()
+	
 	if is_multiplayer_authority():
 		Global.PLAYER = self
 	
@@ -148,27 +156,36 @@ func send_animations(anim_name: String) -> void:
 
 
 func take_damage(damage: float) -> void:
-	if is_multiplayer_authority():
-		health_bar.value = HEALTH
-		var real_damage : float
-		if DEFENSE == 0:
-			real_damage = 2*damage
-		else:
-			real_damage = damage / DEFENSE
-	
-		if real_damage >= HEALTH:
-			HEALTH = 0
-		else:
-			HEALTH -= real_damage
+	#if is_multiplayer_authority():
+	var real_damage : float
+	if DEFENSE == 0:
+		real_damage = 2*damage
+	else:
+		real_damage = damage / DEFENSE
+
+	if real_damage >= HEALTH:
+		HEALTH = 0
+	else:
+		HEALTH -= real_damage
+		
+	health_bar.value = HEALTH
 
 
 func _on_round_end() -> void:
 	if is_multiplayer_authority():
 		round_end_menu.show()
-
+	
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().paused = true
-
+		
+		Global.ROUNDS += 1
+		
+		
+		var _max = -1
+		for player in Game.players:
+			if get_node("/root/Main/%s" % player.id).KILLS > _max:
+				_max = get_node("/root/Main/%s" % player.id).KILLS
+				WINNER = player.name
 
 func _reset_round() -> void:
 	round_end_menu._end_bet()
@@ -180,6 +197,8 @@ func _reset_round() -> void:
 	position = SPAWNPOINT
 	
 	send_animations.rpc("Idle")
+	
+	rounds.text = str(Global.ROUNDS)
 
 
 func bet(stat: String) -> void:

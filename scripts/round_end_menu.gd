@@ -8,6 +8,9 @@ extends Control
 
 @onready var player = get_parent().get_parent()
 
+var round_timer: Timer = Global.round_timer
+var round_end_timer: Timer = Global.round_end_timer
+
 var BET: String = ""
 
 func _ready():
@@ -17,9 +20,9 @@ func _ready():
 	speed_bet.pressed.connect(func():_on_bet("SPEED"))
 	max_health_bet.pressed.connect(func():_on_bet("MAX_HEALTH"))
 	
-	Global.round_timer.timeout.connect(func(): Global.round_end_timer.start())
+	round_timer.timeout.connect(func(): round_end_timer.start())
 	
-	Global.round_end_timer.timeout.connect(func():
+	round_end_timer.timeout.connect(func():
 		if BET:
 			player.bet(BET)
 		else:
@@ -31,6 +34,17 @@ func _ready():
 		speed_bet.disabled = false
 		max_health_bet.disabled = false)
 
+
+func _process(delta: float) -> void:
+	if Global.ROUNDS > 2:
+		
+		player.winner.show()
+		player.winner.text += player.WINNER
+		
+		queue_free()
+	
+	if visible:
+		player.round_progress_bar.value = (round_end_timer.wait_time - round_end_timer.time_left) / round_end_timer.wait_time * 100
 
 
 func _on_press1() -> void:

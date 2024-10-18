@@ -2,6 +2,8 @@ extends Node
 
 var PLAYER: Node3D
 
+var ROUNDS: int = 0
+
 @onready var round_timer: Timer = $RoundTime
 @onready var round_end_timer: Timer = $RoundEndTimer
 

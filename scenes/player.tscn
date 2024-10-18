@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0580shuwsxi8"]
+[gd_scene load_steps=11 format=3 uid="uid://c0580shuwsxi8"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1yrpo"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="3_3xvhw"]
@@ -34,6 +34,9 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="LabelSettings" id="LabelSettings_6hdhq"]
+font_size = 100
+
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, 0)
 collision_layer = 2
@@ -43,37 +46,40 @@ script = ExtResource("1_1yrpo")
 transform = Transform3D(-0.7, 0, -6.11959e-08, 0, 0.7, 0, 6.11959e-08, 0, -0.7, 0, -1.01098, 0)
 
 [node name="Skeleton3D" parent="3DGodotRobot/RobotArmature" index="0"]
-bones/0/position = Vector3(3.60182e-17, 0.88752, 0.0298551)
+bones/0/position = Vector3(-7.05291e-17, 0.865618, 0.0298551)
 bones/0/rotation = Quaternion(0.0149092, 1.19196e-07, 1.77731e-09, 0.999889)
 bones/1/rotation = Quaternion(0.0294489, -1.52111e-14, 7.02117e-09, 0.999566)
-bones/4/position = Vector3(9.00991e-17, 0.172482, -0.0110042)
+bones/4/position = Vector3(-3.50134e-16, 0.154918, -0.011621)
 bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
 bones/5/rotation = Quaternion(0.00821238, -4.94275e-14, -1.95798e-09, 0.999966)
 bones/7/position = Vector3(7.44409e-08, 0.540609, 0.312228)
 bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/8/position = Vector3(9.98745e-08, 0.105775, 0.418904)
+bones/8/position = Vector3(9.98045e-08, 0.0685228, 0.418611)
 bones/8/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/9/position = Vector3(0.267321, 0.114031, -0.0269058)
-bones/9/rotation = Quaternion(-0.507958, -0.474438, -0.506817, 0.509926)
+bones/9/position = Vector3(0.267321, 0.0826942, -0.0280064)
+bones/9/rotation = Quaternion(-0.520642, -0.46054, -0.519498, 0.496947)
 bones/10/position = Vector3(0.00943595, 0.223043, -8.36576e-05)
-bones/10/rotation = Quaternion(-0.388766, 0.592802, -0.467437, 0.528157)
+bones/10/rotation = Quaternion(-0.361863, 0.613855, -0.438877, 0.54738)
 bones/11/rotation = Quaternion(-0.0175777, -0.091351, 0.0271132, 0.995294)
 bones/12/rotation = Quaternion(0.0209349, 0.0170217, -0.0176714, 0.99948)
-bones/13/position = Vector3(-0.267321, 0.114031, -0.0269058)
-bones/13/rotation = Quaternion(-0.507958, 0.474438, 0.506817, 0.509926)
+bones/13/position = Vector3(-0.267321, 0.0826942, -0.0280064)
+bones/13/rotation = Quaternion(-0.520642, 0.46054, 0.519498, 0.496947)
 bones/14/position = Vector3(-0.00943595, 0.223043, -8.36576e-05)
-bones/14/rotation = Quaternion(-0.388766, -0.592802, 0.467437, 0.528157)
+bones/14/rotation = Quaternion(-0.361863, -0.613854, 0.438877, 0.54738)
 bones/15/rotation = Quaternion(-0.0175777, 0.091351, -0.0271132, 0.995294)
 bones/16/rotation = Quaternion(0.0209349, -0.0170217, 0.0176714, 0.99948)
 bones/17/position = Vector3(0.276084, 0.0659952, -0.00346869)
-bones/17/rotation = Quaternion(0.999647, 0.0210636, -0.00512356, 0.0153314)
-bones/18/rotation = Quaternion(-0.00618425, 0.00495339, 0.0269892, 0.999604)
-bones/19/rotation = Quaternion(-0.492808, 0.0026219, -0.00521294, 0.870119)
+bones/17/rotation = Quaternion(0.993665, 0.0204775, -0.00710224, 0.110274)
+bones/18/rotation = Quaternion(0.208159, 0.00813084, 0.0254254, 0.977731)
+bones/19/rotation = Quaternion(-0.590345, 0.00320507, -0.00486741, 0.80713)
 bones/21/position = Vector3(-0.276084, 0.0659953, -0.00346882)
-bones/21/rotation = Quaternion(0.999647, -0.0210636, 0.00512357, 0.0153314)
-bones/22/rotation = Quaternion(-0.00618428, -0.00495338, -0.0269892, 0.999604)
-bones/23/rotation = Quaternion(-0.492808, -0.00262191, 0.00521295, 0.870119)
+bones/21/rotation = Quaternion(0.993665, -0.0204776, 0.00710225, 0.110274)
+bones/22/rotation = Quaternion(0.208159, -0.0081308, -0.0254255, 0.977731)
+bones/23/rotation = Quaternion(-0.590345, -0.0032051, 0.00486744, 0.80713)
 bones/24/rotation = Quaternion(6.34553e-08, 0.980764, -0.195196, -1.82779e-06)
+
+[node name="Hitbox" parent="3DGodotRobot" index="3"]
+damage = 50
 
 [node name="Hurtbox" parent="3DGodotRobot" index="4" node_paths=PackedStringArray("OWNER")]
 OWNER = NodePath("../..")
@@ -171,5 +177,44 @@ text = "SPEED
 label_settings = ExtResource("5_m256d")
 
 [node name="RoundEndMenu" parent="UI" instance=ExtResource("6_h36ey")]
+
+[node name="Rounds" type="Label" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -34.5
+offset_right = 34.5
+offset_bottom = 53.0
+grow_horizontal = 2
+text = "0"
+label_settings = ExtResource("5_m256d")
+horizontal_alignment = 1
+
+[node name="Kills" type="Label" parent="UI"]
+unique_name_in_owner = true
+offset_left = 1.0
+offset_top = 43.0
+offset_right = 69.0
+offset_bottom = 94.0
+text = "KILLS: 0"
+label_settings = ExtResource("5_m256d")
+
+[node name="WINNER" type="Label" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -335.5
+offset_top = -123.0
+offset_right = 335.5
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Winner: "
+label_settings = SubResource("LabelSettings_6hdhq")
+horizontal_alignment = 1
 
 [editable path="3DGodotRobot"]
