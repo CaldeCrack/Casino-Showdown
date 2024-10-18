@@ -33,9 +33,10 @@ var SPAWNPOINT: Vector3
 @onready var atk_label = %ATKLabel
 @onready var def_label = %DEFLabel
 @onready var spd_label = %SPDLabel
+@onready var round_end_menu: Control = $UI/RoundEndMenu
 @onready var round_progress_bar = $UI/RoundProgressBar
 @onready var label: Label3D = $Label3D
-@onready var round_end_menu = Global.round_end_menu
+
 
 func _ready() -> void:
 	if is_multiplayer_authority():
@@ -47,7 +48,6 @@ func _ready() -> void:
 	_manual_ui_update()
 	round_end_menu.hide()
 	
-	#signals
 	round_timer.timeout.connect(_on_round_end)
 
 
@@ -62,27 +62,22 @@ func _physics_process(delta: float) -> void:
 		send_transform.rpc(position, rotation, scale)
 
 	else:
-		health_bar.hide()
-		round_progress_bar.hide()
-		hp_label.hide()
-		atk_label.hide()
-		def_label.hide()
-		spd_label.hide()
-		round_end_menu.hide()
+		ui.hide()
+
 
 func _ui_update() -> void:
 	round_progress_bar.value = round_timer.time_left / round_timer.wait_time * 100
-	
+
 
 func _manual_ui_update() -> void:
 	health_bar.max_value = MAX_HEALTH
 	HEALTH = MAX_HEALTH
 	health_bar.value = HEALTH
 	
-	hp_label.text = "MAX HP: " + str(MAX_HEALTH)
-	atk_label.text = "ATK: " + str(ATTACK)
-	def_label.text = "DEF: " + str(DEFENSE)
-	spd_label.text = "SPEED: " + str(SPEED)
+	hp_label.text = "MAX HP: %.2f" % MAX_HEALTH
+	atk_label.text = "ATK: %.2f" % ATTACK
+	def_label.text = "DEF: %.2f" % DEFENSE
+	spd_label.text = "SPEED: %.2f" % SPEED
 
 
 func _input(event: InputEvent) -> void:
@@ -147,7 +142,7 @@ func send_transform(pos: Vector3, rot: Vector3, size: Vector3) -> void:
 	scale = lerp(scale, size, 0.5)
 
 
-@rpc("call_local")
+@rpc("any_peer", "call_local")
 func send_animations(anim_name: String) -> void:
 	godot_playback.travel(anim_name)
 
@@ -170,21 +165,35 @@ func take_damage(damage: float) -> void:
 func _on_round_end() -> void:
 	if is_multiplayer_authority():
 		round_end_menu.show()
-	
+
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().paused = true
 
 
 func _reset_round() -> void:
-	if is_multiplayer_authority():
-		round_end_menu._end_bet()
-		velocity = Vector3(0,0,0)
-		_manual_ui_update()
-		round_timer.start()
-		send_animations.rpc("Idle")
-		position = SPAWNPOINT
+	round_end_menu._end_bet()
+	velocity = Vector3(0,0,0)
+	_manual_ui_update()
+	round_end_menu.hide()
+	
+	round_timer.start()
+	position = SPAWNPOINT
+	
+	send_animations.rpc("Idle")
 
 
-func _bet(stat: String) -> void:
+func bet(stat: String) -> void:
 	set(stat, Global.slot(get(stat)))
 	_reset_round()
+
+
+@rpc("any_peer", "call_local")
+func _set_rdy(id : int) -> void:
+	if multiplayer.is_server():
+		print("_set_rdy (%d)" % multiplayer.get_unique_id())
+		Global.round_rdy[id] = true
+		
+		if Global.round_rdy.keys().size() == Game.players.size():
+			for key in Global.round_rdy:
+				if not Global.round_rdy[key]:
+					return

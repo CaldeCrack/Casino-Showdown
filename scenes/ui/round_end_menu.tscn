@@ -42,6 +42,7 @@ size_flags_vertical = 3
 
 [node name="Attack" type="Button" parent="VBoxContainer/Stats"]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Attack"
@@ -66,6 +67,7 @@ size_flags_horizontal = 3
 text = "Max-Health"
 
 [node name="Button1" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 text = "CONFIRMAR

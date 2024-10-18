@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://be70k055e1tle"]
+[gd_scene load_steps=2 format=3 uid="uid://be70k055e1tle"]
 
 [ext_resource type="Script" path="res://autoloads/global.gd" id="1_rdm6k"]
-[ext_resource type="PackedScene" uid="uid://bvcjagjgkfvw4" path="res://scenes/ui/round_end_menu.tscn" id="2_8loyt"]
 
 [node name="Global" type="Node"]
 process_mode = 3
@@ -9,7 +8,10 @@ script = ExtResource("1_rdm6k")
 
 [node name="RoundTime" type="Timer" parent="."]
 process_callback = 0
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
 
-[node name="RoundEndMenu" parent="." instance=ExtResource("2_8loyt")]
+[node name="RoundEndTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 5.0
+one_shot = true

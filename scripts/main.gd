@@ -13,8 +13,8 @@ func _ready() -> void:
 		player_inst.setup(player_data)
 		# player_inst.SPAWNPOINT = markers.get_child(i).global_position
 		player_inst.global_position = markers.get_child(i).global_position
-		Global.round_timer.start()
-		
+	Global.round_timer.start()
+
 
 func _process(delta: float) -> void:
 	pass

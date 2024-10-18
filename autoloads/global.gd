@@ -3,12 +3,16 @@ extends Node
 var PLAYER: Node3D
 
 @onready var round_timer: Timer = $RoundTime
-@onready var round_end_menu = $RoundEndMenu
+@onready var round_end_timer: Timer = $RoundEndTimer
+
+var round_rdy = {}
 
 var rng = RandomNumberGenerator.new()
 
+
 func _ready() -> void:
-	round_end_menu.hide()
+	pass
+
 
 func random_int_range(from: int, to: int) -> int:
 	return rng.randi_range(from, to+1)
