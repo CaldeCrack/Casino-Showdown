@@ -1,3 +1,4 @@
+class_name base_player
 extends CharacterBody3D
 
 var WINNER:String = ""
