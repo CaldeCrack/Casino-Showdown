@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://b650rxagnesum"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_d80d6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5lcy4"]
+font_size = 35
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d80d6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.689451, 0.780701, 1, 0.541176)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -146.0
+offset_right = 125.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Pause"
+label_settings = SubResource("LabelSettings_5lcy4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Resume" type="Button" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+text = "Resume"
+
+[node name="Options" type="Button" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+text = "Options"
+
+[node name="Exit" type="Button" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

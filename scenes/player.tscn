@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="3_3xvhw"]
 [ext_resource type="PackedScene" uid="uid://ixdslqh7ecj4" path="res://scenes/models/3d_godot_robot.tscn" id="3_h8wr4"]
 [ext_resource type="Texture2D" uid="uid://c1hktugh2ofxt" path="res://resources/sprites/crosshairs/White/crosshair012.png" id="4_io5gu"]
+[ext_resource type="PackedScene" uid="uid://b650rxagnesum" path="res://scenes/ui/pause_menu.tscn" id="4_lyb4p"]
 [ext_resource type="LabelSettings" uid="uid://b1yf0nwmsim8t" path="res://resources/fonts/stats_font.tres" id="5_m256d"]
 [ext_resource type="PackedScene" uid="uid://bvcjagjgkfvw4" path="res://scenes/ui/round_end_menu.tscn" id="6_h36ey"]
 
@@ -99,6 +100,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PauseMenu" parent="UI/MarginContainer" instance=ExtResource("4_lyb4p")]
+visible = false
+layout_mode = 2
 
 [node name="HealthBar" type="ProgressBar" parent="UI/MarginContainer"]
 custom_minimum_size = Vector2(358, 32)
