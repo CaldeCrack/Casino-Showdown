@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvcjagjgkfvw4"]
+
+[ext_resource type="Script" path="res://scripts/round_end_menu.gd" id="1_wvwhy"]
+[ext_resource type="LabelSettings" uid="uid://b1yf0nwmsim8t" path="res://resources/fonts/stats_font.tres" id="2_10si5"]
+
+[node name="RoundEndMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wvwhy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -409.0
+offset_top = -107.5
+offset_right = 409.0
+offset_bottom = 107.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Which stat do you want to bet on?"
+label_settings = ExtResource("2_10si5")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Stats" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Attack" type="Button" parent="VBoxContainer/Stats"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Attack"
+
+[node name="Defense" type="Button" parent="VBoxContainer/Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Defense"
+
+[node name="Speed" type="Button" parent="VBoxContainer/Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Speed
+"
+
+[node name="MaxHealth" type="Button" parent="VBoxContainer/Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Max-Health"
+
+[node name="Button1" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+text = "CONFIRMAR
+"
