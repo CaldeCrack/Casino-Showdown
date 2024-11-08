@@ -10,8 +10,13 @@ func _ready() -> void:
 func _on_area_entered(area: Area3D) -> void:
 	var hitbox = area as Hitbox
 	
-	if hitbox:
+	if not OWNER.DEAD and hitbox:
 		if OWNER.has_method("take_damage"):
 			OWNER.take_damage(hitbox.damage)
 			hitbox.damage_dealt.emit()
 			
+			if OWNER.HEALTH <= 0:
+				OWNER.DEAD = true
+				var pp = hitbox.get_parent().get_parent()
+				pp.add_kill.rpc()
+				OWNER.send_animations.rpc("ded")

@@ -3,8 +3,15 @@
 [ext_resource type="Script" path="res://autoloads/global.gd" id="1_rdm6k"]
 
 [node name="Global" type="Node"]
+process_mode = 3
 script = ExtResource("1_rdm6k")
 
 [node name="RoundTime" type="Timer" parent="."]
-wait_time = 5.0
+process_callback = 0
+wait_time = 10.0
+one_shot = true
+
+[node name="RoundEndTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 3.0
 one_shot = true
