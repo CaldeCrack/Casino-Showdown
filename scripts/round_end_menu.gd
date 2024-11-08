@@ -51,8 +51,8 @@ func _on_press1() -> void:
 	player._set_rdy.rpc_id(1, multiplayer.get_unique_id())
 
 
-func _on_bet(name: String) -> void:
-	match name:
+func _on_bet(_name: String) -> void:
+	match _name:
 		"ATTACK":
 			defense_bet.disabled = true
 			speed_bet.disabled = true
@@ -70,7 +70,7 @@ func _on_bet(name: String) -> void:
 			defense_bet.disabled = true
 			speed_bet.disabled = true
 	
-	BET = name
+	BET = _name
 
 
 func _end_bet() -> void:

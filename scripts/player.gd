@@ -2,13 +2,12 @@ extends CharacterBody3D
 
 var WINNER:String = ""
 var KILLS: int = 0
-
 var MAX_HEALTH: float = 100
 var HEALTH: float = 100
+var DEAD: bool = false
 
 var ATTACK: float = 1
 var DEFENSE: float = 1
-
 var SPEED: float = 5.0
 const SPRINT_MULT: float = 1.8
 const CROUCH_MULT: float = 0.55
@@ -52,7 +51,7 @@ func _ready() -> void:
 	
 	godot_animation_tree.active = true
 
-	#UI setup
+	# UI setup
 	_manual_ui_update()
 	round_end_menu.hide()
 	
@@ -90,6 +89,8 @@ func _manual_ui_update() -> void:
 
 func _input(event: InputEvent) -> void:
 	if is_multiplayer_authority():
+		if DEAD:
+			return
 		if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 			spring_arm.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
@@ -103,6 +104,8 @@ func _input(event: InputEvent) -> void:
 
 
 func _set_movement():
+	if DEAD:
+		return
 	var input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var movement_dir: Vector3 = transform.basis * Vector3(input.x, 0, input.y)
 	var speed: float = SPEED
@@ -127,11 +130,6 @@ func _set_movement():
 	velocity.x = movement_dir.x * speed
 	velocity.z = movement_dir.z * speed
 
-	# Debug.log(model.transform.basis.z)
-	#model.rotation.y = lerp_angle(
-		#model.rotation.y,
-		#atan2((model.global_position - velocity).x, (model.global_position - velocity).z),
-		#0.5)
 	if velocity:
 		model.look_at(model.global_position - velocity, Vector3.UP)
 
@@ -152,40 +150,43 @@ func send_transform(pos: Vector3, rot: Vector3, size: Vector3) -> void:
 
 @rpc("any_peer", "call_local")
 func send_animations(anim_name: String) -> void:
-	godot_playback.travel(anim_name)
+	if DEAD:
+		godot_playback.travel("ded")
+	else:
+		godot_playback.travel(anim_name)
 
 
 func take_damage(damage: float) -> void:
-	#if is_multiplayer_authority():
-	var real_damage : float
-	if DEFENSE == 0:
-		real_damage = 2*damage
-	else:
-		real_damage = damage / DEFENSE
+	if is_multiplayer_authority():
+		var real_damage : float
+		if DEFENSE == 0:
+			real_damage = 2*damage
+		else:
+			real_damage = damage / DEFENSE
 
-	if real_damage >= HEALTH:
-		HEALTH = 0
-	else:
-		HEALTH -= real_damage
-		
-	health_bar.value = HEALTH
+		if real_damage >= HEALTH:
+			HEALTH = 0
+		else:
+			HEALTH -= real_damage
+			
+		health_bar.value = HEALTH
 
 
 func _on_round_end() -> void:
 	if is_multiplayer_authority():
 		round_end_menu.show()
-	
+
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().paused = true
-		
+
 		Global.ROUNDS += 1
-		
-		
+
 		var _max = -1
 		for player in Game.players:
 			if get_node("/root/Main/%s" % player.id).KILLS > _max:
 				_max = get_node("/root/Main/%s" % player.id).KILLS
 				WINNER = player.name
+
 
 func _reset_round() -> void:
 	round_end_menu._end_bet()
@@ -199,11 +200,19 @@ func _reset_round() -> void:
 	send_animations.rpc("Idle")
 	
 	rounds.text = str(Global.ROUNDS)
+	
+	DEAD = false
 
 
 func bet(stat: String) -> void:
 	set(stat, Global.slot(get(stat)))
 	_reset_round()
+
+
+@rpc("any_peer")
+func add_kill() -> void:
+	KILLS += 1
+	kills.text = "KILLS: %d" % KILLS
 
 
 @rpc("any_peer", "call_local")
