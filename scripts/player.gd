@@ -1,4 +1,4 @@
-class_name base_player
+class_name Player
 extends CharacterBody3D
 
 var WINNER:String = ""
@@ -41,15 +41,14 @@ var SPAWNPOINT: Vector3
 @onready var kills: Label = %Kills
 @onready var winner: Label = %WINNER
 @onready var round_end_menu: Control = $UI/RoundEndMenu
-@onready var round_progress_bar = $UI/RoundProgressBar
+@onready var round_progress_bar: ProgressBar = $UI/RoundProgressBar
 @onready var label: Label3D = $Label3D
 
 
 func _ready() -> void:
 	winner.hide()
 	
-	if is_multiplayer_authority():
-		Global.PLAYER = self
+	Global.PLAYER = multiplayer.get_unique_id()
 	
 	godot_animation_tree.active = true
 
@@ -118,14 +117,15 @@ func _set_movement():
 	if Input.is_action_pressed("crouch"):
 		send_animations.rpc("Crouch")
 		speed = 0
-	elif Input.is_action_pressed("sprint"):
-		send_animations.rpc("Sprint")
-		speed = SPEED * SPRINT_MULT
 	elif Input.is_action_pressed("move_back") \
 		or Input.is_action_pressed("move_forward") \
 		or Input.is_action_pressed("move_left") \
 		or Input.is_action_pressed("move_right"):
-		send_animations.rpc("Run")
+		if Input.is_action_pressed("sprint"):
+			send_animations.rpc("Sprint")
+			speed = SPEED * SPRINT_MULT
+		else:
+			send_animations.rpc("Run")
 	else:
 		send_animations.rpc("Idle")
 
@@ -162,7 +162,7 @@ func take_damage(damage: float) -> void:
 	if is_multiplayer_authority():
 		var real_damage : float
 		if DEFENSE == 0:
-			real_damage = 2*damage
+			real_damage = 2 * damage
 		else:
 			real_damage = damage / DEFENSE
 
@@ -177,7 +177,6 @@ func take_damage(damage: float) -> void:
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
-		
 
 
 func pauseMenu():
@@ -209,40 +208,51 @@ func _on_round_end() -> void:
 				WINNER = player.name
 
 
-func _reset_round() -> void:
-	round_end_menu._end_bet()
+func reset_round() -> void:
 	velocity = Vector3(0,0,0)
 	_manual_ui_update()
 	round_end_menu.hide()
-	
 	round_timer.start()
 	position = SPAWNPOINT
-	
 	send_animations.rpc("Idle")
-	
 	rounds.text = str(Global.ROUNDS)
-	
+
 	DEAD = false
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	for key in Global.round_rdy.keys():
+		Global.round_rdy[key] = false
 
 
 func bet(stat: String) -> void:
 	set(stat, Global.slot(get(stat)))
-	_reset_round()
+	_manual_ui_update()
 
 
-@rpc("any_peer")
+@rpc("any_peer", "reliable")
 func add_kill() -> void:
 	KILLS += 1
 	kills.text = "KILLS: %d" % KILLS
 
 
-@rpc("any_peer", "call_local")
-func _set_rdy(id : int) -> void:
-	if multiplayer.is_server():
-		print("_set_rdy (%d)" % multiplayer.get_unique_id())
-		Global.round_rdy[id] = true
-		
-		if Global.round_rdy.keys().size() == Game.players.size():
-			for key in Global.round_rdy:
-				if not Global.round_rdy[key]:
-					return
+@rpc("any_peer", "call_local", "reliable")
+func set_rdy(id: int) -> void:
+	Global.round_rdy[id] = true
+	reset()
+
+
+func reset() -> void:
+	var readies: bool = true
+	for value in Global.round_rdy.values():
+		readies = readies and value
+	
+	if readies:
+		reset_players.rpc()
+		reset_round()
+		round_end_menu.reset_bet()
+
+
+@rpc("authority", "call_remote", "reliable")
+func reset_players() -> void:
+	get_node("/root/Main/%s" % Global.PLAYER).reset_round()
+	get_node("/root/Main/%s" % Global.PLAYER).round_end_menu.reset_bet()

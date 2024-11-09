@@ -66,8 +66,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Max-Health"
 
-[node name="Button1" type="Button" parent="VBoxContainer"]
-visible = false
+[node name="Ready" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "CONFIRMAR

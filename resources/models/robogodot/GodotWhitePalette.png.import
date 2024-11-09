@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://befr7ewhlbikm"
-path.s3tc="res://.godot/imported/GodotRedPalette.png-abf1d413b83cfc08117889aa7e7cbda6.s3tc.ctex"
+uid="uid://be28dmhloua7s"
+path.s3tc="res://.godot/imported/GodotWhitePalette.png-1d26ebde2aa76a0fc554799d2a9ea80e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/models/robogodot/GodotRedPalette.png"
-dest_files=["res://.godot/imported/GodotRedPalette.png-abf1d413b83cfc08117889aa7e7cbda6.s3tc.ctex"]
+source_file="res://resources/models/robogodot/GodotWhitePalette.png"
+dest_files=["res://.godot/imported/GodotWhitePalette.png-1d26ebde2aa76a0fc554799d2a9ea80e.s3tc.ctex"]
 
 [params]
 

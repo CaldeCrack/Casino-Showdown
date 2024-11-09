@@ -1,10 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5hufqs7sbm01"]
+[gd_scene load_steps=17 format=3 uid="uid://b5hufqs7sbm01"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ysfbh"]
+[ext_resource type="PackedScene" uid="uid://brwfm5rfhppxr" path="res://scenes/players/black_jack_player.tscn" id="2_aljjj"]
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="2_gjunx"]
-[ext_resource type="PackedScene" uid="uid://c0580shuwsxi8" path="res://scenes/player.tscn" id="2_kr317"]
+[ext_resource type="PackedScene" uid="uid://dumb7dq77bnb8" path="res://scenes/players/dudo_player.tscn" id="3_sshp8"]
 [ext_resource type="PackedScene" uid="uid://bibnnddaigihe" path="res://resources/models/Capoeira.fbx" id="4_nsisp"]
+[ext_resource type="PackedScene" uid="uid://b6gmqihwqusyb" path="res://scenes/players/roulette_player.tscn" id="4_x6q7x"]
 [ext_resource type="AnimationLibrary" uid="uid://ds44607r6l4ni" path="res://animations/capoeira.res" id="5_jakw4"]
+[ext_resource type="PackedScene" uid="uid://dnjiiesx27cj7" path="res://scenes/players/slot_player.tscn" id="5_jbspk"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="6_01ohq"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_u2k5k"]
@@ -35,7 +38,10 @@ size = Vector2(30, 30)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ysfbh")
-player_scene = ExtResource("2_kr317")
+blackjack = ExtResource("2_aljjj")
+dudo = ExtResource("3_sshp8")
+roulette = ExtResource("4_x6q7x")
+slots = ExtResource("5_jbspk")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6r2re")

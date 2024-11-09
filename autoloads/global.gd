@@ -1,15 +1,11 @@
 extends Node
 
-var PLAYER: Node3D
-
+var PLAYER
 var ROUNDS: int = 0
+var round_rdy = {}
+var rng = RandomNumberGenerator.new()
 
 @onready var round_timer: Timer = $RoundTime
-@onready var round_end_timer: Timer = $RoundEndTimer
-
-var round_rdy = {}
-
-var rng = RandomNumberGenerator.new()
 
 
 func _ready() -> void:

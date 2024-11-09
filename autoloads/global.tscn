@@ -10,8 +10,3 @@ script = ExtResource("1_rdm6k")
 process_callback = 0
 wait_time = 10.0
 one_shot = true
-
-[node name="RoundEndTimer" type="Timer" parent="."]
-process_callback = 0
-wait_time = 3.0
-one_shot = true

@@ -10,12 +10,11 @@ signal upnp_completed(error)
 @export var multiplayer_test = false
 @export var test_players: Array[PlayerDataResource] = [] # first one is server
 @export var use_upnp = false
+@onready var player_id: Label = $PlayerId
 
 # [ {id: int, name: string, rol: Rol} ]
 var players: Array[Statics.PlayerData] = []
 var _thread = null
-
-@onready var player_id: Label = $PlayerId
 
 
 func _ready() -> void:

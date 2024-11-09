@@ -1,1 +1,1 @@
-extends base_player
+extends Player

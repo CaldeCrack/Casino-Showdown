@@ -10,7 +10,7 @@ float rand(vec2 coord){
 
 //vec2 rand2(vec2 coord) {
 	//coord = mod(coord, 10000.0);
-	//return fract(sin(vec2(dot(coord, vec2(127.1, 311.7)), dot(coord, vec2(269.5, 183.3)))) * 4.0);	
+	//return fract(sin(vec2(dot(coord, vec2(127.1, 311.7)), dot(coord, vec2(269.5, 183.3)))) * 4.0);
 //}
 
 float noise(vec2 coord) {

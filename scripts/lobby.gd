@@ -234,6 +234,8 @@ func starting_game(value: bool):
 
 @rpc("any_peer", "call_local", "reliable")
 func start_game() -> void:
+	for player in Game.players:
+		Global.round_rdy[player.id] = false
 	Game.players.sort_custom(func(a, b): return a.index < b.index)
 	remove_child(fallingInst)
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
