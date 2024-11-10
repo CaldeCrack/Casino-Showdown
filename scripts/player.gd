@@ -6,18 +6,18 @@ var KILLS: int = 0
 var MAX_HEALTH: float = 100
 var HEALTH: float = 100
 var DEAD: bool = false
-
 var ATTACK: float = 1
 var DEFENSE: float = 1
 var SPEED: float = 5.0
+var direction = Vector3.FORWARD
+var paused = false
+var SPAWNPOINT: Vector3
+
 const SPRINT_MULT: float = 1.8
 const CROUCH_MULT: float = 0.55
 const CROUCH_SIZE: float = 0.5
 const JUMP_VELOCITY: float = 12.0
 const MOUSE_SENSITIVITY: float = 0.002
-var direction = Vector3.FORWARD
-var paused = false
-var SPAWNPOINT: Vector3
 
 ## globals
 @onready var pause_menu: Control = $UI/MarginContainer/PauseMenu
@@ -27,10 +27,8 @@ var SPAWNPOINT: Vector3
 @onready var godot_anim: AnimationPlayer = $"3DGodotRobot/AnimationPlayer"
 @onready var godot_animation_tree: AnimationTree = $"3DGodotRobot/AnimationTree"
 @onready var godot_playback: AnimationNodeStateMachinePlayback = godot_animation_tree.get("parameters/playback")
-
 @onready var collision_shape_3d: CollisionShape3D = $"CollisionShape3D"
 @onready var spring_arm: SpringArm3D = $SpringArm3D
-
 @onready var ui = $UI
 @onready var health_bar: ProgressBar = $UI/MarginContainer/HealthBar
 @onready var hp_label = %HPLabel
@@ -47,15 +45,11 @@ var SPAWNPOINT: Vector3
 
 func _ready() -> void:
 	winner.hide()
-	
 	Global.PLAYER = multiplayer.get_unique_id()
-	
 	godot_animation_tree.active = true
 
-	# UI setup
 	_manual_ui_update()
 	round_end_menu.hide()
-	
 	round_timer.timeout.connect(_on_round_end)
 
 
@@ -65,7 +59,6 @@ func _physics_process(delta: float) -> void:
 			velocity += get_gravity() * delta
 
 		_ui_update()
-
 		move_and_slide()
 		send_transform.rpc(position, rotation, scale)
 
@@ -90,12 +83,13 @@ func _manual_ui_update() -> void:
 
 func _input(event: InputEvent) -> void:
 	if is_multiplayer_authority():
-		if DEAD:
-			return
 		if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 			spring_arm.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
-			spring_arm.rotation.x = clampf(spring_arm.rotation.x, -deg_to_rad(40), deg_to_rad(40))
+			spring_arm.rotation.x = clampf(spring_arm.rotation.x, -deg_to_rad(60), deg_to_rad(90))
+
+		if DEAD:
+			return
 
 		_set_movement()
 
@@ -175,6 +169,13 @@ func take_damage(damage: float) -> void:
 
 
 func _process(_delta):
+	if position.y < -4.5:
+		DEAD = true
+		HEALTH = 0
+		health_bar.value = HEALTH
+		model.rotation = Vector3(0, 0, 0)
+		send_animations.rpc("ded")
+	
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
 
@@ -209,19 +210,21 @@ func _on_round_end() -> void:
 
 
 func reset_round() -> void:
+	DEAD = false
 	velocity = Vector3(0,0,0)
 	_manual_ui_update()
 	round_end_menu.hide()
-	round_timer.start()
 	position = SPAWNPOINT
-	send_animations.rpc("Idle")
 	rounds.text = str(Global.ROUNDS)
-
-	DEAD = false
-	get_tree().paused = false
+	look_at(Vector3(-10, 3, 0))
+	spring_arm.rotation_degrees = Vector3(-13.3, 0, 0)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	godot_playback.start("Idle", true)
 	for key in Global.round_rdy.keys():
 		Global.round_rdy[key] = false
+	round_timer.start()
+
+	get_tree().paused = false
 
 
 func bet(stat: String) -> void:

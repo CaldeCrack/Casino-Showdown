@@ -41,6 +41,7 @@ font_size = 100
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, 0)
 collision_layer = 2
+floor_max_angle = 1.0472
 script = ExtResource("1_1yrpo")
 
 [node name="3DGodotRobot" parent="." instance=ExtResource("3_h8wr4")]
@@ -55,18 +56,14 @@ bones/7/position = Vector3(7.44409e-08, 0.540609, 0.312228)
 bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
 bones/8/position = Vector3(9.97907e-08, 0.0611572, 0.418552)
 bones/8/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/9/position = Vector3(0.267321, 0.0764983, -0.028224)
 bones/10/position = Vector3(0.00943595, 0.223043, -8.36576e-05)
 bones/10/rotation = Quaternion(-0.356441, 0.617847, -0.433107, 0.551029)
 bones/12/rotation = Quaternion(0.0209349, 0.0170217, -0.0176714, 0.99948)
-bones/13/position = Vector3(-0.267321, 0.0764983, -0.028224)
 bones/14/position = Vector3(-0.00943595, 0.223043, -8.36576e-05)
 bones/14/rotation = Quaternion(-0.356441, -0.617847, 0.433107, 0.551029)
 bones/16/rotation = Quaternion(0.0209349, -0.0170217, 0.0176714, 0.99948)
-bones/17/position = Vector3(0.276084, 0.0659952, -0.00346868)
 bones/18/rotation = Quaternion(0.249628, 0.00871771, 0.024974, 0.967981)
 bones/19/rotation = Quaternion(-0.608714, 0.00331542, -0.00479121, 0.793368)
-bones/21/position = Vector3(-0.276084, 0.0659953, -0.00346881)
 bones/23/rotation = Quaternion(-0.608714, -0.00331544, 0.00479126, 0.793368)
 bones/24/rotation = Quaternion(6.34553e-08, 0.980764, -0.195196, -1.82779e-06)
 
