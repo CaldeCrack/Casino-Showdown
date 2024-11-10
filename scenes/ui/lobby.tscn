@@ -1,8 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bslhrv3eo36wd"]
+[gd_scene load_steps=6 format=3 uid="uid://bslhrv3eo36wd"]
 
 [ext_resource type="Script" path="res://scripts/lobby.gd" id="1_g2fmt"]
 [ext_resource type="PackedScene" uid="uid://chbh4lxk8rmmd" path="res://scenes/ui/lobby_player.tscn" id="2_060bj"]
 [ext_resource type="Shader" path="res://resources/shaders/fog.gdshader" id="3_1uyds"]
+
+[sub_resource type="Environment" id="Environment_8kn7h"]
+background_mode = 3
+background_color = Color(1, 1, 1, 1)
+glow_enabled = true
+glow_hdr_threshold = 1.5
+adjustment_enabled = true
+adjustment_brightness = 0.4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6u543"]
 shader = ExtResource("3_1uyds")
@@ -19,6 +27,9 @@ grow_vertical = 2
 script = ExtResource("1_g2fmt")
 lobby_player_scene = ExtResource("2_060bj")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8kn7h")
+
 [node name="Background" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_6u543")
 layout_mode = 1
@@ -29,6 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
 z_index = 1
 layout_mode = 1
 anchors_preset = 8

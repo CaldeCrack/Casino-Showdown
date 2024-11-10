@@ -41,6 +41,8 @@ environment = SubResource("Environment_6r2re")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.78312, -0.133552, 0.60736, -0.381822, 0.667635, 0.639121, -0.490851, -0.732412, 0.471845, 100, 100, 6.457)
+light_energy = 0.5
+shadow_enabled = true
 
 [node name="Map" parent="." instance=ExtResource("10_csmdk")]
 transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, -45, 1.7, 4)
