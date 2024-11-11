@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bslhrv3eo36wd"]
+[gd_scene load_steps=21 format=3 uid="uid://bslhrv3eo36wd"]
 
 [ext_resource type="Script" path="res://scripts/lobby.gd" id="1_g2fmt"]
 [ext_resource type="PackedScene" uid="uid://chbh4lxk8rmmd" path="res://scenes/ui/lobby_player.tscn" id="2_060bj"]
@@ -16,6 +16,97 @@ adjustment_brightness = 0.4
 shader = ExtResource("3_1uyds")
 shader_parameter/color = Vector3(0.5, 0.5, 0.55)
 shader_parameter/OCTAVES = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpv1u"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnntl"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3krs"]
+bg_color = Color(0.313726, 0.313726, 0.313726, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Theme" id="Theme_xlkgh"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
+[sub_resource type="Theme" id="Theme_ofkb0"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
+[sub_resource type="Theme" id="Theme_s0yon"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
+[sub_resource type="Theme" id="Theme_j5n1k"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
+[sub_resource type="Theme" id="Theme_ygvpl"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
+[sub_resource type="Theme" id="Theme_hcb5q"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
+[sub_resource type="Theme" id="Theme_pma28"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
+[sub_resource type="Theme" id="Theme_883st"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
+[sub_resource type="Theme" id="Theme_gn34j"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
+[sub_resource type="Theme" id="Theme_tmnpv"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
+[sub_resource type="Theme" id="Theme_n5wv4"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
+[sub_resource type="Theme" id="Theme_vx2vt"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
 
 [node name="Lobby" type="Control"]
 layout_mode = 3
@@ -74,6 +165,7 @@ text = "Name:
 [node name="User" type="LineEdit" parent="PanelContainer/Menus/StartMenu"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = SubResource("Theme_xlkgh")
 text = "Player"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Menus/StartMenu"]
@@ -83,12 +175,14 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_ofkb0")
 text = "Host"
 
 [node name="Join" type="Button" parent="PanelContainer/Menus/StartMenu/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_s0yon")
 text = "Join"
 
 [node name="JoinMenu" type="VBoxContainer" parent="PanelContainer/Menus"]
@@ -105,6 +199,7 @@ text = "IP:
 [node name="IP" type="LineEdit" parent="PanelContainer/Menus/JoinMenu"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = SubResource("Theme_j5n1k")
 text = "127.0.0.1"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Menus/JoinMenu"]
@@ -114,12 +209,14 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_ygvpl")
 text = "Back"
 
 [node name="ConfirmJoin" type="Button" parent="PanelContainer/Menus/JoinMenu/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_hcb5q")
 text = "Join"
 
 [node name="Info" type="Label" parent="PanelContainer/Menus/JoinMenu"]
@@ -151,24 +248,28 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_pma28")
 text = "Blackjack"
 
 [node name="Roulette" type="Button" parent="PanelContainer/Menus/ReadyMenu/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_883st")
 text = "Roulette"
 
 [node name="SlotMachine" type="Button" parent="PanelContainer/Menus/ReadyMenu/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_gn34j")
 text = "Slot Machine"
 
 [node name="Dudo" type="Button" parent="PanelContainer/Menus/ReadyMenu/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_tmnpv")
 text = "Dudo"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/Menus/ReadyMenu"]
@@ -178,6 +279,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_n5wv4")
 text = "Back
 "
 
@@ -185,6 +287,7 @@ text = "Back
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_vx2vt")
 text = "Ready"
 
 [node name="TimeContainer" type="HBoxContainer" parent="PanelContainer/Menus/ReadyMenu"]

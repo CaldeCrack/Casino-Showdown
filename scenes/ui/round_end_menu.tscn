@@ -1,7 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvcjagjgkfvw4"]
+[gd_scene load_steps=11 format=3 uid="uid://bvcjagjgkfvw4"]
 
 [ext_resource type="Script" path="res://scripts/round_end_menu.gd" id="1_wvwhy"]
 [ext_resource type="LabelSettings" uid="uid://b1yf0nwmsim8t" path="res://resources/fonts/stats_font.tres" id="2_10si5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpv1u"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnntl"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3krs"]
+bg_color = Color(0.313726, 0.313726, 0.313726, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Theme" id="Theme_s5huf"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
+[sub_resource type="Theme" id="Theme_fh2su"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
+[sub_resource type="Theme" id="Theme_86abg"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
+[sub_resource type="Theme" id="Theme_vah2m"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
+[sub_resource type="Theme" id="Theme_xruby"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
 
 [node name="RoundEndMenu" type="Control"]
 process_mode = 3
@@ -45,18 +101,21 @@ unique_name_in_owner = true
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_s5huf")
 text = "Attack"
 
 [node name="Defense" type="Button" parent="VBoxContainer/Stats"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_fh2su")
 text = "Defense"
 
 [node name="Speed" type="Button" parent="VBoxContainer/Stats"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_86abg")
 text = "Speed
 "
 
@@ -64,10 +123,12 @@ text = "Speed
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_vah2m")
 text = "Max-Health"
 
 [node name="Ready" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = SubResource("Theme_xruby")
 text = "CONFIRMAR
 "
