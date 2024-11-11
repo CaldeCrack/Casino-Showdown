@@ -17,6 +17,11 @@ func _on_area_entered(area: Area3D) -> void:
 			
 			if OWNER.HEALTH <= 0:
 				OWNER.DEAD = true
+				update_killed_players.rpc()
 				var pp = hitbox.get_parent().get_parent()
 				pp.add_kill.rpc()
 				OWNER.send_animations.rpc("ded")
+
+@rpc("authority", "call_local", "reliable")
+func update_killed_players() -> void:
+	Global.player_count -= 1

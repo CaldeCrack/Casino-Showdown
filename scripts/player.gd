@@ -42,7 +42,6 @@ const MOUSE_SENSITIVITY: float = 0.002
 @onready var round_progress_bar: ProgressBar = $UI/RoundProgressBar
 @onready var label: Label3D = $Label3D
 
-
 func _ready() -> void:
 	winner.hide()
 	Global.PLAYER = multiplayer.get_unique_id()
@@ -51,7 +50,6 @@ func _ready() -> void:
 	_manual_ui_update()
 	round_end_menu.hide()
 	round_timer.timeout.connect(_on_round_end)
-
 
 func _physics_process(delta: float) -> void:
 	if is_multiplayer_authority():
@@ -135,6 +133,7 @@ func setup(player_data: Statics.PlayerData) -> void:
 	set_multiplayer_authority(player_data.id)
 	label.text = player_data.name
 	SPAWNPOINT = position
+	Global.count_players()
 
 
 @rpc
@@ -178,6 +177,8 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
+		
+	check_alive()
 
 
 func pauseMenu():
@@ -219,9 +220,11 @@ func reset_round() -> void:
 	look_at(Vector3(-10, 3, 0))
 	spring_arm.rotation_degrees = Vector3(-13.3, 0, 0)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	godot_playback.start("Idle", true)
+	#godot_playback.start("Idle", true)
+	send_animations.rpc("Idle")
 	for key in Global.round_rdy.keys():
 		Global.round_rdy[key] = false
+	Global.count_players()
 	round_timer.start()
 
 	get_tree().paused = false
@@ -232,7 +235,7 @@ func bet(stat: String) -> void:
 	_manual_ui_update()
 
 
-@rpc("any_peer", "reliable")
+@rpc("any_peer", "call_local", "reliable")
 func add_kill() -> void:
 	KILLS += 1
 	kills.text = "KILLS: %d" % KILLS
@@ -242,7 +245,6 @@ func add_kill() -> void:
 func set_rdy(id: int) -> void:
 	Global.round_rdy[id] = true
 	reset()
-
 
 func reset() -> void:
 	var readies: bool = true
@@ -259,3 +261,8 @@ func reset() -> void:
 func reset_players() -> void:
 	get_node("/root/Main/%s" % Global.PLAYER).reset_round()
 	get_node("/root/Main/%s" % Global.PLAYER).round_end_menu.reset_bet()
+
+func check_alive() -> void:
+	if Global.player_count == 1:
+		round_timer.stop()
+		_on_round_end()

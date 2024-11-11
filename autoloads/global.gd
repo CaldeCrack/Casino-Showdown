@@ -4,13 +4,12 @@ var PLAYER
 var ROUNDS: int = 0
 var round_rdy = {}
 var rng = RandomNumberGenerator.new()
+var player_count = 0
 
 @onready var round_timer: Timer = $RoundTime
 
-
 func _ready() -> void:
 	pass
-
 
 func random_int_range(from: int, to: int) -> int:
 	return rng.randi_range(from, to+1)
@@ -39,3 +38,7 @@ func slot(stat: float) -> float:
 	
 	else:
 		return stat * 0.75
+
+func count_players() -> int:
+	player_count = len(Game.players)
+	return player_count

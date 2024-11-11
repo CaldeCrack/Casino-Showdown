@@ -1,12 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0580shuwsxi8"]
+[gd_scene load_steps=10 format=3 uid="uid://c0580shuwsxi8"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1yrpo"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="3_3xvhw"]
 [ext_resource type="PackedScene" uid="uid://ixdslqh7ecj4" path="res://scenes/models/3d_godot_robot.tscn" id="3_h8wr4"]
 [ext_resource type="Texture2D" uid="uid://c1hktugh2ofxt" path="res://resources/sprites/crosshairs/White/crosshair012.png" id="4_io5gu"]
 [ext_resource type="PackedScene" uid="uid://b650rxagnesum" path="res://scenes/ui/pause_menu.tscn" id="4_lyb4p"]
-[ext_resource type="LabelSettings" uid="uid://b1yf0nwmsim8t" path="res://resources/fonts/stats_font.tres" id="5_m256d"]
-[ext_resource type="PackedScene" uid="uid://bvcjagjgkfvw4" path="res://scenes/ui/round_end_menu.tscn" id="6_h36ey"]
+[ext_resource type="PackedScene" uid="uid://dche1xgue1dan" path="res://scenes/ui/bet_menu.tscn" id="5_hnvad"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ia8vc"]
 radius = 0.3
@@ -35,44 +34,46 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="LabelSettings" id="LabelSettings_6hdhq"]
-font_size = 100
-
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, 0)
 collision_layer = 2
-floor_max_angle = 1.0472
 script = ExtResource("1_1yrpo")
 
 [node name="3DGodotRobot" parent="." instance=ExtResource("3_h8wr4")]
 transform = Transform3D(-0.7, 0, -6.11959e-08, 0, 0.7, 0, 6.11959e-08, 0, -0.7, 0, -1.01098, 0)
 
 [node name="Skeleton3D" parent="3DGodotRobot/RobotArmature" index="0"]
-bones/0/position = Vector3(-6.1839e-17, 0.867156, 0.0298551)
+bones/0/position = Vector3(-3.5256e-16, 0.861288, 0.0298551)
+bones/0/rotation = Quaternion(0.0149092, 1.19196e-07, 1.77731e-09, 0.999889)
 bones/1/rotation = Quaternion(0.0294489, -1.52111e-14, 7.02117e-09, 0.999566)
-bones/4/position = Vector3(-3.46698e-16, 0.156131, -0.0115784)
+bones/4/position = Vector3(-1.86693e-15, 0.170961, -0.0110576)
 bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
+bones/5/rotation = Quaternion(0.00821238, -4.94275e-14, -1.95798e-09, 0.999966)
 bones/7/position = Vector3(7.44409e-08, 0.540609, 0.312228)
 bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/8/position = Vector3(9.98094e-08, 0.0711384, 0.418631)
+bones/8/position = Vector3(9.98273e-08, 0.0806286, 0.418706)
 bones/8/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/9/position = Vector3(0.267321, 0.0848945, -0.0279291)
+bones/9/position = Vector3(0.267321, 0.0764982, -0.028224)
+bones/9/rotation = Quaternion(-0.509069, -0.473248, -0.50793, 0.508815)
 bones/10/position = Vector3(0.00943595, 0.223043, -8.36576e-05)
-bones/10/rotation = Quaternion(-0.36378, 0.612423, -0.440917, 0.546072)
+bones/10/rotation = Quaternion(-0.356442, 0.617847, -0.433107, 0.551029)
+bones/11/rotation = Quaternion(-0.0175777, -0.091351, 0.0271132, 0.995294)
 bones/12/rotation = Quaternion(0.0209349, 0.0170217, -0.0176714, 0.99948)
-bones/13/position = Vector3(-0.267321, 0.0848945, -0.0279291)
+bones/13/position = Vector3(-0.267321, 0.0764982, -0.028224)
+bones/13/rotation = Quaternion(-0.509069, 0.473248, 0.50793, 0.508815)
 bones/14/position = Vector3(-0.00943595, 0.223043, -8.36576e-05)
-bones/14/rotation = Quaternion(-0.36378, -0.612423, 0.440917, 0.546072)
+bones/14/rotation = Quaternion(-0.356441, -0.617847, 0.433107, 0.551029)
+bones/15/rotation = Quaternion(-0.0175777, 0.091351, -0.0271132, 0.995294)
 bones/16/rotation = Quaternion(0.0209349, -0.0170217, 0.0176714, 0.99948)
 bones/17/position = Vector3(0.276084, 0.0659952, -0.00346869)
-bones/18/rotation = Quaternion(0.193284, 0.00791805, 0.0255752, 0.980778)
-bones/19/rotation = Quaternion(-0.583741, 0.00316544, -0.00489387, 0.811919)
+bones/17/rotation = Quaternion(0.991415, 0.0203396, -0.00748625, 0.128945)
+bones/18/rotation = Quaternion(0.249628, 0.00871771, 0.024974, 0.967981)
+bones/19/rotation = Quaternion(-0.608714, 0.00331542, -0.00479121, 0.793368)
 bones/21/position = Vector3(-0.276084, 0.0659953, -0.00346882)
-bones/23/rotation = Quaternion(-0.583741, -0.00316546, 0.00489391, 0.811919)
+bones/21/rotation = Quaternion(0.991415, -0.0203396, 0.00748625, 0.128945)
+bones/22/rotation = Quaternion(0.249628, -0.00871766, -0.0249741, 0.967981)
+bones/23/rotation = Quaternion(-0.608714, -0.00331544, 0.00479126, 0.793368)
 bones/24/rotation = Quaternion(6.34553e-08, 0.980764, -0.195196, -1.82779e-06)
-
-[node name="Hitbox" parent="3DGodotRobot" index="3"]
-damage = 50
 
 [node name="Hurtbox" parent="3DGodotRobot" index="4" node_paths=PackedStringArray("OWNER")]
 OWNER = NodePath("../..")
@@ -97,7 +98,6 @@ near = 0.15
 script = ExtResource("3_3xvhw")
 
 [node name="UI" type="CanvasLayer" parent="."]
-process_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="UI"]
 anchors_preset = 15
@@ -106,7 +106,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ProgressBar" type="ProgressBar" parent="UI/MarginContainer"]
+custom_minimum_size = Vector2(0, 37.675)
+layout_mode = 2
+max_value = 10.0
+step = 1.0
+rounded = true
+show_percentage = false
+
 [node name="PauseMenu" parent="UI/MarginContainer" instance=ExtResource("4_lyb4p")]
+visible = false
+layout_mode = 2
+
+[node name="BetMenu" parent="UI/MarginContainer" instance=ExtResource("5_hnvad")]
 visible = false
 layout_mode = 2
 
@@ -127,91 +139,5 @@ size_flags_vertical = 4
 texture = ExtResource("4_io5gu")
 expand_mode = 1
 stretch_mode = 4
-
-[node name="RoundProgressBar" type="ProgressBar" parent="UI"]
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 38.0
-grow_horizontal = 2
-value = 100.0
-fill_mode = 1
-show_percentage = false
-
-[node name="Stats" type="VBoxContainer" parent="UI"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -233.0
-offset_top = -253.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="HPLabel" type="Label" parent="UI/Stats"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "MAX HP"
-label_settings = ExtResource("5_m256d")
-
-[node name="ATKLabel" type="Label" parent="UI/Stats"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "ATK"
-label_settings = ExtResource("5_m256d")
-
-[node name="DEFLabel" type="Label" parent="UI/Stats"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "DEF"
-label_settings = ExtResource("5_m256d")
-
-[node name="SPDLabel" type="Label" parent="UI/Stats"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "SPEED
-"
-label_settings = ExtResource("5_m256d")
-
-[node name="RoundEndMenu" parent="UI" instance=ExtResource("6_h36ey")]
-
-[node name="Rounds" type="Label" parent="UI"]
-unique_name_in_owner = true
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -34.5
-offset_right = 34.5
-offset_bottom = 53.0
-grow_horizontal = 2
-text = "0"
-label_settings = ExtResource("5_m256d")
-horizontal_alignment = 1
-
-[node name="Kills" type="Label" parent="UI"]
-unique_name_in_owner = true
-offset_left = 1.0
-offset_top = 43.0
-offset_right = 69.0
-offset_bottom = 94.0
-text = "KILLS: 0"
-label_settings = ExtResource("5_m256d")
-
-[node name="WINNER" type="Label" parent="UI"]
-unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -335.5
-offset_top = -123.0
-offset_right = 335.5
-offset_bottom = 123.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Winner: "
-label_settings = SubResource("LabelSettings_6hdhq")
-horizontal_alignment = 1
 
 [editable path="3DGodotRobot"]
