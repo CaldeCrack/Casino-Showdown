@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dybai36naf7ml"]
+
+[ext_resource type="Script" path="res://scripts/card_object.gd" id="1_3u0rb"]
+[ext_resource type="Texture2D" uid="uid://c0m72apkmee7d" path="res://resources/sprites/Cards/clubs_02.png" id="3_bgtj7"]
+
+[node name="Card" type="Node3D"]
+script = ExtResource("1_3u0rb")
+
+[node name="Back" type="Sprite3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+double_sided = false
+texture = ExtResource("3_bgtj7")
+
+[node name="Front" type="Sprite3D" parent="."]
+double_sided = false

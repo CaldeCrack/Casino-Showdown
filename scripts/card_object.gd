@@ -1,7 +1,7 @@
 extends Node3D
 
-@onready var back: Sprite3D = $Rotate/Back
-@onready var front: Sprite3D = $Rotate/Front
+@onready var back: Sprite3D = $Back
+@onready var front: Sprite3D = $Front
 
 
 var rng: RandomNumberGenerator = Global.rng

@@ -1,7 +1,7 @@
 class_name Hurtbox
 extends Area3D
 
-@export var OWNER: Node3D
+@onready var OWNER = get_parent().get_parent()
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)

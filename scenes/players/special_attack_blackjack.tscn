@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://1v54vipoww8"]
+
+[ext_resource type="Script" path="res://scripts/player_scripts/blackjack/special_attack_blackjack.gd" id="1_lo8o3"]
+[ext_resource type="PackedScene" uid="uid://dybai36naf7ml" path="res://scenes/objects/card_object.tscn" id="2_rxwhm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_80aji"]
+size = Vector3(3.522, 5.121, 0.285)
+
+[node name="SpecialAttackBlackjack" type="Area3D"]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 0, 0)
+script = ExtResource("1_lo8o3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000137329, -0.00247213, -0.00140381)
+shape = SubResource("BoxShape3D_80aji")
+
+[node name="Card" parent="." instance=ExtResource("2_rxwhm")]
