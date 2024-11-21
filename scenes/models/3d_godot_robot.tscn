@@ -330,7 +330,7 @@ bones/4/name = "spine.004"
 bones/4/parent = 3
 bones/4/rest = Transform3D(1, 4.44089e-16, -2.38419e-07, -2.57501e-09, 0.999942, -0.0108004, 2.38405e-07, 0.0108004, 0.999942, -2.88374e-16, 0.176079, -0.0108779)
 bones/4/enabled = true
-bones/4/position = Vector3(-1.90262e-15, 0.171424, -0.0110413)
+bones/4/position = Vector3(-5.67123e-16, 0.154112, -0.0116493)
 bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "Head"
@@ -358,7 +358,7 @@ bones/8/name = "Chin"
 bones/8/parent = 5
 bones/8/rest = Transform3D(1, 1.87855e-09, 2.38411e-07, 0, 0.999969, -0.00787921, -2.38419e-07, 0.00787921, 0.999969, 9.98369e-08, 0.0857493, 0.418746)
 bones/8/enabled = true
-bones/8/position = Vector3(9.98281e-08, 0.0810916, 0.41871)
+bones/8/position = Vector3(9.97956e-08, 0.0637695, 0.418573)
 bones/8/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/name = "shoulder.L"
@@ -373,7 +373,7 @@ bones/10/parent = 9
 bones/10/rest = Transform3D(-0.106441, 0.0606935, 0.992465, -0.00297219, 0.998111, -0.0613576, -0.994315, -0.00948077, -0.10606, 0.00943596, 0.223043, -8.37785e-05)
 bones/10/enabled = true
 bones/10/position = Vector3(0.00943595, 0.223043, -8.36576e-05)
-bones/10/rotation = Quaternion(-0.356442, 0.617847, -0.433107, 0.551029)
+bones/10/rotation = Quaternion(-0.356441, 0.617847, -0.433107, 0.551029)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "forearm.L"
 bones/11/parent = 10
@@ -503,7 +503,6 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="Hitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01013, 0.522149)
 script = ExtResource("3_tmvsa")
-damage = 5
 
 [node name="FrontShape" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022, 0, 0.142)

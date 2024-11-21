@@ -41,6 +41,8 @@ const MOUSE_SENSITIVITY: float = 0.002
 @onready var round_end_menu: Control = $UI/RoundEndMenu
 @onready var round_progress_bar: ProgressBar = $UI/RoundProgressBar
 @onready var label: Label3D = $Label3D
+@onready var hitbox: Hitbox = $"3DGodotRobot/Hitbox"
+
 
 func _ready() -> void:
 	winner.hide()
@@ -220,7 +222,6 @@ func reset_round() -> void:
 	look_at(Vector3(-10, 3, 0))
 	spring_arm.rotation_degrees = Vector3(-13.3, 0, 0)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	#godot_playback.start("Idle", true)
 	send_animations.rpc("Idle")
 	for key in Global.round_rdy.keys():
 		Global.round_rdy[key] = false
@@ -232,6 +233,8 @@ func reset_round() -> void:
 
 func bet(stat: String) -> void:
 	set(stat, Global.slot(get(stat)))
+	if stat == "ATTACK":
+		hitbox.set_damage.rpc(ATTACK)
 	_manual_ui_update()
 
 

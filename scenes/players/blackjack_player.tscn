@@ -137,16 +137,28 @@ blend_shape_mode = 0
 script = ExtResource("2_sb6p5")
 
 [node name="Skeleton3D" parent="3DGodotRobot/RobotArmature" index="0"]
-bones/0/position = Vector3(-8.88591e-20, 0.878083, 0.0298551)
-bones/4/position = Vector3(-3.22287e-16, 0.164753, -0.0112756)
-bones/8/position = Vector3(9.98444e-08, 0.0897243, 0.418778)
-bones/9/position = Vector3(0.267321, 0.100529, -0.02738)
-bones/10/rotation = Quaternion(-0.377283, 0.602046, -0.455263, 0.536594)
-bones/13/position = Vector3(-0.267321, 0.100529, -0.02738)
-bones/14/rotation = Quaternion(-0.377283, -0.602046, 0.455263, 0.536594)
-bones/18/rotation = Quaternion(0.0865001, 0.00635631, 0.0264677, 0.99588)
-bones/19/rotation = Quaternion(-0.535717, 0.00287792, -0.00507246, 0.844378)
-bones/23/rotation = Quaternion(-0.535717, -0.00287793, 0.00507248, 0.844378)
+bones/0/position = Vector3(-4.90134e-19, 0.878012, 0.0298551)
+bones/1/rotation = Quaternion(0.0294489, -1.52111e-14, 7.02117e-09, 0.999566)
+bones/4/position = Vector3(-3.22446e-16, 0.164697, -0.0112776)
+bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
+bones/7/position = Vector3(7.44409e-08, 0.540609, 0.312228)
+bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
+bones/8/position = Vector3(9.98441e-08, 0.0896035, 0.418777)
+bones/8/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
+bones/9/position = Vector3(0.267321, 0.100428, -0.0273836)
+bones/10/position = Vector3(0.00943595, 0.223043, -8.36576e-05)
+bones/10/rotation = Quaternion(-0.377196, 0.602115, -0.45517, 0.536657)
+bones/12/rotation = Quaternion(0.0209349, 0.0170217, -0.0176714, 0.99948)
+bones/13/position = Vector3(-0.267321, 0.100428, -0.0273836)
+bones/14/position = Vector3(-0.00943595, 0.223043, -8.36576e-05)
+bones/14/rotation = Quaternion(-0.377196, -0.602115, 0.45517, 0.536657)
+bones/16/rotation = Quaternion(0.0209349, -0.0170217, 0.0176714, 0.99948)
+bones/17/position = Vector3(0.276084, 0.0659952, -0.00346869)
+bones/18/rotation = Quaternion(0.0871986, 0.00636672, 0.0264629, 0.995819)
+bones/19/rotation = Quaternion(-0.536035, 0.00287982, -0.00507136, 0.844176)
+bones/21/position = Vector3(-0.276084, 0.0659953, -0.00346882)
+bones/23/rotation = Quaternion(-0.536035, -0.00287983, 0.00507138, 0.844176)
+bones/24/rotation = Quaternion(6.34553e-08, 0.980764, -0.195196, -1.82779e-06)
 
 [node name="Bottom" parent="3DGodotRobot/RobotArmature/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_t35cw")
@@ -159,6 +171,9 @@ mesh = SubResource("ArrayMesh_bvy2x")
 
 [node name="Llimbs and head" parent="3DGodotRobot/RobotArmature/Skeleton3D" index="3"]
 mesh = SubResource("ArrayMesh_mpt5c")
+
+[node name="Hitbox" parent="3DGodotRobot" index="3"]
+damage = 50.0
 
 [node name="CollisionShape3D" parent="." index="1"]
 visible = false
