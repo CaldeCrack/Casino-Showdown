@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=4 uid="uid://b6gmqihwqusyb"]
 
 [ext_resource type="PackedScene" uid="uid://c0580shuwsxi8" path="res://scenes/player.tscn" id="1_b7tgl"]
-[ext_resource type="Script" path="res://scripts/player_scripts/roulette_player.gd" id="2_emf5n"]
+[ext_resource type="Script" path="res://scripts/player_scripts/roulette/roulette_player.gd" id="2_emf5n"]
 [ext_resource type="Texture2D" uid="uid://befr7ewhlbikm" path="res://resources/models/robogodot/GodotRedPalette.png" id="3_3g1bt"]
 [ext_resource type="Texture2D" uid="uid://dbb32cfjhk0oe" path="res://resources/models/robogodot/GodotGreenPalette.png" id="4_hira1"]
 [ext_resource type="Texture2D" uid="uid://deyb0ew2qmt2i" path="res://resources/models/robogodot/GodotBlackPalette.png" id="5_pbl2j"]

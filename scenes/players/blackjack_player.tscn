@@ -1,15 +1,15 @@
 [gd_scene load_steps=15 format=4 uid="uid://brwfm5rfhppxr"]
 
-[ext_resource type="PackedScene" uid="uid://c0580shuwsxi8" path="res://scenes/player.tscn" id="1_g2t0v"]
-[ext_resource type="Script" path="res://scripts/player_scripts/blackjack_player.gd" id="2_gq8tq"]
-[ext_resource type="Texture2D" uid="uid://befr7ewhlbikm" path="res://resources/models/robogodot/GodotRedPalette.png" id="3_enn3m"]
-[ext_resource type="Texture2D" uid="uid://deyb0ew2qmt2i" path="res://resources/models/robogodot/GodotBlackPalette.png" id="4_e5r2w"]
-[ext_resource type="Texture2D" uid="uid://be28dmhloua7s" path="res://resources/models/robogodot/GodotWhitePalette.png" id="5_flwhs"]
+[ext_resource type="PackedScene" uid="uid://c0580shuwsxi8" path="res://scenes/player.tscn" id="1_t3myb"]
+[ext_resource type="Script" path="res://scripts/player_scripts/blackjack/blackjack_player.gd" id="2_sb6p5"]
+[ext_resource type="Texture2D" uid="uid://befr7ewhlbikm" path="res://resources/models/robogodot/GodotRedPalette.png" id="3_3rk5h"]
+[ext_resource type="Texture2D" uid="uid://deyb0ew2qmt2i" path="res://resources/models/robogodot/GodotBlackPalette.png" id="4_p6hco"]
+[ext_resource type="Texture2D" uid="uid://be28dmhloua7s" path="res://resources/models/robogodot/GodotWhitePalette.png" id="5_tm63b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5rw5"]
 resource_name = "Material"
 cull_mode = 2
-albedo_texture = ExtResource("3_enn3m")
+albedo_texture = ExtResource("3_3rk5h")
 roughness = 0.4
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_t35cw"]
@@ -35,7 +35,7 @@ blend_shape_mode = 0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bv15a"]
 resource_name = "Material"
 cull_mode = 2
-albedo_texture = ExtResource("3_enn3m")
+albedo_texture = ExtResource("3_3rk5h")
 roughness = 0.4
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5p0ff"]
@@ -61,14 +61,14 @@ blend_shape_mode = 0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vciti"]
 resource_name = "Material"
 cull_mode = 2
-albedo_texture = ExtResource("4_e5r2w")
+albedo_texture = ExtResource("4_p6hco")
 roughness = 0.4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fpb6i"]
 resource_name = "Material.002"
 cull_mode = 2
 albedo_color = Color(0, 0, 0, 1)
-albedo_texture = ExtResource("3_enn3m")
+albedo_texture = ExtResource("3_3rk5h")
 roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bvy2x"]
@@ -109,7 +109,7 @@ blend_shape_mode = 0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_av1ow"]
 resource_name = "Material"
 cull_mode = 2
-albedo_texture = ExtResource("5_flwhs")
+albedo_texture = ExtResource("5_tm63b")
 roughness = 0.4
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_mpt5c"]
@@ -132,8 +132,8 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[node name="BlackJackPlayer" instance=ExtResource("1_g2t0v")]
-script = ExtResource("2_gq8tq")
+[node name="BlackJackPlayer" instance=ExtResource("1_t3myb")]
+script = ExtResource("2_sb6p5")
 
 [node name="Skeleton3D" parent="3DGodotRobot/RobotArmature" index="0"]
 bones/0/position = Vector3(-3.5256e-16, 0.861288, 0.0298551)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://b5hufqs7sbm01"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ysfbh"]
-[ext_resource type="PackedScene" uid="uid://brwfm5rfhppxr" path="res://scenes/players/black_jack_player.tscn" id="2_aljjj"]
+[ext_resource type="PackedScene" uid="uid://brwfm5rfhppxr" path="res://scenes/players/blackjack_player.tscn" id="2_aljjj"]
 [ext_resource type="PackedScene" uid="uid://dumb7dq77bnb8" path="res://scenes/players/dudo_player.tscn" id="3_sshp8"]
 [ext_resource type="PackedScene" uid="uid://b6gmqihwqusyb" path="res://scenes/players/roulette_player.tscn" id="4_x6q7x"]
 [ext_resource type="PackedScene" uid="uid://dnjiiesx27cj7" path="res://scenes/players/slot_player.tscn" id="5_jbspk"]
