@@ -16,11 +16,9 @@ func _input(event: InputEvent) -> void:
 func inst_attack():
 	var special_attack := SPECIAL_ATTACK_BLACKJACK.instantiate()
 	special_attack.damage = DAMAGE
-	print(multiplayer.get_unique_id(), " DAMAGE: ", DAMAGE)
-	print(multiplayer.get_unique_id(), " OWNER.ATTACK: ", OWNER.ATTACK)
 	add_child(special_attack)
 
 
 @rpc("call_local")
 func update_damage() -> void:
-	DAMAGE = OWNER.ATTACK
+	DAMAGE = BASE_DAMAGE * OWNER.ATTACK

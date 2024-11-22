@@ -234,8 +234,10 @@ func reset_round() -> void:
 
 func bet(stat: String) -> void:
 	update_stat.rpc(stat)
-	if special_attack.has_method("update_damage"):
-		special_attack.update_damage.rpc()
+	if stat == "ATTACK":
+		hitbox.update_damage.rpc()
+		if special_attack.has_method("update_damage"):
+			special_attack.update_damage.rpc()
 	_manual_ui_update()
 
 
