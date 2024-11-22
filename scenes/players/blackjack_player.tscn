@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=4 uid="uid://brwfm5rfhppxr"]
+[gd_scene load_steps=16 format=4 uid="uid://brwfm5rfhppxr"]
 
 [ext_resource type="PackedScene" uid="uid://c0580shuwsxi8" path="res://scenes/player.tscn" id="1_t3myb"]
 [ext_resource type="Script" path="res://scripts/player_scripts/blackjack/blackjack_player.gd" id="2_sb6p5"]
 [ext_resource type="Texture2D" uid="uid://befr7ewhlbikm" path="res://resources/models/robogodot/GodotRedPalette.png" id="3_3rk5h"]
 [ext_resource type="Texture2D" uid="uid://deyb0ew2qmt2i" path="res://resources/models/robogodot/GodotBlackPalette.png" id="4_p6hco"]
 [ext_resource type="Texture2D" uid="uid://be28dmhloua7s" path="res://resources/models/robogodot/GodotWhitePalette.png" id="5_tm63b"]
+[ext_resource type="Script" path="res://scripts/player_scripts/blackjack/special_attack.gd" id="6_iug2f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5rw5"]
 resource_name = "Material"
@@ -136,27 +137,27 @@ blend_shape_mode = 0
 script = ExtResource("2_sb6p5")
 
 [node name="Skeleton3D" parent="3DGodotRobot/RobotArmature" index="0"]
-bones/0/position = Vector3(-3.5256e-16, 0.861288, 0.0298551)
+bones/0/position = Vector3(-5.118e-17, 0.869042, 0.0298551)
 bones/1/rotation = Quaternion(0.0294489, -1.52111e-14, 7.02117e-09, 0.999566)
-bones/4/position = Vector3(-3.65722e-16, 0.151501, -0.011741)
+bones/4/position = Vector3(-3.42485e-16, 0.15762, -0.0115262)
 bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
 bones/7/position = Vector3(7.44409e-08, 0.540609, 0.312228)
 bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/8/position = Vector3(9.97907e-08, 0.0611572, 0.418552)
+bones/8/position = Vector3(9.98155e-08, 0.0743466, 0.418656)
 bones/8/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/9/position = Vector3(0.267321, 0.0764982, -0.028224)
+bones/9/position = Vector3(0.267321, 0.0875932, -0.0278343)
 bones/10/position = Vector3(0.00943595, 0.223043, -8.36576e-05)
-bones/10/rotation = Quaternion(-0.356441, 0.617847, -0.433107, 0.551029)
+bones/10/rotation = Quaternion(-0.366126, 0.610657, -0.443412, 0.544458)
 bones/12/rotation = Quaternion(0.0209349, 0.0170217, -0.0176714, 0.99948)
-bones/13/position = Vector3(-0.267321, 0.0764982, -0.028224)
+bones/13/position = Vector3(-0.267321, 0.0875932, -0.0278343)
 bones/14/position = Vector3(-0.00943595, 0.223043, -8.36576e-05)
-bones/14/rotation = Quaternion(-0.356441, -0.617847, 0.433107, 0.551029)
+bones/14/rotation = Quaternion(-0.366127, -0.610657, 0.443412, 0.544458)
 bones/16/rotation = Quaternion(0.0209349, -0.0170217, 0.0176714, 0.99948)
 bones/17/position = Vector3(0.276084, 0.0659952, -0.00346869)
-bones/18/rotation = Quaternion(0.249628, 0.00871771, 0.024974, 0.967981)
-bones/19/rotation = Quaternion(-0.608714, 0.00331542, -0.00479121, 0.793368)
+bones/18/rotation = Quaternion(0.174978, 0.00765456, 0.0257508, 0.984206)
+bones/19/rotation = Quaternion(-0.575587, 0.00311655, -0.00492589, 0.81772)
 bones/21/position = Vector3(-0.276084, 0.0659953, -0.00346882)
-bones/23/rotation = Quaternion(-0.608714, -0.00331544, 0.00479126, 0.793368)
+bones/23/rotation = Quaternion(-0.575587, -0.00311656, 0.00492592, 0.81772)
 bones/24/rotation = Quaternion(6.34553e-08, 0.980764, -0.195196, -1.82779e-06)
 
 [node name="Bottom" parent="3DGodotRobot/RobotArmature/Skeleton3D" index="0"]
@@ -170,5 +171,15 @@ mesh = SubResource("ArrayMesh_bvy2x")
 
 [node name="Llimbs and head" parent="3DGodotRobot/RobotArmature/Skeleton3D" index="3"]
 mesh = SubResource("ArrayMesh_mpt5c")
+
+[node name="CollisionShape3D" parent="." index="1"]
+visible = false
+
+[node name="SpringArm3D" parent="." index="3"]
+visible = false
+
+[node name="SpecialAttack" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0)
+script = ExtResource("6_iug2f")
 
 [editable path="3DGodotRobot"]
