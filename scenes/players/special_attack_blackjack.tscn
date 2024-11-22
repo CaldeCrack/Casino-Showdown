@@ -9,6 +9,7 @@ size = Vector3(3.522, 5.121, 0.285)
 [node name="SpecialAttackBlackjack" type="Area3D"]
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 0, 0)
 script = ExtResource("1_lo8o3")
+damage = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000137329, -0.00247213, -0.00140381)

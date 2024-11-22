@@ -42,6 +42,7 @@ const MOUSE_SENSITIVITY: float = 0.002
 @onready var round_progress_bar: ProgressBar = $UI/RoundProgressBar
 @onready var label: Label3D = $Label3D
 @onready var hitbox: Hitbox = $"3DGodotRobot/Hitbox"
+@onready var special_attack: Node3D = $SpecialAttack
 
 
 func _ready() -> void:
@@ -232,10 +233,15 @@ func reset_round() -> void:
 
 
 func bet(stat: String) -> void:
-	set(stat, Global.slot(get(stat)))
-	if stat == "ATTACK":
-		hitbox.set_damage.rpc(ATTACK)
+	update_stat.rpc(stat)
+	if special_attack.has_method("update_damage"):
+		special_attack.update_damage.rpc()
 	_manual_ui_update()
+
+
+@rpc("call_local")
+func update_stat(stat: String) -> void:
+	set(stat, Global.slot(get(stat)))
 
 
 @rpc("any_peer", "call_local", "reliable")
