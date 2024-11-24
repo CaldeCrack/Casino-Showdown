@@ -6,7 +6,7 @@ var DAMAGE: float = 10.0
 @onready var OWNER = get_parent()
 const SPECIAL_ATTACK_BLACKJACK = preload("res://scenes/players/special_attack_blackjack.tscn")
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if is_multiplayer_authority():
 		if Input.is_action_just_pressed("special_attack"):
 			inst_attack.rpc()

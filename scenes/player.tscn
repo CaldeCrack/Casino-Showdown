@@ -1,12 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0580shuwsxi8"]
+[gd_scene load_steps=23 format=3 uid="uid://c0580shuwsxi8"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1yrpo"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="3_3xvhw"]
 [ext_resource type="PackedScene" uid="uid://ixdslqh7ecj4" path="res://scenes/models/3d_godot_robot.tscn" id="3_h8wr4"]
 [ext_resource type="Texture2D" uid="uid://c1hktugh2ofxt" path="res://resources/sprites/crosshairs/White/crosshair012.png" id="4_io5gu"]
 [ext_resource type="PackedScene" uid="uid://b650rxagnesum" path="res://scenes/ui/pause_menu.tscn" id="4_lyb4p"]
-[ext_resource type="LabelSettings" uid="uid://b1yf0nwmsim8t" path="res://resources/fonts/stats_font.tres" id="5_m256d"]
 [ext_resource type="PackedScene" uid="uid://bvcjagjgkfvw4" path="res://scenes/ui/round_end_menu.tscn" id="6_h36ey"]
+[ext_resource type="FontFile" uid="uid://bp3nd61ed00ed" path="res://resources/fonts/Dicier-Round-Heavy.otf" id="6_k1ykp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ia8vc"]
 radius = 0.3
@@ -35,28 +35,111 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="LabelSettings" id="LabelSettings_edrlp"]
+font_size = 24
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pf211"]
+font = ExtResource("6_k1ykp")
+font_size = 24
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kvux7"]
+font_size = 24
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_3npsf"]
+base_font = ExtResource("6_k1ykp")
+variation_face_index = 39
+opentype_features = {
+1668690745: 1
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_8fsjv"]
+font = SubResource("FontVariation_3npsf")
+font_size = 32
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jgs8u"]
+font_size = 32
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bluoi"]
+font_size = 32
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lhjlx"]
+font_size = 32
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5tde4"]
+font_size = 32
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bjiua"]
+font = ExtResource("6_k1ykp")
+font_size = 32
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ltkgr"]
+font_size = 32
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_6hdhq"]
 font_size = 100
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, 0)
 collision_layer = 2
 floor_max_angle = 1.0472
 script = ExtResource("1_1yrpo")
+metadata/_edit_vertical_guides_ = [957.0]
 
 [node name="3DGodotRobot" parent="." instance=ExtResource("3_h8wr4")]
 transform = Transform3D(-0.7, 0, -6.11959e-08, 0, 0.7, 0, 6.11959e-08, 0, -0.7, 0, -1.01098, 0)
 
 [node name="Skeleton3D" parent="3DGodotRobot/RobotArmature" index="0"]
-bones/4/position = Vector3(-3.65722e-16, 0.151501, -0.011741)
-bones/8/position = Vector3(9.97907e-08, 0.0611572, 0.418552)
+bones/0/position = Vector3(-2.12574e-17, 0.874337, 0.0298551)
+bones/1/rotation = Quaternion(0.0294489, -1.52111e-14, 7.02117e-09, 0.999566)
+bones/4/position = Vector3(-3.30656e-16, 0.161797, -0.0113794)
+bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
+bones/7/position = Vector3(7.44409e-08, 0.540609, 0.312228)
+bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
+bones/8/position = Vector3(9.98324e-08, 0.0833529, 0.418727)
+bones/8/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
+bones/9/position = Vector3(0.267321, 0.0951694, -0.0275683)
+bones/10/position = Vector3(0.00943595, 0.223043, -8.36576e-05)
+bones/10/rotation = Quaternion(-0.372679, 0.605644, -0.450375, 0.539879)
+bones/12/rotation = Quaternion(0.0209349, 0.0170217, -0.0176714, 0.99948)
+bones/13/position = Vector3(-0.267321, 0.0951694, -0.0275683)
+bones/14/position = Vector3(-0.00943595, 0.223043, -8.36576e-05)
+bones/14/rotation = Quaternion(-0.372679, -0.605644, 0.450375, 0.539879)
+bones/16/rotation = Quaternion(0.0209349, -0.0170217, 0.0176714, 0.99948)
+bones/17/position = Vector3(0.276084, 0.0659952, -0.00346869)
+bones/18/rotation = Quaternion(0.123283, 0.00690096, 0.0261959, 0.992002)
+bones/19/rotation = Quaternion(-0.552391, 0.00297762, -0.00501313, 0.833565)
+bones/21/position = Vector3(-0.276084, 0.0659953, -0.00346882)
+bones/23/rotation = Quaternion(-0.552391, -0.00297764, 0.00501316, 0.833565)
+bones/24/rotation = Quaternion(6.34553e-08, 0.980764, -0.195196, -1.82779e-06)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.507111, 0)
 shape = SubResource("CapsuleShape3D_ia8vc")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.2005, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.7, 0)
 billboard = 1
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
@@ -92,6 +175,26 @@ size_flags_vertical = 8
 theme_override_styles/background = SubResource("StyleBoxFlat_uwpxx")
 theme_override_styles/fill = SubResource("StyleBoxFlat_nkd1p")
 rounded = true
+show_percentage = false
+
+[node name="HPBarLabel" type="Label" parent="UI/MarginContainer/HealthBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0/100"
+label_settings = SubResource("LabelSettings_edrlp")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Crosshair" type="TextureRect" parent="UI/MarginContainer"]
 custom_minimum_size = Vector2(40, 40)
@@ -111,68 +214,156 @@ value = 100.0
 fill_mode = 1
 show_percentage = false
 
+[node name="RoundsContainer" type="HBoxContainer" parent="UI/RoundProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -22.5
+offset_right = 54.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Icon1" type="Label" parent="UI/RoundProgressBar/RoundsContainer"]
+layout_mode = 2
+text = "STARS  "
+label_settings = SubResource("LabelSettings_pf211")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rounds" type="Label" parent="UI/RoundProgressBar/RoundsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_kvux7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon2" type="Label" parent="UI/RoundProgressBar/RoundsContainer"]
+layout_mode = 2
+text = "  STARS"
+label_settings = SubResource("LabelSettings_pf211")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Stats" type="VBoxContainer" parent="UI"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -233.0
-offset_top = -253.0
+offset_left = -160.445
+offset_top = -210.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="HPLabel" type="Label" parent="UI/Stats"]
+[node name="HP" type="HBoxContainer" parent="UI/Stats"]
+layout_mode = 2
+
+[node name="Icon" type="Label" parent="UI/Stats/HP"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+text = "HEARTS"
+label_settings = SubResource("LabelSettings_8fsjv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HPLabel" type="Label" parent="UI/Stats/HP"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "MAX HP"
-label_settings = ExtResource("5_m256d")
+label_settings = SubResource("LabelSettings_jgs8u")
 
-[node name="ATKLabel" type="Label" parent="UI/Stats"]
+[node name="ATK" type="HBoxContainer" parent="UI/Stats"]
+layout_mode = 2
+
+[node name="Icon" type="Label" parent="UI/Stats/ATK"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+text = "SWORDS"
+label_settings = SubResource("LabelSettings_8fsjv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ATKLabel" type="Label" parent="UI/Stats/ATK"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "ATK"
-label_settings = ExtResource("5_m256d")
+label_settings = SubResource("LabelSettings_bluoi")
 
-[node name="DEFLabel" type="Label" parent="UI/Stats"]
+[node name="DEF" type="HBoxContainer" parent="UI/Stats"]
+layout_mode = 2
+
+[node name="Icon" type="Label" parent="UI/Stats/DEF"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+text = "ANY_SIDE"
+label_settings = SubResource("LabelSettings_8fsjv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DEFLabel" type="Label" parent="UI/Stats/DEF"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "DEF"
-label_settings = ExtResource("5_m256d")
+label_settings = SubResource("LabelSettings_lhjlx")
 
-[node name="SPDLabel" type="Label" parent="UI/Stats"]
-unique_name_in_owner = true
+[node name="SPD" type="HBoxContainer" parent="UI/Stats"]
 layout_mode = 2
-text = "SPEED
-"
-label_settings = ExtResource("5_m256d")
 
-[node name="RoundEndMenu" parent="UI" instance=ExtResource("6_h36ey")]
+[node name="Pivot" type="Control" parent="UI/Stats/SPD"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
 
-[node name="Rounds" type="Label" parent="UI"]
-unique_name_in_owner = true
-anchors_preset = 5
+[node name="Icon" type="Label" parent="UI/Stats/SPD/Pivot"]
+layout_mode = 1
+anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -34.5
-offset_right = 34.5
-offset_bottom = 53.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_right = 11.0
 grow_horizontal = 2
-text = "0"
-label_settings = ExtResource("5_m256d")
+grow_vertical = 2
+text = "Z_WAVES"
+label_settings = SubResource("LabelSettings_8fsjv")
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Kills" type="Label" parent="UI"]
+[node name="SPDLabel" type="Label" parent="UI/Stats/SPD"]
 unique_name_in_owner = true
-offset_left = 1.0
-offset_top = 43.0
-offset_right = 69.0
-offset_bottom = 94.0
-text = "KILLS: 0"
-label_settings = ExtResource("5_m256d")
+layout_mode = 2
+label_settings = SubResource("LabelSettings_5tde4")
+
+[node name="KillsContainer" type="HBoxContainer" parent="UI"]
+offset_left = 10.0
+offset_top = 40.0
+offset_right = 67.0
+offset_bottom = 85.0
+
+[node name="Icon" type="Label" parent="UI/KillsContainer"]
+layout_mode = 2
+text = "FALL "
+label_settings = SubResource("LabelSettings_bjiua")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Kills" type="Label" parent="UI/KillsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_ltkgr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RoundEndMenu" parent="UI" instance=ExtResource("6_h36ey")]
+visible = false
 
 [node name="WINNER" type="Label" parent="UI"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

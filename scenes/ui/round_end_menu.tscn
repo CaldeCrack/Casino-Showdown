@@ -34,6 +34,11 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
+[sub_resource type="Theme" id="Theme_vah2m"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
 [sub_resource type="Theme" id="Theme_s5huf"]
 Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
 Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
@@ -45,11 +50,6 @@ Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
 Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
 
 [sub_resource type="Theme" id="Theme_86abg"]
-Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
-Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
-Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
-
-[sub_resource type="Theme" id="Theme_vah2m"]
 Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
 Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
 Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
@@ -96,6 +96,13 @@ uppercase = true
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="MaxHealth" type="Button" parent="VBoxContainer/Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_vah2m")
+text = "Max-Health"
+
 [node name="Attack" type="Button" parent="VBoxContainer/Stats"]
 unique_name_in_owner = true
 process_mode = 3
@@ -118,13 +125,6 @@ size_flags_horizontal = 3
 theme = SubResource("Theme_86abg")
 text = "Speed
 "
-
-[node name="MaxHealth" type="Button" parent="VBoxContainer/Stats"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-theme = SubResource("Theme_vah2m")
-text = "Max-Health"
 
 [node name="Ready" type="Button" parent="VBoxContainer"]
 layout_mode = 2

@@ -1,16 +1,16 @@
 class_name Player
 extends CharacterBody3D
 
-var WINNER:String = ""
+var WINNER: String = ""
 var KILLS: int = 0
-var MAX_HEALTH: float = 100
-var HEALTH: float = 100
+var MAX_HEALTH: float = 100.0
+var HEALTH: float = 100.0
 var DEAD: bool = false
-var ATTACK: float = 1
-var DEFENSE: float = 1
+var ATTACK: float = 1.0
+var DEFENSE: float = 1.0
 var SPEED: float = 5.0
-var direction = Vector3.FORWARD
-var paused = false
+var direction: Vector3 = Vector3.FORWARD
+var paused: bool = false
 var SPAWNPOINT: Vector3
 
 const SPRINT_MULT: float = 1.8
@@ -40,9 +40,10 @@ const MOUSE_SENSITIVITY: float = 0.002
 @onready var winner: Label = %WINNER
 @onready var round_end_menu: Control = $UI/RoundEndMenu
 @onready var round_progress_bar: ProgressBar = $UI/RoundProgressBar
-@onready var label: Label3D = $Label3D
+@onready var name_label: Label3D = $Label3D
 @onready var hitbox: Hitbox = $"3DGodotRobot/Hitbox"
 @onready var special_attack: Node3D = $SpecialAttack
+@onready var hp_bar_label: Label = %HPBarLabel
 
 
 func _ready() -> void:
@@ -59,7 +60,7 @@ func _physics_process(delta: float) -> void:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 
-		_ui_update()
+		round_progress_bar.value = round_timer.time_left / round_timer.wait_time * 100
 		move_and_slide()
 		send_transform.rpc(position, rotation, scale)
 
@@ -67,19 +68,28 @@ func _physics_process(delta: float) -> void:
 		ui.hide()
 
 
-func _ui_update() -> void:
-	round_progress_bar.value = round_timer.time_left / round_timer.wait_time * 100
+func _update_label_stat(label: Label, value: float) -> void:
+	var new_stat_value: String = str(value).pad_decimals(2)
+	if not label.text or new_stat_value == label.text:
+		label.self_modulate = Color.WHITE
+	elif new_stat_value > label.text:
+		label.self_modulate = Color.LIME_GREEN
+	else:
+		label.self_modulate = Color.TOMATO
+	
+	label.text = new_stat_value
 
 
 func _manual_ui_update() -> void:
 	health_bar.max_value = MAX_HEALTH
 	HEALTH = MAX_HEALTH
 	health_bar.value = HEALTH
-	
-	hp_label.text = "MAX HP: %.2f" % MAX_HEALTH
-	atk_label.text = "ATK: %.2f" % ATTACK
-	def_label.text = "DEF: %.2f" % DEFENSE
-	spd_label.text = "SPEED: %.2f" % SPEED
+	hp_bar_label.text = "%s/100" % HEALTH
+
+	_update_label_stat(hp_label, MAX_HEALTH)
+	_update_label_stat(atk_label, ATTACK)
+	_update_label_stat(def_label, DEFENSE)
+	_update_label_stat(spd_label, SPEED)
 
 
 func _input(event: InputEvent) -> void:
@@ -134,7 +144,7 @@ func _set_movement():
 func setup(player_data: Statics.PlayerData) -> void:
 	name = str(player_data.id)
 	set_multiplayer_authority(player_data.id)
-	label.text = player_data.name
+	name_label.text = player_data.name
 	SPAWNPOINT = position
 	Global.count_players()
 
@@ -166,8 +176,9 @@ func take_damage(damage: float) -> void:
 			HEALTH = 0
 		else:
 			HEALTH -= real_damage
-			
+
 		health_bar.value = HEALTH
+		hp_bar_label.text = "%s/100" % HEALTH
 
 
 func _process(_delta):
@@ -249,7 +260,7 @@ func update_stat(stat: String) -> void:
 @rpc("any_peer", "call_local", "reliable")
 func add_kill() -> void:
 	KILLS += 1
-	kills.text = "KILLS: %d" % KILLS
+	kills.text = str(KILLS)
 
 
 @rpc("any_peer", "call_local", "reliable")
