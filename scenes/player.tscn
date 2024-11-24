@@ -101,57 +101,68 @@ outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 floor_max_angle = 1.0472
 script = ExtResource("1_1yrpo")
-metadata/_edit_vertical_guides_ = [957.0]
 
 [node name="3DGodotRobot" parent="." instance=ExtResource("3_h8wr4")]
-transform = Transform3D(-0.7, 0, -6.11959e-08, 0, 0.7, 0, 6.11959e-08, 0, -0.7, 0, -1.01098, 0)
+transform = Transform3D(-0.7, 0, 6.11959e-08, 0, 0.7, 0, -6.11959e-08, 0, -0.7, 0, -1.01098, 0)
 
 [node name="Skeleton3D" parent="3DGodotRobot/RobotArmature" index="0"]
-bones/0/position = Vector3(3.9539e-17, 0.886854, 0.0298551)
+bones/0/position = Vector3(4.29177e-17, 0.886216, 0.0298551)
 bones/1/rotation = Quaternion(0.0294489, -1.52111e-14, 7.02117e-09, 0.999566)
-bones/4/position = Vector3(-3.02283e-16, 0.171673, -0.0110326)
+bones/4/position = Vector3(-3.03997e-16, 0.171169, -0.0110503)
 bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
 bones/7/position = Vector3(7.44409e-08, 0.540609, 0.312228)
 bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/8/position = Vector3(9.98724e-08, 0.104643, 0.418895)
+bones/8/position = Vector3(9.98703e-08, 0.103557, 0.418887)
 bones/8/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/9/position = Vector3(0.267321, 0.113079, -0.0269393)
+bones/9/position = Vector3(0.267321, 0.112165, -0.0269714)
 bones/10/position = Vector3(0.00943595, 0.223043, -8.36576e-05)
-bones/10/rotation = Quaternion(-0.387962, 0.593462, -0.466585, 0.528759)
+bones/10/rotation = Quaternion(-0.38719, 0.594095, -0.465767, 0.529336)
 bones/12/rotation = Quaternion(0.0209349, 0.0170217, -0.0176714, 0.99948)
-bones/13/position = Vector3(-0.267321, 0.113079, -0.0269393)
+bones/13/position = Vector3(-0.267321, 0.112165, -0.0269714)
 bones/14/position = Vector3(-0.00943595, 0.223043, -8.36576e-05)
-bones/14/rotation = Quaternion(-0.387962, -0.593462, 0.466585, 0.528759)
+bones/14/rotation = Quaternion(-0.38719, -0.594095, 0.465767, 0.529336)
 bones/16/rotation = Quaternion(0.0209349, -0.0170217, 0.0176714, 0.99948)
 bones/17/position = Vector3(0.276084, 0.0659952, -0.00346869)
-bones/18/rotation = Quaternion(0.000320674, 0.00505327, 0.0269602, 0.999624)
-bones/19/rotation = Quaternion(-0.495869, 0.00264014, -0.00520348, 0.868378)
+bones/18/rotation = Quaternion(0.0065633, 0.00514893, 0.0269313, 0.999603)
+bones/19/rotation = Quaternion(-0.4988, 0.00265761, -0.00519434, 0.866697)
 bones/21/position = Vector3(-0.276084, 0.0659953, -0.00346882)
-bones/23/rotation = Quaternion(-0.495869, -0.00264014, 0.00520349, 0.868378)
+bones/23/rotation = Quaternion(-0.498801, -0.00265761, 0.00519435, 0.866697)
 bones/24/rotation = Quaternion(6.34553e-08, 0.980764, -0.195196, -1.82779e-06)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.507111, 0)
 shape = SubResource("CapsuleShape3D_ia8vc")
 
-[node name="Label3D" type="Label3D" parent="."]
+[node name="Name" type="Label3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.7, 0)
+visible = false
 billboard = 1
+texture_filter = 5
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.973179, 0.23005, 0, -0.23005, 0.973179, 0.435, 0.378786, 0.288923)
+transform = Transform3D(1, 0, 0, 0, 0.973179, 0.23005, 0, -0.23005, 0.973179, 0.435, 0.379, 0.289)
 rotation_order = 1
+collision_mask = 3
 spring_length = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
-transform = Transform3D(0.997052, -0.000669491, 0.0767161, 0, 0.999962, 0.00872653, -0.0767189, -0.00870082, 0.997015, 0, 0, 0)
+transform = Transform3D(0.997564, 0.0121131, 0.0686967, -1.86265e-09, 0.984808, -0.173648, -0.0697565, 0.173225, 0.982409, 0, 0, 0)
 cull_mask = 1047551
 near = 0.15
 script = ExtResource("3_3xvhw")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="SpringArm3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, -2.01116e-08, 0.973178, 0.23005, 8.5078e-08, 0.23005, -0.973179, -0.435, -0.217755, -1.05232)
+collision_mask = 3
+spring_length = 100.0
+
+[node name="LookingAt" type="Marker3D" parent="SpringArm3D/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 0, 5)
+visible = false
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -191,7 +202,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "/100"
+text = "/"
 label_settings = SubResource("LabelSettings_edrlp")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -252,15 +263,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Stats" type="VBoxContainer" parent="UI"]
-anchors_preset = 3
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -160.445
-offset_top = -210.0
+offset_left = -150.0
+offset_top = 40.0
+offset_bottom = 250.0
 grow_horizontal = 0
-grow_vertical = 0
 
 [node name="HP" type="HBoxContainer" parent="UI/Stats"]
 layout_mode = 2
@@ -340,7 +349,7 @@ label_settings = SubResource("LabelSettings_5tde4")
 [node name="KillsContainer" type="HBoxContainer" parent="UI"]
 offset_left = 10.0
 offset_top = 40.0
-offset_right = 67.0
+offset_right = 72.0
 offset_bottom = 85.0
 
 [node name="Icon" type="Label" parent="UI/KillsContainer"]
