@@ -244,7 +244,7 @@ func reset_round() -> void:
 
 
 func bet(stat: String) -> void:
-	update_stat.rpc(stat)
+	update_stat(stat)
 	if stat == "ATTACK":
 		hitbox.update_damage.rpc()
 		if special_attack.has_method("update_damage"):
@@ -252,9 +252,14 @@ func bet(stat: String) -> void:
 	_manual_ui_update()
 
 
-@rpc("call_local")
+@rpc("any_peer", "call_remote", "reliable")
+func update_stat_rpc(stat: String, player, value: float) -> void:
+	get_node("/root/Main/%s" % player).set(stat, value)
+
+
 func update_stat(stat: String) -> void:
 	set(stat, Global.slot(get(stat)))
+	update_stat_rpc.rpc(stat, multiplayer.get_unique_id(), get(stat))
 
 
 @rpc("any_peer", "call_local", "reliable")

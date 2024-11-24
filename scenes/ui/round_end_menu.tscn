@@ -78,14 +78,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -409.0
-offset_top = -107.5
-offset_right = 409.0
-offset_bottom = 107.5
+offset_left = -266.0
+offset_top = -52.0
+offset_right = 266.0
+offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Which stat do you want to bet on?"
 label_settings = ExtResource("2_10si5")
@@ -93,42 +93,44 @@ horizontal_alignment = 1
 uppercase = true
 
 [node name="Stats" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="MaxHealth" type="Button" parent="VBoxContainer/Stats"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 theme = SubResource("Theme_vah2m")
-text = "Max-Health"
+text = "Max Health"
 
 [node name="Attack" type="Button" parent="VBoxContainer/Stats"]
 unique_name_in_owner = true
 process_mode = 3
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 theme = SubResource("Theme_s5huf")
 text = "Attack"
 
 [node name="Defense" type="Button" parent="VBoxContainer/Stats"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 theme = SubResource("Theme_fh2su")
 text = "Defense"
 
 [node name="Speed" type="Button" parent="VBoxContainer/Stats"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 theme = SubResource("Theme_86abg")
 text = "Speed
 "
 
 [node name="Ready" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_vertical = 3
 theme = SubResource("Theme_xruby")
-text = "CONFIRMAR
+text = "CONFIRM
 "

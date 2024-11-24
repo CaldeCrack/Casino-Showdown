@@ -111,27 +111,27 @@ metadata/_edit_vertical_guides_ = [957.0]
 transform = Transform3D(-0.7, 0, -6.11959e-08, 0, 0.7, 0, 6.11959e-08, 0, -0.7, 0, -1.01098, 0)
 
 [node name="Skeleton3D" parent="3DGodotRobot/RobotArmature" index="0"]
-bones/0/position = Vector3(-2.12574e-17, 0.874337, 0.0298551)
+bones/0/position = Vector3(3.9539e-17, 0.886854, 0.0298551)
 bones/1/rotation = Quaternion(0.0294489, -1.52111e-14, 7.02117e-09, 0.999566)
-bones/4/position = Vector3(-3.30656e-16, 0.161797, -0.0113794)
+bones/4/position = Vector3(-3.02283e-16, 0.171673, -0.0110326)
 bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
 bones/7/position = Vector3(7.44409e-08, 0.540609, 0.312228)
 bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/8/position = Vector3(9.98324e-08, 0.0833529, 0.418727)
+bones/8/position = Vector3(9.98724e-08, 0.104643, 0.418895)
 bones/8/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/9/position = Vector3(0.267321, 0.0951694, -0.0275683)
+bones/9/position = Vector3(0.267321, 0.113079, -0.0269393)
 bones/10/position = Vector3(0.00943595, 0.223043, -8.36576e-05)
-bones/10/rotation = Quaternion(-0.372679, 0.605644, -0.450375, 0.539879)
+bones/10/rotation = Quaternion(-0.387962, 0.593462, -0.466585, 0.528759)
 bones/12/rotation = Quaternion(0.0209349, 0.0170217, -0.0176714, 0.99948)
-bones/13/position = Vector3(-0.267321, 0.0951694, -0.0275683)
+bones/13/position = Vector3(-0.267321, 0.113079, -0.0269393)
 bones/14/position = Vector3(-0.00943595, 0.223043, -8.36576e-05)
-bones/14/rotation = Quaternion(-0.372679, -0.605644, 0.450375, 0.539879)
+bones/14/rotation = Quaternion(-0.387962, -0.593462, 0.466585, 0.528759)
 bones/16/rotation = Quaternion(0.0209349, -0.0170217, 0.0176714, 0.99948)
 bones/17/position = Vector3(0.276084, 0.0659952, -0.00346869)
-bones/18/rotation = Quaternion(0.123283, 0.00690096, 0.0261959, 0.992002)
-bones/19/rotation = Quaternion(-0.552391, 0.00297762, -0.00501313, 0.833565)
+bones/18/rotation = Quaternion(0.000320674, 0.00505327, 0.0269602, 0.999624)
+bones/19/rotation = Quaternion(-0.495869, 0.00264014, -0.00520348, 0.868378)
 bones/21/position = Vector3(-0.276084, 0.0659953, -0.00346882)
-bones/23/rotation = Quaternion(-0.552391, -0.00297764, 0.00501316, 0.833565)
+bones/23/rotation = Quaternion(-0.495869, -0.00264014, 0.00520349, 0.868378)
 bones/24/rotation = Quaternion(6.34553e-08, 0.980764, -0.195196, -1.82779e-06)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -191,7 +191,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "0/100"
+text = "/100"
 label_settings = SubResource("LabelSettings_edrlp")
 horizontal_alignment = 1
 vertical_alignment = 1
