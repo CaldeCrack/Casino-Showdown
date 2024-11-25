@@ -1,10 +1,11 @@
 extends Hitbox
 
 
+const SPEED: float = 25.0
 var initial_position: Vector3
 var moving_to: Vector3
 var direction: Vector3
-const SPEED: float = 25.0
+@onready var card: Node3D = $Card
 
 
 func _ready() -> void:

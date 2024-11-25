@@ -43,6 +43,7 @@ const MOUSE_SENSITIVITY: float = 0.002
 @onready var name_label: Label3D = $Name
 @onready var hitbox: Hitbox = $"3DGodotRobot/Hitbox"
 @onready var special_attack: Node3D = $SpecialAttack
+@onready var ultimate: Node3D = $Ultimate
 @onready var hp_bar_label: Label = %HPBarLabel
 @onready var looking_at: Marker3D = $SpringArm3D/SpringArm3D/LookingAt
 
@@ -183,7 +184,7 @@ func take_damage(damage: float) -> void:
 		if real_damage >= HEALTH:
 			HEALTH = 0
 		else:
-			HEALTH -= real_damage
+			HEALTH -= snapped(real_damage, 0.001)
 
 		health_bar.value = HEALTH
 		hp_bar_label.text = "%s/%s" % [HEALTH, MAX_HEALTH]
@@ -247,8 +248,25 @@ func reset_round() -> void:
 		Global.round_rdy[key] = false
 	Global.count_players()
 	round_timer.start()
+	reset_skills.rpc()
 
 	get_tree().paused = false
+
+
+@rpc("any_peer", "call_remote", "reliable")
+func reset_skills() -> void:
+	for child in special_attack.get_children():
+		if child.get_class() != "Timer":
+			child.queue_free()
+		else:
+			child.stop()
+	for child in ultimate.get_children():
+		if child.get_class() != "Timer":
+			child.queue_free()
+		else:
+			child.stop()
+	if special_attack.has_method("default"): special_attack.default()
+	if ultimate.has_method("default"): ultimate.default()
 
 
 func bet(stat: String) -> void:
@@ -257,6 +275,7 @@ func bet(stat: String) -> void:
 		hitbox.update_damage.rpc()
 		if special_attack.has_method("update_damage"):
 			special_attack.update_damage.rpc()
+			ultimate.update_damage.rpc()
 	_manual_ui_update()
 
 

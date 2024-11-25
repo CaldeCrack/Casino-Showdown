@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://brwfm5rfhppxr"]
+[gd_scene load_steps=22 format=4 uid="uid://brwfm5rfhppxr"]
 
 [ext_resource type="PackedScene" uid="uid://c0580shuwsxi8" path="res://scenes/player.tscn" id="1_t3myb"]
 [ext_resource type="Script" path="res://scripts/player_scripts/blackjack/blackjack_player.gd" id="2_sb6p5"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://scripts/player_scripts/blackjack/special_attack.gd" id="6_iug2f"]
 [ext_resource type="Texture2D" uid="uid://gfgatev3ma6o" path="res://resources/sprites/Bars/special_attack_over.png" id="7_jq7lq"]
 [ext_resource type="Texture2D" uid="uid://pumbh7u042dg" path="res://resources/sprites/Bars/special_attack_progress_blackjack.png" id="8_ehgg7"]
+[ext_resource type="Texture2D" uid="uid://7h4s4n0t5qry" path="res://resources/sprites/Bars/ultimate_blackjack.png" id="10_kxy0o"]
+[ext_resource type="Script" path="res://scripts/player_scripts/blackjack/ultimate.gd" id="12_3mljq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5rw5"]
 resource_name = "Material"
@@ -143,15 +145,15 @@ script = ExtResource("2_sb6p5")
 [node name="Skeleton3D" parent="3DGodotRobot/RobotArmature" index="0"]
 bones/0/position = Vector3(-3.5256e-16, 0.861288, 0.0298551)
 bones/1/rotation = Quaternion(0.0294489, -1.52111e-14, 7.02117e-09, 0.999566)
-bones/4/position = Vector3(-3.65722e-16, 0.151501, -0.011741)
+bones/4/position = Vector3(-1.93741e-15, 0.171875, -0.0110255)
 bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
 bones/7/position = Vector3(7.44409e-08, 0.540609, 0.312228)
 bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/8/position = Vector3(9.97907e-08, 0.0611572, 0.418552)
+bones/8/position = Vector3(9.9829e-08, 0.0815428, 0.418713)
 bones/8/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
 bones/9/position = Vector3(0.267321, 0.0764982, -0.028224)
 bones/10/position = Vector3(0.00943595, 0.223043, -8.36576e-05)
-bones/10/rotation = Quaternion(-0.356441, 0.617847, -0.433107, 0.551029)
+bones/10/rotation = Quaternion(-0.356442, 0.617847, -0.433107, 0.551029)
 bones/12/rotation = Quaternion(0.0209349, 0.0170217, -0.0176714, 0.99948)
 bones/13/position = Vector3(-0.267321, 0.0764982, -0.028224)
 bones/14/position = Vector3(-0.00943595, 0.223043, -8.36576e-05)
@@ -230,9 +232,11 @@ offset_bottom = 131.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.49, 0.49)
+step = 0.01
 fill_mode = 4
 texture_under = ExtResource("6_2h30i")
 texture_over = ExtResource("7_jq7lq")
+texture_progress = ExtResource("10_kxy0o")
 tint_under = Color(1, 1, 1, 0.294118)
 
 [node name="SpecialAttack" parent="." index="5"]
@@ -240,9 +244,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0)
 script = ExtResource("6_iug2f")
 
 [node name="CD" type="Timer" parent="SpecialAttack" index="0"]
+wait_time = 7.0
+one_shot = true
+
+[node name="Ultimate" parent="." index="6"]
+script = ExtResource("12_3mljq")
+
+[node name="CD" type="Timer" parent="Ultimate" index="0"]
+wait_time = 2.0
+one_shot = true
+
+[node name="CanThrow" type="Timer" parent="Ultimate" index="1"]
 wait_time = 2.0
 one_shot = true
 
 [connection signal="timeout" from="SpecialAttack/CD" to="SpecialAttack" method="_on_cd_timeout"]
+[connection signal="timeout" from="Ultimate/CD" to="Ultimate" method="_on_cd_timeout"]
+[connection signal="timeout" from="Ultimate/CanThrow" to="Ultimate" method="_on_can_throw_timeout"]
 
 [editable path="3DGodotRobot"]

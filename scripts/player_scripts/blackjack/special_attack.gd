@@ -3,7 +3,7 @@ extends Node3D
 
 const SPECIAL_ATTACK_BLACKJACK = preload("res://scenes/players/special_attack_blackjack.tscn")
 var BASE_DAMAGE: float = 50.0
-var DAMAGE: float = 50.0
+var DAMAGE: float = BASE_DAMAGE
 var AVAILABLE: bool = true
 @onready var OWNER = get_parent()
 @onready var cd: Timer = $CD
@@ -12,13 +12,13 @@ var AVAILABLE: bool = true
 func _input(_event: InputEvent) -> void:
 	if is_multiplayer_authority():
 		if Input.is_action_just_pressed("special_attack") and AVAILABLE:
-			inst_attack.rpc()
+			_inst_attack.rpc()
 			AVAILABLE = false
 			cd.start()
 
 
 @rpc("any_peer", "call_local")
-func inst_attack():
+func _inst_attack():
 	var special_attack := SPECIAL_ATTACK_BLACKJACK.instantiate()
 	special_attack.initial_position = OWNER.global_position - Vector3(0, 0.1, 0)
 	special_attack.moving_to = OWNER.looking_at.global_position
