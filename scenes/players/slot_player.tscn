@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dnjiiesx27cj7"]
+[gd_scene load_steps=17 format=4 uid="uid://dnjiiesx27cj7"]
 
 [ext_resource type="Script" path="res://scripts/player_scripts/slots/slot_player.gd" id="2_imkgf"]
 [ext_resource type="PackedScene" uid="uid://c0580shuwsxi8" path="res://scenes/player.tscn" id="2_vc4x6"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://be28dmhloua7s" path="res://resources/models/robogodot/GodotWhitePalette.png" id="4_xum34"]
 [ext_resource type="Texture2D" uid="uid://befr7ewhlbikm" path="res://resources/models/robogodot/GodotRedPalette.png" id="5_jx4h4"]
 [ext_resource type="Script" path="res://scripts/player_scripts/slots/slot_special_attack.gd" id="7_k32dh"]
-[ext_resource type="PackedScene" uid="uid://dor3sovnwoui7" path="res://resources/models/slot/slot_machine.glb" id="7_sm8x2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmacx"]
 resource_name = "Material"
@@ -135,33 +134,31 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7qb6m"]
-
 [node name="SlotPlayer" instance=ExtResource("2_vc4x6")]
 script = ExtResource("2_imkgf")
 
 [node name="Skeleton3D" parent="3DGodotRobot/RobotArmature" index="0"]
-bones/0/position = Vector3(-3.54391e-16, 0.861865, 0.0298551)
+bones/0/position = Vector3(3.54279e-17, 0.884368, 0.0298551)
 bones/1/rotation = Quaternion(0.0294489, -1.52111e-14, 7.02117e-09, 0.999566)
-bones/4/position = Vector3(-1.95272e-15, 0.174347, -0.0109387)
+bones/4/position = Vector3(-3.08247e-16, 0.169711, -0.0111015)
 bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
 bones/7/position = Vector3(7.44409e-08, 0.540609, 0.312228)
 bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/8/position = Vector3(9.98346e-08, 0.0845419, 0.418737)
+bones/8/position = Vector3(9.98644e-08, 0.100414, 0.418862)
 bones/8/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/9/position = Vector3(0.267321, 0.0773237, -0.028195)
+bones/9/position = Vector3(0.267321, 0.109522, -0.0270642)
 bones/10/position = Vector3(0.00943595, 0.223043, -8.36576e-05)
-bones/10/rotation = Quaternion(-0.357166, 0.617318, -0.433878, 0.550546)
+bones/10/rotation = Quaternion(-0.38495, 0.595918, -0.463394, 0.531)
 bones/12/rotation = Quaternion(0.0209349, 0.0170217, -0.0176714, 0.99948)
-bones/13/position = Vector3(-0.267321, 0.0773237, -0.028195)
+bones/13/position = Vector3(-0.267321, 0.109522, -0.0270642)
 bones/14/position = Vector3(-0.00943595, 0.223043, -8.36576e-05)
-bones/14/rotation = Quaternion(-0.357166, -0.617318, 0.433878, 0.550546)
+bones/14/rotation = Quaternion(-0.38495, -0.595918, 0.463394, 0.531)
 bones/16/rotation = Quaternion(0.0209349, -0.0170217, 0.0176714, 0.99948)
 bones/17/position = Vector3(0.276084, 0.0659952, -0.00346869)
-bones/18/rotation = Quaternion(0.244132, 0.00864048, 0.0250367, 0.96938)
-bones/19/rotation = Quaternion(-0.606285, 0.00330082, -0.00480151, 0.795226)
+bones/18/rotation = Quaternion(0.0246625, 0.00542514, 0.0268414, 0.999321)
+bones/19/rotation = Quaternion(-0.507269, 0.0027081, -0.0051675, 0.861768)
 bones/21/position = Vector3(-0.276084, 0.0659953, -0.00346882)
-bones/23/rotation = Quaternion(-0.606285, -0.00330084, 0.00480155, 0.795226)
+bones/23/rotation = Quaternion(-0.507269, -0.0027081, 0.00516751, 0.861768)
 bones/24/rotation = Quaternion(6.34553e-08, 0.980764, -0.195196, -1.82779e-06)
 
 [node name="Bottom" parent="3DGodotRobot/RobotArmature/Skeleton3D" index="0"]
@@ -179,18 +176,4 @@ mesh = SubResource("ArrayMesh_3axq2")
 [node name="SpecialAttack" parent="." index="5"]
 script = ExtResource("7_k32dh")
 
-[node name="Machine" type="RigidBody3D" parent="SpecialAttack" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
-visible = false
-gravity_scale = 0.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpecialAttack/Machine" index="0"]
-shape = SubResource("BoxShape3D_7qb6m")
-
-[node name="Sketchfab_Scene" parent="SpecialAttack/Machine/CollisionShape3D" index="0" instance=ExtResource("7_sm8x2")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-
-[connection signal="body_entered" from="SpecialAttack/Machine" to="SpecialAttack" method="_on_machine_body_entered"]
-
 [editable path="3DGodotRobot"]
-[editable path="SpecialAttack/Machine/CollisionShape3D/Sketchfab_Scene"]
