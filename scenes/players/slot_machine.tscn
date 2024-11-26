@@ -16,4 +16,6 @@ shape = SubResource("BoxShape3D_aqujc")
 
 [node name="Sketchfab_Scene" parent="CollisionShape3D" instance=ExtResource("1_8pktp")]
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true

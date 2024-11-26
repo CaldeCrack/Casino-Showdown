@@ -1,7 +1,6 @@
 extends RigidBody3D
 
-func _ready() -> void:
-	body_entered.connect(_on_body_entered)
+@onready var timer: Timer = $Timer
 
-func _on_body_entered(body: Node) -> void:
-	queue_free()
+func _ready() -> void:
+	timer.timeout.connect(func():queue_free())
