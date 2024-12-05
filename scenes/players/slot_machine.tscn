@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/player_scripts/slots/slot_machine.gd" id="1_ni2nv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aqujc"]
-size = Vector3(1, 2, 1)
+size = Vector3(1, 1.8, 1)
 
 [node name="RigidBody3D" type="RigidBody3D"]
 collision_layer = 16
@@ -15,6 +15,7 @@ script = ExtResource("1_ni2nv")
 shape = SubResource("BoxShape3D_aqujc")
 
 [node name="Sketchfab_Scene" parent="CollisionShape3D" instance=ExtResource("1_8pktp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -1, 0)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
