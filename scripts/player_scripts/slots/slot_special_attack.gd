@@ -15,13 +15,13 @@ var ARR_POS = [POS1,POS2,POS3,POS4,POS5,POS6,POS7,POS8]
 var slot: PackedScene = preload("res://scenes/players/slot_machine.tscn")
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("special_attack"):
-		_inst_slot.rpc()
-
-@rpc("any_peer", "call_local", "reliable")
-func _inst_slot() -> void:
 	if is_multiplayer_authority():
-		for pos in ARR_POS:
-			var machine = slot.instantiate()
-			OWNER.get_parent().add_child(machine)
-			machine.global_position = OWNER.global_position + pos
+		if Input.is_action_just_pressed("special_attack"):
+			_inst_slot.rpc()
+
+@rpc("any_peer", "call_local")
+func _inst_slot() -> void:
+	for pos in ARR_POS:
+		var machine = slot.instantiate()
+		OWNER.get_parent().add_child(machine)
+		machine.global_position = OWNER.global_position + pos
