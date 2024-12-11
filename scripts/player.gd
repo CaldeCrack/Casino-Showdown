@@ -40,20 +40,22 @@ const MOUSE_SENSITIVITY: float = 0.002
 @onready var winner: Label = %WINNER
 @onready var round_end_menu: Control = $UI/RoundEndMenu
 @onready var round_progress_bar: ProgressBar = $UI/RoundProgressBar
-@onready var name_label: Label3D = $Label3D
+@onready var name_label: Label3D = $Name
 @onready var hitbox: Hitbox = $"3DGodotRobot/Hitbox"
 @onready var special_attack: Node3D = $SpecialAttack
+@onready var ultimate: Node3D = $Ultimate
 @onready var hp_bar_label: Label = %HPBarLabel
+@onready var looking_at: Marker3D = $SpringArm3D/SpringArm3D/LookingAt
 
 
 func _ready() -> void:
-	winner.hide()
 	Global.PLAYER = multiplayer.get_unique_id()
 	godot_animation_tree.active = true
 
 	_manual_ui_update()
 	round_end_menu.hide()
 	round_timer.timeout.connect(_on_round_end)
+
 
 func _physics_process(delta: float) -> void:
 	if is_multiplayer_authority():
@@ -62,7 +64,7 @@ func _physics_process(delta: float) -> void:
 
 		round_progress_bar.value = round_timer.time_left / round_timer.wait_time * 100
 		move_and_slide()
-		send_transform.rpc(position, rotation, scale)
+		send_transform.rpc(position, rotation, scale, spring_arm.rotation.x)
 
 	else:
 		ui.hide()
@@ -72,7 +74,7 @@ func _update_label_stat(label: Label, value: float) -> void:
 	var new_stat_value: String = str(value).pad_decimals(2)
 	if not label.text or new_stat_value == label.text:
 		label.self_modulate = Color.WHITE
-	elif new_stat_value > label.text:
+	elif float(new_stat_value) > float(label.text):
 		label.self_modulate = Color.LIME_GREEN
 	else:
 		label.self_modulate = Color.TOMATO
@@ -84,7 +86,7 @@ func _manual_ui_update() -> void:
 	health_bar.max_value = MAX_HEALTH
 	HEALTH = MAX_HEALTH
 	health_bar.value = HEALTH
-	hp_bar_label.text = "%s/100" % HEALTH
+	hp_bar_label.text = "%s/%s" % [HEALTH, MAX_HEALTH]
 
 	_update_label_stat(hp_label, MAX_HEALTH)
 	_update_label_stat(atk_label, ATTACK)
@@ -142,18 +144,25 @@ func _set_movement():
 
 
 func setup(player_data: Statics.PlayerData) -> void:
-	name = str(player_data.id)
 	set_multiplayer_authority(player_data.id)
+	name = str(player_data.id)
 	name_label.text = player_data.name
+	_show.rpc()
 	SPAWNPOINT = position
 	Global.count_players()
 
 
+@rpc("call_remote", "reliable")
+func _show() -> void:
+	name_label.show()
+
+
 @rpc
-func send_transform(pos: Vector3, rot: Vector3, size: Vector3) -> void:
+func send_transform(pos: Vector3, rot: Vector3, size: Vector3, spring_rotation: float) -> void:
 	position = lerp(position, pos, 0.5)
 	rotation.y = lerp_angle(rotation.y, rot.y, 0.5)
 	scale = lerp(scale, size, 0.5)
+	spring_arm.rotation.x = lerp_angle(spring_arm.rotation.x, spring_rotation, 0.5)
 
 
 @rpc("any_peer", "call_local")
@@ -175,10 +184,10 @@ func take_damage(damage: float) -> void:
 		if real_damage >= HEALTH:
 			HEALTH = 0
 		else:
-			HEALTH -= real_damage
+			HEALTH -= snapped(real_damage, 0.001)
 
 		health_bar.value = HEALTH
-		hp_bar_label.text = "%s/100" % HEALTH
+		hp_bar_label.text = "%s/%s" % [HEALTH, MAX_HEALTH]
 
 
 func _process(_delta):
@@ -239,8 +248,25 @@ func reset_round() -> void:
 		Global.round_rdy[key] = false
 	Global.count_players()
 	round_timer.start()
+	reset_skills.rpc()
 
 	get_tree().paused = false
+
+
+@rpc("any_peer", "call_remote", "reliable")
+func reset_skills() -> void:
+	for child in special_attack.get_children():
+		if child.get_class() != "Timer":
+			child.queue_free()
+		else:
+			child.stop()
+	for child in ultimate.get_children():
+		if child.get_class() != "Timer":
+			child.queue_free()
+		else:
+			child.stop()
+	if special_attack.has_method("default"): special_attack.default()
+	if ultimate.has_method("default"): ultimate.default()
 
 
 func bet(stat: String) -> void:
@@ -249,6 +275,7 @@ func bet(stat: String) -> void:
 		hitbox.update_damage.rpc()
 		if special_attack.has_method("update_damage"):
 			special_attack.update_damage.rpc()
+			ultimate.update_damage.rpc()
 	_manual_ui_update()
 
 

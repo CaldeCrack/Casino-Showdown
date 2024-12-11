@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c47ykes5s3tad"]
+
+[ext_resource type="Script" path="res://scripts/player_scripts/blackjack/explosion.gd" id="1_mq8xi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_otk0p"]
+radius = 2.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7vr3"]
+albedo_color = Color(0.917647, 0.12549, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5rp0n"]
+material = SubResource("StandardMaterial3D_j7vr3")
+radius = 2.5
+height = 5.0
+
+[node name="Explosion" type="Area3D"]
+top_level = true
+script = ExtResource("1_mq8xi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_otk0p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_5rp0n")
+
+[node name="Lifespan" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]

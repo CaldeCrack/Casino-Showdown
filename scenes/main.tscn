@@ -52,6 +52,9 @@ transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, -45, 1.7, 4)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Sketchfab_model/c52f2f46551c4e0f958a2f4c440397d2_fbx/RootNode/Table_003/Table_003_Table_0/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_m6a3o")
 
+[node name="Table_003_Green Top_0" parent="Map/Sketchfab_model/c52f2f46551c4e0f958a2f4c440397d2_fbx/RootNode/Table_003" index="1"]
+layers = 5
+
 [node name="StaticBody3D" type="StaticBody3D" parent="Map/Sketchfab_model/c52f2f46551c4e0f958a2f4c440397d2_fbx/RootNode/Table_003/Table_003_Green Top_0" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Sketchfab_model/c52f2f46551c4e0f958a2f4c440397d2_fbx/RootNode/Table_003/Table_003_Green Top_0/StaticBody3D"]
