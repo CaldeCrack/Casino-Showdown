@@ -138,11 +138,11 @@ script = ExtResource("2_emf5n")
 [node name="Skeleton3D" parent="3DGodotRobot/RobotArmature" index="0"]
 bones/0/position = Vector3(-3.5256e-16, 0.861288, 0.0298551)
 bones/1/rotation = Quaternion(0.0294489, -1.52111e-14, 7.02117e-09, 0.999566)
-bones/4/position = Vector3(-3.65722e-16, 0.151501, -0.011741)
+bones/4/position = Vector3(-1.02843e-15, 0.160092, -0.0114393)
 bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
 bones/7/position = Vector3(7.44409e-08, 0.540609, 0.312228)
 bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/8/position = Vector3(9.97907e-08, 0.0611572, 0.418552)
+bones/8/position = Vector3(9.98068e-08, 0.0697529, 0.41862)
 bones/8/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
 bones/9/position = Vector3(0.267321, 0.0764982, -0.028224)
 bones/10/position = Vector3(0.00943595, 0.223043, -8.36576e-05)
@@ -176,6 +176,7 @@ transform = Transform3D(0.997052, -0.000669491, 0.076716, 0, 0.999962, 0.0087265
 
 [node name="SpecialAttack" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.91489e-08, 0, -0.676584)
+visible = false
 
 [node name="LeftMarker" type="Marker3D" parent="SpecialAttack" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0, 0)
@@ -188,5 +189,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 0)
 
 [node name="RDirection" type="Marker3D" parent="SpecialAttack/RightMarker" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Ultimate" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+
+[node name="FrontUltimateMarker" type="Marker3D" parent="Ultimate" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="BackUltimateMarker" type="Marker3D" parent="Ultimate" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="LeftUltimateMarker" type="Marker3D" parent="Ultimate" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="RightUltimateMarker" type="Marker3D" parent="Ultimate" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="UltimateEffectTimer" type="Timer" parent="Ultimate" index="4"]
+wait_time = 3.0
+one_shot = true
 
 [editable path="3DGodotRobot"]
