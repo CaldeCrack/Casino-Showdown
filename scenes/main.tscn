@@ -63,7 +63,7 @@ shape = SubResource("ConcavePolygonShape3D_k1vyv")
 shape = SubResource("ConcavePolygonShape3D_3e4kp")
 
 [node name="Spawnpoints" type="Node3D" parent="."]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.10427, 0)
 
 [node name="Marker3D_1" type="Marker3D" parent="Spawnpoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 13)

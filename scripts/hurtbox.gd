@@ -11,7 +11,7 @@ func _on_area_entered(area: Area3D) -> void:
 	var hitbox = area as Hitbox
 	
 	if not OWNER.DEAD and hitbox:
-		var pp = hitbox.get_parent().get_parent()
+		var pp = hitbox.OWNER
 		if OWNER.has_method("take_damage") and pp != OWNER:
 			OWNER.take_damage(hitbox.damage)
 			hitbox.damage_dealt.emit()

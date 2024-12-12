@@ -5,7 +5,7 @@ signal damage_dealt()
 
 var BASE_DAMAGE: float = 50.0
 @export var damage: float = 50.0
-@onready var OWNER = get_parent().get_parent()
+var OWNER
 
 
 @rpc("call_local")
