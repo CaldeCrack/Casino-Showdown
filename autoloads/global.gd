@@ -8,8 +8,6 @@ var player_count = 0
 
 @onready var round_timer: Timer = $RoundTime
 
-func _ready() -> void:
-	pass
 
 func random_int_range(from: int, to: int) -> int:
 	return rng.randi_range(from, to+1)

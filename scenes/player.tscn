@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c0580shuwsxi8"]
+[gd_scene load_steps=27 format=3 uid="uid://c0580shuwsxi8"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1yrpo"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="3_3xvhw"]
@@ -100,6 +100,42 @@ font_size = 100
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpv1u"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnntl"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3krs"]
+bg_color = Color(0.313726, 0.313726, 0.313726, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Theme" id="Theme_rjefi"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
@@ -110,27 +146,27 @@ script = ExtResource("1_1yrpo")
 transform = Transform3D(-0.7, 0, 6.11959e-08, 0, 0.7, 0, -6.11959e-08, 0, -0.7, 0, -1.01098, 0)
 
 [node name="Skeleton3D" parent="3DGodotRobot/RobotArmature" index="0"]
-bones/0/position = Vector3(-1.94548e-17, 0.874656, 0.0298551)
+bones/0/position = Vector3(-1.97278e-17, 0.874608, 0.0298551)
 bones/1/rotation = Quaternion(0.0294489, -1.52111e-14, 7.02117e-09, 0.999566)
-bones/4/position = Vector3(-3.29943e-16, 0.162049, -0.0113706)
+bones/4/position = Vector3(-3.30051e-16, 0.162011, -0.0113719)
 bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
 bones/7/position = Vector3(7.44409e-08, 0.540609, 0.312228)
 bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/8/position = Vector3(9.98334e-08, 0.0838954, 0.418732)
+bones/8/position = Vector3(9.98333e-08, 0.0838133, 0.418731)
 bones/8/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/9/position = Vector3(0.267321, 0.0956258, -0.0275522)
+bones/9/position = Vector3(0.267321, 0.0955567, -0.0275547)
 bones/10/position = Vector3(0.00943595, 0.223043, -8.36576e-05)
-bones/10/rotation = Quaternion(-0.373072, 0.605339, -0.450792, 0.539601)
+bones/10/rotation = Quaternion(-0.373012, 0.605385, -0.450729, 0.539643)
 bones/12/rotation = Quaternion(0.0209349, 0.0170217, -0.0176714, 0.99948)
-bones/13/position = Vector3(-0.267321, 0.0956258, -0.0275522)
+bones/13/position = Vector3(-0.267321, 0.0955567, -0.0275547)
 bones/14/position = Vector3(-0.00943595, 0.223043, -8.36576e-05)
-bones/14/rotation = Quaternion(-0.373072, -0.605339, 0.450792, 0.539601)
+bones/14/rotation = Quaternion(-0.373012, -0.605385, 0.450729, 0.539643)
 bones/16/rotation = Quaternion(0.0209349, -0.0170217, 0.0176714, 0.99948)
 bones/17/position = Vector3(0.276084, 0.0659952, -0.00346869)
-bones/18/rotation = Quaternion(0.120157, 0.00685494, 0.0262205, 0.992385)
-bones/19/rotation = Quaternion(-0.550979, 0.00296918, -0.00501826, 0.834499)
+bones/18/rotation = Quaternion(0.12063, 0.00686191, 0.0262168, 0.992328)
+bones/19/rotation = Quaternion(-0.551193, 0.00297046, -0.00501749, 0.834357)
 bones/21/position = Vector3(-0.276084, 0.0659953, -0.00346882)
-bones/23/rotation = Quaternion(-0.550979, -0.00296919, 0.00501829, 0.834498)
+bones/23/rotation = Quaternion(-0.551193, -0.00297047, 0.00501751, 0.834357)
 bones/24/rotation = Quaternion(6.34553e-08, 0.980764, -0.195196, -1.82779e-06)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -370,26 +406,39 @@ vertical_alignment = 1
 [node name="RoundEndMenu" parent="UI" instance=ExtResource("6_h36ey")]
 visible = false
 
-[node name="WINNER" type="Label" parent="UI"]
-unique_name_in_owner = true
+[node name="End" type="VBoxContainer" parent="UI"]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -335.5
-offset_top = -123.0
-offset_right = 335.5
-offset_bottom = 123.0
+offset_left = -189.0
+offset_top = -68.5
+offset_right = 189.0
+offset_bottom = 68.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Winner: "
+
+[node name="WINNER" type="Label" parent="UI/End"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Winner:"
 label_settings = SubResource("LabelSettings_6hdhq")
 horizontal_alignment = 1
+
+[node name="Exit" type="Button" parent="UI/End"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_rjefi")
+theme_override_font_sizes/font_size = 32
+text = "EXIT"
 
 [node name="SpecialAttack" type="Node3D" parent="."]
 
 [node name="Ultimate" type="Node3D" parent="."]
+
+[connection signal="pressed" from="UI/End/Exit" to="." method="_on_exit_pressed"]
 
 [editable path="3DGodotRobot"]

@@ -71,6 +71,7 @@ func _ready():
  else "")
 	
 	Game.upnp_completed.connect(_on_upnp_completed, 1)
+	_disconnect()
 
 
 func _process(_delta: float) -> void:
@@ -80,10 +81,10 @@ func _process(_delta: float) -> void:
 
 func _on_upnp_completed(error) -> void:
 	print(error)
-	if error == OK:
-		Debug.log("Port Opened", 5)
-	else:
-		Debug.log("Port Error", 5)
+	#if error == OK:
+		#Debug.log("Port Opened", 5)
+	#else:
+		#Debug.log("Port Error", 5)
 
 
 func _on_host_pressed() -> void:
@@ -91,7 +92,6 @@ func _on_host_pressed() -> void:
 	
 	var err = peer.create_server(Statics.PORT, Statics.MAX_CLIENTS)
 	if err:
-		Debug.log("Host Error: %d" %err)
 		return
 	
 	multiplayer.multiplayer_peer = peer
@@ -113,7 +113,6 @@ func _on_confirm_join_pressed() -> void:
 	var peer = ENetMultiplayerPeer.new()
 	var err = peer.create_client(ip.text, Statics.PORT)
 	if err:
-		Debug.log("Host Error: %d" %err)
 		return
 	
 	multiplayer.multiplayer_peer = peer
@@ -125,15 +124,14 @@ func _on_confirm_join_pressed() -> void:
 
 
 func _on_connected_to_server() -> void:
-	Debug.log("connected_to_server")
+	pass
 
 
 func _on_connection_failed() -> void:
-	Debug.log("connection_failed")
+	pass
 
 
 func _on_peer_connected(id: int) -> void:
-	Debug.log("peer_connected %d" % id)
 	if not multiplayer.is_server() and not Game.get_current_player().index:
 		await Game.player_index_received
 	
@@ -147,7 +145,6 @@ func _on_peer_connected(id: int) -> void:
 
 
 func _on_peer_disconnected(id: int) -> void:
-	Debug.log("peer_disconnected %d" % id)
 	_remove_player(id)
 	if multiplayer.is_server():
 		starting_game.rpc(false)
@@ -158,7 +155,7 @@ func _on_peer_disconnected(id: int) -> void:
 
 
 func _on_server_disconnected() -> void:
-	Debug.log("server_disconnected")
+	pass
 
 
 func _add_player(player: Statics.PlayerData) -> void:

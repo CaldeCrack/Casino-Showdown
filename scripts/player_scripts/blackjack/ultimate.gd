@@ -92,6 +92,7 @@ func update_stat_rpc(stat: String, value: int) -> void:
 
 
 func default() -> void:
+	play_label.text = ''
 	AVAILABLE = true
 	plays = []
 	play = 0

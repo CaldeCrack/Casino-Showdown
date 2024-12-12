@@ -38,6 +38,7 @@ const MOUSE_SENSITIVITY: float = 0.002
 @onready var rounds: Label = %Rounds
 @onready var kills: Label = %Kills
 @onready var winner: Label = %WINNER
+@onready var end: VBoxContainer = $UI/End
 @onready var round_end_menu: Control = $UI/RoundEndMenu
 @onready var round_progress_bar: ProgressBar = $UI/RoundProgressBar
 @onready var name_label: Label3D = $Name
@@ -233,24 +234,24 @@ func _on_round_end() -> void:
 				WINNER = player.name
 
 
-func reset_round() -> void:
+func reset_round(ended: bool = false) -> void:
 	DEAD = false
 	velocity = Vector3(0,0,0)
 	_manual_ui_update()
-	round_end_menu.hide()
+	if not ended:
+		round_end_menu.hide()
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		get_tree().paused = false
 	position = SPAWNPOINT
 	rounds.text = str(Global.ROUNDS)
 	look_at(Vector3(-10, 3, 0))
 	spring_arm.rotation_degrees = Vector3(-13.3, 0, 0)
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	send_animations.rpc("Idle")
 	for key in Global.round_rdy.keys():
 		Global.round_rdy[key] = false
 	Global.count_players()
 	round_timer.start()
 	reset_skills.rpc()
-
-	get_tree().paused = false
 
 
 @rpc("any_peer", "call_remote", "reliable")
@@ -296,9 +297,10 @@ func add_kill() -> void:
 
 
 @rpc("any_peer", "call_local", "reliable")
-func set_rdy(id: int) -> void:
+func set_rdy(id: int, ended: bool = false) -> void:
 	Global.round_rdy[id] = true
-	reset()
+	if not ended:
+		reset()
 
 func reset() -> void:
 	var readies: bool = true
@@ -312,11 +314,24 @@ func reset() -> void:
 
 
 @rpc("authority", "call_remote", "reliable")
-func reset_players() -> void:
-	get_node("/root/Main/%s" % Global.PLAYER).reset_round()
-	get_node("/root/Main/%s" % Global.PLAYER).round_end_menu.reset_bet()
+func reset_players(ended: bool = false) -> void:
+	get_node("/root/Main/%s" % Global.PLAYER).reset_round(ended)
+	if not ended:
+		get_node("/root/Main/%s" % Global.PLAYER).round_end_menu.reset_bet()
 
 func check_alive() -> void:
 	if Global.player_count == 1:
 		round_timer.stop()
 		_on_round_end()
+
+func _on_exit_pressed() -> void:
+	Global.ROUNDS = 0
+	set_rdy.rpc(multiplayer.get_unique_id(), true)
+	reset_players.rpc(true)
+	reset_round(true)
+	end.hide()
+	Game.players.clear()
+	Global.round_rdy.clear()
+	Global.count_players()
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/ui/menu.tscn")
