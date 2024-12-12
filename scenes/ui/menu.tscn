@@ -1,11 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://ltkr1u0005je"]
+[gd_scene load_steps=21 format=3 uid="uid://ltkr1u0005je"]
 
 [ext_resource type="Shader" path="res://resources/shaders/fog.gdshader" id="1_262jt"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="2_trsny"]
 [ext_resource type="FontFile" uid="uid://bo5l8x7yp2hfd" path="res://resources/fonts/CasinoShadow.ttf" id="4_br527"]
 [ext_resource type="Texture2D" uid="uid://c5hqxp0sj8frp" path="res://resources/sprites/gradient_sphere.png" id="5_mng5f"]
 [ext_resource type="Script" path="res://scripts/leds.gd" id="5_s10lk"]
-[ext_resource type="PackedScene" uid="uid://dk62uk00ha3h8" path="res://autoloads/falling_objects.tscn" id="6_bglr6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ra6kj"]
 shader = ExtResource("1_262jt")
@@ -75,10 +74,41 @@ Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
 Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
 Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvauq"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8axyg"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vaylp"]
+bg_color = Color(0.313726, 0.313726, 0.313726, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [sub_resource type="Theme" id="Theme_odnk1"]
-Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
-Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
-Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+Button/styles/hover = SubResource("StyleBoxFlat_pvauq")
+Button/styles/normal = SubResource("StyleBoxFlat_8axyg")
+Button/styles/pressed = SubResource("StyleBoxFlat_vaylp")
 
 [sub_resource type="Theme" id="Theme_w6ftd"]
 Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
@@ -2000,7 +2030,6 @@ custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_odnk1")
-text = "}"
 
 [node name="Label" type="Label" parent="VBoxContainer/Credits"]
 layout_mode = 1
@@ -2043,12 +2072,11 @@ label_settings = SubResource("LabelSettings_x0d7c")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FallingObjects" parent="." instance=ExtResource("6_bglr6")]
-
 [node name="LedLights" type="Timer" parent="."]
 wait_time = 0.8
 autostart = true
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="timeout" from="LedLights" to="VBoxContainer/Title/LEDS" method="_on_led_lights_timeout"]

@@ -1,20 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk62uk00ha3h8"]
+[gd_scene load_steps=3 format=3 uid="uid://dk62uk00ha3h8"]
 
 [ext_resource type="Script" path="res://scripts/falling_objects.gd" id="1_3rtky"]
-
-[sub_resource type="GDScript" id="GDScript_p8hhm"]
-script/source = "extends Timer
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pa5y4"]
 size = Vector2(2949, 120)
@@ -25,7 +11,6 @@ script = ExtResource("1_3rtky")
 [node name="SpawnerCD" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
-script = SubResource("GDScript_p8hhm")
 
 [node name="DeleteBorder" type="Area2D" parent="."]
 
