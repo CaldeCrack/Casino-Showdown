@@ -12,6 +12,7 @@ var SPEED: float = 5.0
 var direction: Vector3 = Vector3.FORWARD
 var paused: bool = false
 var SPAWNPOINT: Vector3
+var menu_stream = preload("res://resources/audio/music/DavidKBD - Pink Bloom Pack - 03 - To the Unknown.ogg")
 
 const SPRINT_MULT: float = 1.8
 const CROUCH_MULT: float = 0.55
@@ -330,6 +331,8 @@ func _on_exit_pressed() -> void:
 	reset_players.rpc(true)
 	reset_round(true)
 	end.hide()
+	Global.music.stream = menu_stream
+	Global.music.play()
 	Game.players.clear()
 	Global.round_rdy.clear()
 	Global.count_players()

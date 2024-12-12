@@ -7,6 +7,7 @@ var rng = RandomNumberGenerator.new()
 var player_count = 0
 
 @onready var round_timer: Timer = $RoundTime
+@onready var music: AudioStreamPlayer = $Music
 
 
 func random_int_range(from: int, to: int) -> int:

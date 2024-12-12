@@ -5,7 +5,7 @@ extends Control
 # { id: true }
 var status = { 1 : false }
 var _menu_stack: Array[Control] = []
-var falling := load("res://autoloads/falling_objects.tscn")
+var falling := preload("res://autoloads/falling_objects.tscn")
 var fallingInst = falling.instantiate()
 
 @onready var user = %User
@@ -81,10 +81,6 @@ func _process(_delta: float) -> void:
 
 func _on_upnp_completed(error) -> void:
 	print(error)
-	#if error == OK:
-		#Debug.log("Port Opened", 5)
-	#else:
-		#Debug.log("Port Error", 5)
 
 
 func _on_host_pressed() -> void:
