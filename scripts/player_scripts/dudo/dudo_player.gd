@@ -13,13 +13,7 @@ const GRAVITY: float = 9.8
 const REBOUND_FACTOR: float = 0.6  # Qué tanto rebota el dado (0 a 1)
 
 # Lista de todos los Marker3D de la habilidad ultimate
-var markers = [
-	marker_3d_ultimate,
-	marker_3d_ultimate_2,
-	marker_3d_ultimate_3,
-	marker_3d_ultimate_4,
-	marker_3d_ultimate_5
-]
+
 
 func _input(event: InputEvent) -> void:
 	if is_multiplayer_authority():
@@ -35,9 +29,6 @@ func _process(delta: float) -> void:
 	if marker_3d and is_instance_valid(marker_3d):
 		marker_3d.rotation = rotation
 		
-	for marker in markers:
-		if marker and is_instance_valid(marker):
-			marker.rotation = rotation
 
 func init_marker() -> void:
 	marker_3d = $SpecialAttack/Marker3D
@@ -71,26 +62,34 @@ func _special_attack() -> void:
 
 @rpc("any_peer", "call_local")
 func _ultimate_attack() -> void:
+	var markers = [
+		marker_3d_ultimate,
+		marker_3d_ultimate_2,
+		marker_3d_ultimate_3,
+		marker_3d_ultimate_4,
+		marker_3d_ultimate_5
+	]
+
 	# Itera por cada Marker3D y lanza un dado desde su posición
 	for marker in markers:
 		if not is_instance_valid(marker):
 			print("Un Marker3D no es válido, saltando...")
 			continue
 
-		var dice_instance = DICE.instantiate()  # Instancia el dado
+		# Instanciar el dado
+		var dice_instance = DICE.instantiate()
 		if not dice_instance:
 			print("No se pudo instanciar el dado para el Marker: ", marker.name)
 			continue
 
-		get_parent().add_child(dice_instance)  # Añade el dado a la escena
-		dice_instance.global_transform = marker.global_transform  # Coloca el dado en la posición del Marker3D
+		# Agregar el dado a la escena y configurarlo en la posición global del marcador
+		get_parent().add_child(dice_instance)
+		dice_instance.global_transform = marker.global_transform
 
-		# Calcula la dirección inicial del dado basado en el Marker3D
-		var initial_direction = -marker.transform.basis.z.normalized()
-		var initial_velocity = initial_direction * 20.0  # Velocidad inicial (ajusta según lo que quieras)
+		# La dirección inicial del dado está basada en el eje -Z del marcador
+		var initial_direction = -marker.global_transform.basis.z.normalized()
+		var initial_velocity = initial_direction * 20.0  # Ajusta la velocidad según lo que desees
 
-		# Pasa la velocidad inicial al dado
+		# Lanza el dado con la velocidad calculada
 		if dice_instance.has_method("launch"):
 			dice_instance.launch(initial_velocity)
-
-	
