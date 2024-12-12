@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://brwfm5rfhppxr"]
+[gd_scene load_steps=23 format=4 uid="uid://brwfm5rfhppxr"]
 
 [ext_resource type="PackedScene" uid="uid://c0580shuwsxi8" path="res://scenes/player.tscn" id="1_t3myb"]
 [ext_resource type="Script" path="res://scripts/player_scripts/blackjack/blackjack_player.gd" id="2_sb6p5"]
@@ -139,21 +139,26 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="LabelSettings" id="LabelSettings_nons0"]
+font_size = 28
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
 [node name="BlackJackPlayer" instance=ExtResource("1_t3myb")]
 script = ExtResource("2_sb6p5")
 
 [node name="Skeleton3D" parent="3DGodotRobot/RobotArmature" index="0"]
 bones/0/position = Vector3(-3.5256e-16, 0.861288, 0.0298551)
 bones/1/rotation = Quaternion(0.0294489, -1.52111e-14, 7.02117e-09, 0.999566)
-bones/4/position = Vector3(-1.93741e-15, 0.171875, -0.0110255)
+bones/4/position = Vector3(-3.65722e-16, 0.151501, -0.011741)
 bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
 bones/7/position = Vector3(7.44409e-08, 0.540609, 0.312228)
 bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/8/position = Vector3(9.9829e-08, 0.0815428, 0.418713)
+bones/8/position = Vector3(9.97907e-08, 0.0611572, 0.418552)
 bones/8/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
 bones/9/position = Vector3(0.267321, 0.0764982, -0.028224)
 bones/10/position = Vector3(0.00943595, 0.223043, -8.36576e-05)
-bones/10/rotation = Quaternion(-0.356442, 0.617847, -0.433107, 0.551029)
+bones/10/rotation = Quaternion(-0.356441, 0.617847, -0.433107, 0.551029)
 bones/12/rotation = Quaternion(0.0209349, 0.0170217, -0.0176714, 0.99948)
 bones/13/position = Vector3(-0.267321, 0.0764982, -0.028224)
 bones/14/position = Vector3(-0.00943595, 0.223043, -8.36576e-05)
@@ -180,6 +185,24 @@ mesh = SubResource("ArrayMesh_mpt5c")
 
 [node name="SpringArm3D" parent="SpringArm3D" index="1"]
 spring_length = 600.0
+
+[node name="PlayLabel" type="Label" parent="UI/MarginContainer/Crosshair" index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -50.0
+offset_right = 20.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 10)
+label_settings = SubResource("LabelSettings_nons0")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CDs" type="HBoxContainer" parent="UI/MarginContainer" index="3"]
 layout_mode = 2
@@ -258,8 +281,12 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
+[node name="LabelReset" type="Timer" parent="Ultimate" index="2"]
+one_shot = true
+
 [connection signal="timeout" from="SpecialAttack/CD" to="SpecialAttack" method="_on_cd_timeout"]
 [connection signal="timeout" from="Ultimate/CD" to="Ultimate" method="_on_cd_timeout"]
 [connection signal="timeout" from="Ultimate/CanThrow" to="Ultimate" method="_on_can_throw_timeout"]
+[connection signal="timeout" from="Ultimate/LabelReset" to="Ultimate" method="_on_label_reset_timeout"]
 
 [editable path="3DGodotRobot"]

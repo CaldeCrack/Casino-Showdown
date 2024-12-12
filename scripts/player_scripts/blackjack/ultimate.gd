@@ -13,6 +13,8 @@ var throwing: bool = false
 @onready var OWNER = get_parent()
 @onready var cd: Timer = $CD
 @onready var can_throw: Timer = $CanThrow
+@onready var play_label: Label = $"../UI/MarginContainer/Crosshair/PlayLabel"
+@onready var label_reset: Timer = $LabelReset
 
 
 func _input(_event: InputEvent) -> void:
@@ -28,6 +30,7 @@ func _input(_event: InputEvent) -> void:
 				_inst_explosion.rpc()
 				cd.start()
 				AVAILABLE = false
+				label_reset.start()
 				can_throw.stop()
 
 
@@ -40,6 +43,7 @@ func _inst_attack():
 	add_child(ultimate)
 	throwed += 1
 	plays.append(min(ultimate.card.rank, 10))
+	play_label.text = str(plays.reduce(func(accum, val): return accum + val, 0))
 
 
 @rpc("any_peer", "call_local")
@@ -56,11 +60,7 @@ func update_damage() -> void:
 
 
 func _on_cd_timeout() -> void:
-	plays = []
-	play = 0
-	AVAILABLE = true
-	throwing = false
-	throwed = 0
+	default()
 
 
 func _on_can_throw_timeout() -> void:
@@ -70,6 +70,7 @@ func _on_can_throw_timeout() -> void:
 	AVAILABLE = false
 	throwing = false
 	throwed = 0
+	label_reset.start()
 
 
 func _best_play():
@@ -81,6 +82,7 @@ func _best_play():
 		best_play = 0
 	elif best_play == 21 and len(plays) == 2:
 		best_play = 28
+	play_label.text = str(best_play)
 	update_stat_rpc.rpc("play", best_play)
 
 
@@ -95,3 +97,7 @@ func default() -> void:
 	play = 0
 	throwed = 0
 	throwing = false
+
+
+func _on_label_reset_timeout() -> void:
+	play_label.text = ''

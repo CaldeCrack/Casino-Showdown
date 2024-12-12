@@ -160,9 +160,9 @@ func _show() -> void:
 @rpc
 func send_transform(pos: Vector3, rot: Vector3, size: Vector3, spring_rotation: float) -> void:
 	position = lerp(position, pos, 0.5)
-	rotation.y = lerp_angle(rotation.y, rot.y, 0.5)
+	rotation.y = rot.y
 	scale = lerp(scale, size, 0.5)
-	spring_arm.rotation.x = lerp_angle(spring_arm.rotation.x, spring_rotation, 0.5)
+	spring_arm.rotation.x = spring_rotation
 
 
 @rpc("any_peer", "call_local")
