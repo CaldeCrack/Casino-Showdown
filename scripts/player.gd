@@ -197,10 +197,10 @@ func _process(_delta):
 		health_bar.value = HEALTH
 		model.rotation = Vector3(0, 0, 0)
 		send_animations.rpc("ded")
-	
+
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
-		
+
 	check_alive()
 
 

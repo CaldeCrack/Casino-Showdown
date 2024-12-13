@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8xlu4eopbrll"]
+[gd_scene load_steps=5 format=3 uid="uid://v503gjstmauj"]
 
 [ext_resource type="Script" path="res://scripts/player_scripts/dudo/dice.gd" id="1_dvivj"]
 [ext_resource type="PackedScene" uid="uid://ct6lhyys48u6r" path="res://scenes/objects/dice_red.fbx" id="1_qduh4"]
@@ -7,6 +7,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_me2mw"]
 
 [node name="Dice" type="RigidBody3D"]
+top_level = true
 script = ExtResource("1_dvivj")
 
 [node name="dice_red" parent="." instance=ExtResource("1_qduh4")]
@@ -17,7 +18,6 @@ transform = Transform3D(0.73, 0, 0, 0, 0.73, 0, 0, 0, 0.73, 0, 0, 0)
 shape = SubResource("BoxShape3D_me2mw")
 
 [node name="Hitbox" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("3_inu5b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]

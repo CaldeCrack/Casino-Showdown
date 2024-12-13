@@ -8,6 +8,9 @@ const ROTATION_SPEED: float = 5.0  # Velocidad de rotación del dado
 var velocity: Vector3
 var bounces: int = 4  # Número de rebotes permitidos
 
+@onready var hitbox: Hitbox = $Hitbox
+
+
 func _ready() -> void:
 	# Configura las propiedades físicas del dado
 	gravity_scale = 0  # Usamos nuestra propia gravedad
@@ -16,6 +19,7 @@ func _ready() -> void:
 		randf_range(-ROTATION_SPEED, ROTATION_SPEED),
 		randf_range(-ROTATION_SPEED, ROTATION_SPEED)
 	)
+	hitbox.OWNER = get_parent()
 
 func launch(initial_velocity: Vector3) -> void:
 	velocity = initial_velocity
