@@ -25,14 +25,15 @@ func _input(event: InputEvent) -> void:
 		
 		if Input.is_action_just_pressed("special_attack"):
 			_special_attack.rpc()
-			dice_recharge.start()
-			print("Apretaste la e:", dice_count)
+			if dice_recharge.is_stopped():
+				dice_recharge.start()
 		
 		if available_ult:
 			if Input.is_action_just_pressed("ultimate"):
 				available_ult = 0
 				_ultimate_attack.rpc()
-				cd_ultimate.start()
+				if cd_ultimate.is_stopped():
+					cd_ultimate.start()
 
 func _process(delta: float) -> void:
 	if marker_3d and is_instance_valid(marker_3d):
@@ -111,10 +112,12 @@ func _ultimate_attack() -> void:
 func _on_dice_recharge_timeout() -> void:
 	if dice_count < 5:
 		dice_count += 1
-		print("un dado adicional")
 		print(dice_count)
+	else:
+		dice_recharge.stop()
 
 
 func _on_cd_ultimate_timeout() -> void:
 	print("Ulti disponible")
 	available_ult = 1
+	cd_ultimate.stop()
