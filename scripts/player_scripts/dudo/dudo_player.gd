@@ -74,6 +74,7 @@ func _special_attack() -> void:
 		if dice_instance.has_method("launch"):
 			dice_instance.launch(initial_velocity)
 
+
 @rpc("any_peer", "call_local")
 func _ultimate_attack() -> void:
 	var markers = [
@@ -108,16 +109,24 @@ func _ultimate_attack() -> void:
 		if dice_instance.has_method("launch"):
 			dice_instance.launch(initial_velocity)
 
+@rpc("any_peer", "call_local")
+func plusone() -> void:
+	dice_count += 1
 
 func _on_dice_recharge_timeout() -> void:
 	if dice_count < 5:
-		dice_count += 1
-		print(dice_count)
+		plusone.rpc()
 	else:
 		dice_recharge.stop()
 
 
 func _on_cd_ultimate_timeout() -> void:
-	print("Ulti disponible")
 	available_ult = 1
+	cd_ultimate.stop()
+
+@rpc("any_peer", "call_local", "reliable")
+func reset_skills() -> void:
+	dice_count = 5
+	available_ult = 1
+	dice_recharge.stop()
 	cd_ultimate.stop()

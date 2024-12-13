@@ -8,8 +8,6 @@ const ROTATION_SPEED: float = 5.0  # Velocidad de rotación del dado
 var velocity: Vector3
 var bounces: int = 4  # Número de rebotes permitidos
 
-
-
 func _ready() -> void:
 	# Configura las propiedades físicas del dado
 	gravity_scale = 0  # Usamos nuestra propia gravedad
