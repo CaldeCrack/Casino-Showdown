@@ -136,27 +136,27 @@ blend_shape_mode = 0
 script = ExtResource("2_xnejx")
 
 [node name="Skeleton3D" parent="3DGodotRobot/RobotArmature" index="0"]
-bones/0/position = Vector3(-4.82611e-17, 0.869559, 0.0298551)
+bones/0/position = Vector3(-3.55408e-17, 0.879974, 0.0298551)
 bones/1/rotation = Quaternion(0.0294489, -1.52111e-14, 7.02117e-09, 0.999566)
-bones/4/position = Vector3(-3.41331e-16, 0.158027, -0.0115118)
+bones/4/position = Vector3(2.47776e-18, 0.173315, -0.010975)
 bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
 bones/7/position = Vector3(7.44409e-08, 0.540609, 0.312228)
 bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/8/position = Vector3(9.98171e-08, 0.0752252, 0.418663)
+bones/8/position = Vector3(9.98637e-08, 0.100014, 0.418859)
 bones/8/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/9/position = Vector3(0.267321, 0.0883323, -0.0278084)
+bones/9/position = Vector3(0.267321, 0.103234, -0.027285)
 bones/10/position = Vector3(0.00943595, 0.223043, -8.36576e-05)
-bones/10/rotation = Quaternion(-0.366768, 0.610172, -0.444094, 0.544015)
+bones/10/rotation = Quaternion(-0.379597, 0.600215, -0.457718, 0.534923)
 bones/12/rotation = Quaternion(0.0209349, 0.0170217, -0.0176714, 0.99948)
-bones/13/position = Vector3(-0.267321, 0.0883323, -0.0278084)
+bones/13/position = Vector3(-0.267321, 0.103234, -0.027285)
 bones/14/position = Vector3(-0.00943595, 0.223043, -8.36576e-05)
-bones/14/rotation = Quaternion(-0.366768, -0.610172, 0.444094, 0.544015)
+bones/14/rotation = Quaternion(-0.379597, -0.600215, 0.457718, 0.534923)
 bones/16/rotation = Quaternion(0.0209349, -0.0170217, 0.0176714, 0.99948)
 bones/17/position = Vector3(0.276084, 0.0659952, -0.00346869)
-bones/18/rotation = Quaternion(0.169954, 0.00758193, 0.0257973, 0.985085)
-bones/19/rotation = Quaternion(-0.573344, 0.0031031, -0.00493457, 0.819294)
+bones/18/rotation = Quaternion(0.0680611, 0.00608068, 0.02659, 0.997308)
+bones/19/rotation = Quaternion(-0.527221, 0.00282717, -0.00510165, 0.849708)
 bones/21/position = Vector3(-0.276084, 0.0659953, -0.00346882)
-bones/23/rotation = Quaternion(-0.573344, -0.00310312, 0.00493461, 0.819294)
+bones/23/rotation = Quaternion(-0.527221, -0.00282717, 0.00510166, 0.849708)
 bones/24/rotation = Quaternion(6.34553e-08, 0.980764, -0.195196, -1.82779e-06)
 
 [node name="Bottom" parent="3DGodotRobot/RobotArmature/Skeleton3D" index="0"]
@@ -191,5 +191,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79008, -0.0718433, -2.44676
 
 [node name="Marker3DUltimate5" type="Marker3D" parent="Ultimate" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.99)
+
+[node name="dice_recharge" type="Timer" parent="." index="7"]
+wait_time = 2.0
+
+[node name="cd_ultimate" type="Timer" parent="." index="8"]
+wait_time = 5.0
+
+[connection signal="timeout" from="dice_recharge" to="." method="_on_dice_recharge_timeout"]
+[connection signal="timeout" from="cd_ultimate" to="." method="_on_cd_ultimate_timeout"]
 
 [editable path="3DGodotRobot"]
