@@ -3,9 +3,9 @@ extends Area3D
 
 signal damage_dealt()
 
-var BASE_DAMAGE: float = 50.0
 @export var damage: float = 50.0
-var OWNER
+var BASE_DAMAGE: float = damage
+@onready var OWNER = get_parent().get_parent()
 
 
 @rpc("call_local")

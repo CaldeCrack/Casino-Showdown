@@ -2,16 +2,14 @@ extends Node2D
 
 
 @onready var spawner_cd: Timer = $SpawnerCD
-
-var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var falling := preload("res://scenes/falling.tscn")
 
 
 func _ready() -> void:
-	if get_parent().name in ["Menu", "Lobby"]:
+	if get_parent().name in ["Menu", "Lobby", "Credits", "Options"]:
 		var y_pos: float =  get_viewport().size.y
 		for i in range(4):
-			var x_pos: float = rng.randf_range(0.0, get_viewport().size.x)
+			var x_pos: float = Global.rng.randf_range(0.0, get_viewport().size.x)
 			inst(x_pos, y_pos)
 			y_pos -= 300
 
@@ -24,8 +22,8 @@ func inst(x_pos: float, y_pos: float = -300) -> void:
 
 
 func _on_spawner_cd_timeout() -> void:
-	if get_parent().name in ["Menu", "Lobby"]:
-		var x_pos: float = rng.randf_range(-200.0, get_viewport().size.x + 200)
+	if get_parent().name in ["Menu", "Lobby", "Credits", "Options"]:
+		var x_pos: float = Global.rng.randf_range(-200.0, get_viewport().size.x + 200)
 		inst(x_pos)
 
 

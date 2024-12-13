@@ -1,0 +1,450 @@
+[gd_scene load_steps=19 format=3 uid="uid://bg0ajidxttug2"]
+
+[ext_resource type="Shader" path="res://resources/shaders/fog.gdshader" id="1_0edgj"]
+[ext_resource type="Script" path="res://scripts/credits.gd" id="1_67y7x"]
+[ext_resource type="Script" path="res://scripts/auto_url.gd" id="3_5ayjn"]
+
+[sub_resource type="Environment" id="Environment_vkfob"]
+background_mode = 3
+background_color = Color(1, 1, 1, 1)
+glow_enabled = true
+glow_hdr_threshold = 1.5
+adjustment_enabled = true
+adjustment_brightness = 0.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2vuqh"]
+shader = ExtResource("1_0edgj")
+shader_parameter/color = Vector3(0.5, 0.5, 0.55)
+shader_parameter/OCTAVES = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_21tis"]
+font_size = 30
+font_color = Color(1.5, 1.5, 1.5, 1)
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ildf"]
+font_size = 20
+font_color = Color(1.5, 1.5, 1.5, 1)
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tpv36"]
+font_size = 26
+font_color = Color(1.5, 1.5, 1.5, 1)
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2n57j"]
+font_size = 20
+font_color = Color(1.5, 1.5, 1.5, 1)
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qnpgg"]
+font_size = 26
+font_color = Color(1.5, 1.5, 1.5, 1)
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3to3a"]
+font_size = 26
+font_color = Color(1.5, 1.5, 1.5, 1)
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xqaep"]
+font_size = 26
+font_color = Color(1.5, 1.5, 1.5, 1)
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pm4kp"]
+font_size = 26
+font_color = Color(1.5, 1.5, 1.5, 1)
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpv1u"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnntl"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3krs"]
+bg_color = Color(0.313726, 0.313726, 0.313726, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Theme" id="Theme_53722"]
+Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
+Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
+
+[sub_resource type="LabelSettings" id="LabelSettings_wfnye"]
+font_size = 46
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_67y7x")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vkfob")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_2vuqh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Casino Showdown"
+label_settings = SubResource("LabelSettings_21tis")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameBy" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "A game by SpinlockGames 🗣️🗣️"
+label_settings = SubResource("LabelSettings_3ildf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TeamMembers" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "- Team members"
+label_settings = SubResource("LabelSettings_tpv36")
+
+[node name="Members" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Andrés Calderón
+Luciano Márquez
+Nicolás Arancibia
+Juan Valdivia"
+label_settings = SubResource("LabelSettings_2n57j")
+
+[node name="Models" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "- Models"
+label_settings = SubResource("LabelSettings_qnpgg")
+
+[node name="Dices" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Dices"]
+layout_mode = 2
+text = "Low Poly Dice Pack: "
+label_settings = SubResource("LabelSettings_2n57j")
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Dices"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+script = ExtResource("3_5ayjn")
+url = "https://devilsworkshop.itch.io/low-poly-dice-game-asset-pack"
+
+[node name="RouletteTable" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/RouletteTable"]
+layout_mode = 2
+text = "Roulette Table: "
+label_settings = SubResource("LabelSettings_2n57j")
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/RouletteTable"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+script = ExtResource("3_5ayjn")
+url = "https://sketchfab.com/3d-models/roulette-table-f276b7fc198e4556932c7b52761e409c"
+
+[node name="SlotMachine" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SlotMachine"]
+layout_mode = 2
+text = "Slot Machine: "
+label_settings = SubResource("LabelSettings_2n57j")
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SlotMachine"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+script = ExtResource("3_5ayjn")
+url = "https://sketchfab.com/3d-models/slot-machine-aff86b4e07fe4a22bc1b6bc3fa91d662"
+
+[node name="Godot3D" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Godot3D"]
+layout_mode = 2
+text = "Godot 3D Robot Character: "
+label_settings = SubResource("LabelSettings_2n57j")
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Godot3D"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+script = ExtResource("3_5ayjn")
+url = "https://captainripley.itch.io/godot-3d-robot-character"
+
+[node name="Sprites" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "- Sprites"
+label_settings = SubResource("LabelSettings_3to3a")
+
+[node name="CasinoCards" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CasinoCards"]
+layout_mode = 2
+text = "Casino Playing Cards: "
+label_settings = SubResource("LabelSettings_2n57j")
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CasinoCards"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+script = ExtResource("3_5ayjn")
+url = "https://moxica.itch.io/casino-playing-cards"
+
+[node name="Crosshairs" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Crosshairs"]
+layout_mode = 2
+text = "Crosshairs: "
+label_settings = SubResource("LabelSettings_2n57j")
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Crosshairs"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+script = ExtResource("3_5ayjn")
+url = "https://kenney-assets.itch.io/crosshair-pack"
+
+[node name="Skybox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Skybox"]
+layout_mode = 2
+text = "Skybox: "
+label_settings = SubResource("LabelSettings_2n57j")
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Skybox"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+script = ExtResource("3_5ayjn")
+url = "https://skybox.blockadelabs.com"
+
+[node name="Fonts" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "- Fonts"
+label_settings = SubResource("LabelSettings_xqaep")
+
+[node name="CasinoFont" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CasinoFont"]
+layout_mode = 2
+text = "Casino Font: "
+label_settings = SubResource("LabelSettings_2n57j")
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CasinoFont"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+script = ExtResource("3_5ayjn")
+url = "https://www.dafont.com/casino-2.font"
+
+[node name="Dicier" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Dicier"]
+layout_mode = 2
+text = "Dicier: "
+label_settings = SubResource("LabelSettings_2n57j")
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Dicier"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+script = ExtResource("3_5ayjn")
+url = "https://speakthesky.itch.io/typeface-dicier"
+
+[node name="Audio" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "- Audio"
+label_settings = SubResource("LabelSettings_pm4kp")
+
+[node name="MenuMusic" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MenuMusic"]
+layout_mode = 2
+text = "Menu Music: "
+label_settings = SubResource("LabelSettings_2n57j")
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MenuMusic"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+script = ExtResource("3_5ayjn")
+url = "https://davidkbd.itch.io/pink-bloom-synthwave-music-pack"
+
+[node name="GameMusic" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GameMusic"]
+layout_mode = 2
+text = "Gameplay Music: "
+label_settings = SubResource("LabelSettings_2n57j")
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GameMusic"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+script = ExtResource("3_5ayjn")
+url = "https://eclipzodiac.itch.io/rpg-battle-music-rpg-maker-mix-v1"
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+modulate = Color(1.5, 1.5, 1.5, 1)
+custom_minimum_size = Vector2(160, 55)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = SubResource("Theme_53722")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Back"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -34.5
+offset_right = 82.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "back"
+label_settings = SubResource("LabelSettings_wfnye")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Dices/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/RouletteTable/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SlotMachine/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Godot3D/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CasinoCards/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Crosshairs/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Skybox/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CasinoFont/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Dicier/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MenuMusic/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GameMusic/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

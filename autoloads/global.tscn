@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://be70k055e1tle"]
+[gd_scene load_steps=3 format=3 uid="uid://be70k055e1tle"]
 
 [ext_resource type="Script" path="res://autoloads/global.gd" id="1_rdm6k"]
+[ext_resource type="AudioStream" uid="uid://br4msa4n3gmrr" path="res://resources/audio/music/DavidKBD - Pink Bloom Pack - 03 - To the Unknown.ogg" id="2_qsj25"]
 
 [node name="Global" type="Node"]
 process_mode = 3
@@ -10,3 +11,9 @@ script = ExtResource("1_rdm6k")
 process_callback = 0
 wait_time = 30.0
 one_shot = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qsj25")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true

@@ -4,7 +4,8 @@ extends Node3D
 @onready var front: Sprite3D = $Front
 
 
-var rng: RandomNumberGenerator = Global.rng
+var rank: int
+var path: String = "res://resources/sprites/Cards/"
 var suits: Array[String] = ["clubs", "diamonds", "hearts", "spades"]
 var ranks: Dictionary = {
 	1: "ace",
@@ -24,15 +25,14 @@ var ranks: Dictionary = {
 
 
 func _ready() -> void:
-	var back_value: int = rng.randi_range(1, 8)
+	var back_value: int = Global.rng.randi_range(1, 8)
 	var back_face: String = "back0" + str(back_value) + ".png"
 
 	var suit: String = suits.pick_random()
-	var rank: int = rng.randi_range(1, 13)
+	rank = Global.rng.randi_range(1, 13)
 	var rank_value: String = ranks[rank]
 	var front_face: String = suit + "_" + rank_value + ".png"
 
-	var path: String = "res://resources/sprites/Cards/"
 	var back_path: String = path + back_face
 	var front_path: String = path + front_face
 
