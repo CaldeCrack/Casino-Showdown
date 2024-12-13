@@ -374,6 +374,42 @@ layout_mode = 2
 text = "- Audio"
 label_settings = SubResource("LabelSettings_pm4kp")
 
+[node name="MenuMusic" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MenuMusic"]
+layout_mode = 2
+text = "Menu Music: "
+label_settings = SubResource("LabelSettings_2n57j")
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MenuMusic"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+script = ExtResource("3_5ayjn")
+url = "https://davidkbd.itch.io/pink-bloom-synthwave-music-pack"
+
+[node name="GameMusic" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GameMusic"]
+layout_mode = 2
+text = "Gameplay Music: "
+label_settings = SubResource("LabelSettings_2n57j")
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GameMusic"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+script = ExtResource("3_5ayjn")
+url = "https://eclipzodiac.itch.io/rpg-battle-music-rpg-maker-mix-v1"
+
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
 modulate = Color(1.5, 1.5, 1.5, 1)
 custom_minimum_size = Vector2(160, 55)
@@ -409,4 +445,6 @@ vertical_alignment = 1
 [connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Skybox/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
 [connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CasinoFont/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
 [connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Dicier/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MenuMusic/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GameMusic/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

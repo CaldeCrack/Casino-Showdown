@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c0580shuwsxi8"]
+[gd_scene load_steps=23 format=3 uid="uid://c0580shuwsxi8"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1yrpo"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="3_3xvhw"]
@@ -100,59 +100,24 @@ font_size = 100
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpv1u"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnntl"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.156863, 0.156863, 0.156863, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3krs"]
-bg_color = Color(0.313726, 0.313726, 0.313726, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="Theme" id="Theme_rjefi"]
-Button/styles/hover = SubResource("StyleBoxFlat_bpv1u")
-Button/styles/normal = SubResource("StyleBoxFlat_xnntl")
-Button/styles/pressed = SubResource("StyleBoxFlat_x3krs")
-
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, 0)
 collision_layer = 2
 floor_max_angle = 1.0472
 script = ExtResource("1_1yrpo")
+metadata/_edit_vertical_guides_ = [957.0]
 
 [node name="3DGodotRobot" parent="." instance=ExtResource("3_h8wr4")]
-transform = Transform3D(-0.7, 0, 6.11959e-08, 0, 0.7, 0, -6.11959e-08, 0, -0.7, 0, -1.01098, 0)
+transform = Transform3D(-0.7, 0, -6.11959e-08, 0, 0.7, 0, 6.11959e-08, 0, -0.7, 0, -1.01098, 0)
 
 [node name="Skeleton3D" parent="3DGodotRobot/RobotArmature" index="0"]
 bones/0/position = Vector3(-3.5256e-16, 0.861288, 0.0298551)
 bones/1/rotation = Quaternion(0.0294489, -1.52111e-14, 7.02117e-09, 0.999566)
-bones/4/position = Vector3(-8.96721e-16, 0.158385, -0.0114993)
+bones/4/position = Vector3(-3.65722e-16, 0.151501, -0.011741)
 bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
 bones/7/position = Vector3(7.44409e-08, 0.540609, 0.312228)
 bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/8/position = Vector3(9.98036e-08, 0.0680446, 0.418607)
+bones/8/position = Vector3(9.97907e-08, 0.0611572, 0.418552)
 bones/8/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
 bones/9/position = Vector3(0.267321, 0.0764982, -0.028224)
 bones/10/position = Vector3(0.00943595, 0.223043, -8.36576e-05)
@@ -164,41 +129,29 @@ bones/14/rotation = Quaternion(-0.356441, -0.617847, 0.433107, 0.551029)
 bones/16/rotation = Quaternion(0.0209349, -0.0170217, 0.0176714, 0.99948)
 bones/17/position = Vector3(0.276084, 0.0659952, -0.00346869)
 bones/18/rotation = Quaternion(0.249628, 0.00871771, 0.024974, 0.967981)
-bones/19/rotation = Quaternion(-0.608714, 0.00331542, -0.00479121, 0.793368)
+bones/19/rotation = Quaternion(-0.608714, 0.00331542, -0.00479121, 0.793369)
 bones/21/position = Vector3(-0.276084, 0.0659953, -0.00346882)
-bones/23/rotation = Quaternion(-0.608714, -0.00331544, 0.00479126, 0.793368)
+bones/23/rotation = Quaternion(-0.608714, -0.00331544, 0.00479126, 0.793369)
 bones/24/rotation = Quaternion(6.34553e-08, 0.980764, -0.195196, -1.82779e-06)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.507111, 0)
 shape = SubResource("CapsuleShape3D_ia8vc")
 
-[node name="Name" type="Label3D" parent="."]
+[node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.7, 0)
-visible = false
 billboard = 1
-texture_filter = 5
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.973179, 0.23005, 0, -0.23005, 0.973179, 0.435, 0.379, 0.289)
+transform = Transform3D(1, 0, 0, 0, 0.973179, 0.23005, 0, -0.23005, 0.973179, 0.435, 0.378786, 0.288923)
 rotation_order = 1
-collision_mask = 3
 spring_length = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
-transform = Transform3D(0.997564, 0.0121131, 0.0686967, -1.86265e-09, 0.984808, -0.173648, -0.0697565, 0.173225, 0.982409, 0, 0, 0)
+transform = Transform3D(0.997052, -0.000669491, 0.0767161, 0, 0.999962, 0.00872653, -0.0767189, -0.00870082, 0.997015, 0, 0, 0)
 cull_mask = 1047551
 near = 0.15
 script = ExtResource("3_3xvhw")
-
-[node name="SpringArm3D" type="SpringArm3D" parent="SpringArm3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, -2.01116e-08, 0.973178, 0.23005, 8.5078e-08, 0.23005, -0.973179, -0.435, -0.217755, -1.05232)
-collision_mask = 3
-spring_length = 100.0
-
-[node name="LookingAt" type="Marker3D" parent="SpringArm3D/SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 0, 5)
-visible = false
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -238,7 +191,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "/"
+text = "/100"
 label_settings = SubResource("LabelSettings_edrlp")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -299,13 +252,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Stats" type="VBoxContainer" parent="UI"]
-anchors_preset = 1
+anchors_preset = 3
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-offset_left = -150.0
-offset_top = 40.0
-offset_bottom = 250.0
+anchor_bottom = 1.0
+offset_left = -160.445
+offset_top = -210.0
 grow_horizontal = 0
+grow_vertical = 0
 
 [node name="HP" type="HBoxContainer" parent="UI/Stats"]
 layout_mode = 2
@@ -385,7 +340,7 @@ label_settings = SubResource("LabelSettings_5tde4")
 [node name="KillsContainer" type="HBoxContainer" parent="UI"]
 offset_left = 10.0
 offset_top = 40.0
-offset_right = 72.0
+offset_right = 67.0
 offset_bottom = 85.0
 
 [node name="Icon" type="Label" parent="UI/KillsContainer"]
@@ -406,39 +361,26 @@ vertical_alignment = 1
 [node name="RoundEndMenu" parent="UI" instance=ExtResource("6_h36ey")]
 visible = false
 
-[node name="End" type="VBoxContainer" parent="UI"]
+[node name="WINNER" type="Label" parent="UI"]
+unique_name_in_owner = true
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -189.0
-offset_top = -68.5
-offset_right = 189.0
-offset_bottom = 68.5
+offset_left = -335.5
+offset_top = -123.0
+offset_right = 335.5
+offset_bottom = 123.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="WINNER" type="Label" parent="UI/End"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Winner:"
+text = "Winner: "
 label_settings = SubResource("LabelSettings_6hdhq")
 horizontal_alignment = 1
-
-[node name="Exit" type="Button" parent="UI/End"]
-custom_minimum_size = Vector2(140, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme = SubResource("Theme_rjefi")
-theme_override_font_sizes/font_size = 32
-text = "EXIT"
 
 [node name="SpecialAttack" type="Node3D" parent="."]
 
 [node name="Ultimate" type="Node3D" parent="."]
-
-[connection signal="pressed" from="UI/End/Exit" to="." method="_on_exit_pressed"]
 
 [editable path="3DGodotRobot"]

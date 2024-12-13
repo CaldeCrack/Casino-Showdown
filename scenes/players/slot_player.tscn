@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dnjiiesx27cj7"]
+[gd_scene load_steps=18 format=4 uid="uid://dnjiiesx27cj7"]
 
 [ext_resource type="Script" path="res://scripts/player_scripts/slots/slot_player.gd" id="2_imkgf"]
 [ext_resource type="PackedScene" uid="uid://c0580shuwsxi8" path="res://scenes/player.tscn" id="2_vc4x6"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cmkm5kjemagjd" path="res://resources/models/robogodot/GodotYellowPalette.png" id="4_fcpq2"]
 [ext_resource type="Texture2D" uid="uid://be28dmhloua7s" path="res://resources/models/robogodot/GodotWhitePalette.png" id="4_xum34"]
 [ext_resource type="Texture2D" uid="uid://befr7ewhlbikm" path="res://resources/models/robogodot/GodotRedPalette.png" id="5_jx4h4"]
+[ext_resource type="Script" path="res://scripts/player_scripts/slots/slot_special_attack.gd" id="7_k32dh"]
+[ext_resource type="Script" path="res://scripts/player_scripts/slots/slot_ultimate_attack.gd" id="8_hsp1p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmacx"]
 resource_name = "Material"
@@ -137,27 +139,27 @@ blend_shape_mode = 0
 script = ExtResource("2_imkgf")
 
 [node name="Skeleton3D" parent="3DGodotRobot/RobotArmature" index="0"]
-bones/0/position = Vector3(-3.5256e-16, 0.861288, 0.0298551)
+bones/0/position = Vector3(3.69899e-17, 0.886908, 0.0298551)
 bones/1/rotation = Quaternion(0.0294489, -1.52111e-14, 7.02117e-09, 0.999566)
-bones/4/position = Vector3(-5.92164e-16, 0.154437, -0.0116379)
+bones/4/position = Vector3(2.64973e-16, 0.172609, -0.0109997)
 bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
 bones/7/position = Vector3(7.44409e-08, 0.540609, 0.312228)
 bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/8/position = Vector3(9.97962e-08, 0.0640943, 0.418576)
+bones/8/position = Vector3(9.98736e-08, 0.105308, 0.4189)
 bones/8/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
-bones/9/position = Vector3(0.267321, 0.0764982, -0.028224)
+bones/9/position = Vector3(0.267321, 0.113155, -0.0269366)
 bones/10/position = Vector3(0.00943595, 0.223043, -8.36576e-05)
-bones/10/rotation = Quaternion(-0.356441, 0.617847, -0.433107, 0.551029)
+bones/10/rotation = Quaternion(-0.388026, 0.59341, -0.466653, 0.528711)
 bones/12/rotation = Quaternion(0.0209349, 0.0170217, -0.0176714, 0.99948)
-bones/13/position = Vector3(-0.267321, 0.0764982, -0.028224)
+bones/13/position = Vector3(-0.267321, 0.113155, -0.0269366)
 bones/14/position = Vector3(-0.00943595, 0.223043, -8.36576e-05)
-bones/14/rotation = Quaternion(-0.356441, -0.617847, 0.433107, 0.551029)
+bones/14/rotation = Quaternion(-0.388026, -0.59341, 0.466653, 0.528711)
 bones/16/rotation = Quaternion(0.0209349, -0.0170217, 0.0176714, 0.99948)
 bones/17/position = Vector3(0.276084, 0.0659952, -0.00346869)
-bones/18/rotation = Quaternion(0.249628, 0.00871771, 0.024974, 0.967981)
-bones/19/rotation = Quaternion(-0.608714, 0.00331542, -0.00479121, 0.793368)
+bones/18/rotation = Quaternion(-0.000166297, 0.0050458, 0.0269624, 0.999624)
+bones/19/rotation = Quaternion(-0.495629, 0.00263871, -0.00520423, 0.868515)
 bones/21/position = Vector3(-0.276084, 0.0659953, -0.00346882)
-bones/23/rotation = Quaternion(-0.608714, -0.00331544, 0.00479126, 0.793368)
+bones/23/rotation = Quaternion(-0.495629, -0.00263871, 0.00520423, 0.868515)
 bones/24/rotation = Quaternion(6.34553e-08, 0.980764, -0.195196, -1.82779e-06)
 
 [node name="Bottom" parent="3DGodotRobot/RobotArmature/Skeleton3D" index="0"]
@@ -171,5 +173,24 @@ mesh = SubResource("ArrayMesh_vo2go")
 
 [node name="Llimbs and head" parent="3DGodotRobot/RobotArmature/Skeleton3D" index="3"]
 mesh = SubResource("ArrayMesh_3axq2")
+
+[node name="SpecialAttack" parent="." index="5"]
+script = ExtResource("7_k32dh")
+
+[node name="Cooldown" type="Timer" parent="SpecialAttack" index="0"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Ultimate" parent="." index="6"]
+script = ExtResource("8_hsp1p")
+
+[node name="Cooldown" type="Timer" parent="Ultimate" index="0"]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="SpecialAttack/Cooldown" to="SpecialAttack" method="_on_cooldown_timeout"]
+[connection signal="timeout" from="Ultimate/Cooldown" to="Ultimate" method="_on_cooldown_timeout"]
 
 [editable path="3DGodotRobot"]

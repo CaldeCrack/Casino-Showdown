@@ -1,5 +1,8 @@
 extends Node3D
 
+
+var game_stream = preload("res://resources/audio/music/7- Nerve monster.ogg")
+
 @export var blackjack: PackedScene
 @export var dudo: PackedScene
 @export var roulette: PackedScene
@@ -9,6 +12,8 @@ extends Node3D
 
 
 func _ready() -> void:
+	Global.music.stream = game_stream
+	Global.music.play()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	for i in Game.players.size():
 		var player_data: Statics.PlayerData = Game.players[i]

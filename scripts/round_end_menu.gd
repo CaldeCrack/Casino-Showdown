@@ -22,7 +22,7 @@ func _ready():
 
 func _process(_delta: float) -> void:
 	if Global.ROUNDS > 2:
-		player.winner.show()
+		player.end.show()
 		player.winner.text += player.WINNER
 		queue_free()
 

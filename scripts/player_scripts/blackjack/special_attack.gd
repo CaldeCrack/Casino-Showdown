@@ -32,4 +32,7 @@ func update_damage() -> void:
 
 
 func _on_cd_timeout() -> void:
+	default()
+
+func default() -> void:
 	AVAILABLE = true
