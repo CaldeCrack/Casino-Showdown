@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ct6lhyys48u6r"
-path="res://.godot/imported/dice_red.fbx-b186dd71491376d34af7f99db69e0c15.scn"
+path="res://.godot/imported/dice_red.fbx-dc0d9f8efab8f2a98f774432fe5b443f.scn"
 
 [deps]
 
-source_file="res://resources/models/dudo/starter_3d_dice_packv1.1/starter_3d_dice_pack/dice_red.fbx"
-dest_files=["res://.godot/imported/dice_red.fbx-b186dd71491376d34af7f99db69e0c15.scn"]
+source_file="res://scenes/objects/dice_red.fbx"
+dest_files=["res://.godot/imported/dice_red.fbx-dc0d9f8efab8f2a98f774432fe5b443f.scn"]
 
 [params]
 

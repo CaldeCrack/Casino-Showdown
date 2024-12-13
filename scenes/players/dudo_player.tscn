@@ -152,4 +152,34 @@ mesh = SubResource("ArrayMesh_24y61")
 [node name="Llimbs and head" parent="3DGodotRobot/RobotArmature/Skeleton3D" index="3"]
 mesh = SubResource("ArrayMesh_rd5cy")
 
+[node name="Name" parent="." index="2"]
+visible = true
+
+[node name="Marker3D" type="Marker3D" parent="SpecialAttack" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.095, -1.22)
+
+[node name="Marker3DUltimate" type="Marker3D" parent="Ultimate" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42943, -0.093798, -1.59918)
+
+[node name="Marker3DUltimate2" type="Marker3D" parent="Ultimate" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62657, -0.112239, -1.68782)
+
+[node name="Marker3DUltimate3" type="Marker3D" parent="Ultimate" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.20257, -0.106873, -2.61862)
+
+[node name="Marker3DUltimate4" type="Marker3D" parent="Ultimate" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79008, -0.0718433, -2.44676)
+
+[node name="Marker3DUltimate5" type="Marker3D" parent="Ultimate" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.99)
+
+[node name="dice_recharge" type="Timer" parent="." index="7"]
+wait_time = 2.0
+
+[node name="cd_ultimate" type="Timer" parent="." index="8"]
+wait_time = 5.0
+
+[connection signal="timeout" from="dice_recharge" to="." method="_on_dice_recharge_timeout"]
+[connection signal="timeout" from="cd_ultimate" to="." method="_on_cd_ultimate_timeout"]
+
 [editable path="3DGodotRobot"]
